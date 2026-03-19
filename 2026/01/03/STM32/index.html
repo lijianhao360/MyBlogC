@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlogC/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlogC/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlogC/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/MyBlogC/images/logo.svg" color="#ffffff">
+
+<link rel="stylesheet" href="/MyBlogC/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
+
+    <meta name="description" content="Day-01 初识 STM321.STM32概述 STM32是ST公司基于ARM Cortex‑M内核开发的32位微控制器 STM32常应用在嵌入式领域，如智能车、无人机、机器人、无线通信、物联网、工业控制、娱乐电子产品等 STM32功能强大、性能优异、片上资源丰富、功耗低，是一款经典的嵌入式微控制器   ARM:   ARM既指ARM公司，也指ARM处理器内核 ARM公司是全球领先的半导体知识产">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32学习笔记">
+<meta property="og:url" content="https://lijianhao360.github.io/2026/01/03/STM32/index.html">
+<meta property="og:site_name" content="首页">
+<meta property="og:description" content="Day-01 初识 STM321.STM32概述 STM32是ST公司基于ARM Cortex‑M内核开发的32位微控制器 STM32常应用在嵌入式领域，如智能车、无人机、机器人、无线通信、物联网、工业控制、娱乐电子产品等 STM32功能强大、性能优异、片上资源丰富、功耗低，是一款经典的嵌入式微控制器   ARM:   ARM既指ARM公司，也指ARM处理器内核 ARM公司是全球领先的半导体知识产">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32F1.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32%E5%A4%96%E8%AE%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32F103C8T6.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84.png">
+<meta property="article:published_time" content="2026-01-03T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-19T14:46:20.657Z">
+<meta property="article:author" content="JianHao Li">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32F1.png">
+
+
+<link rel="canonical" href="https://lijianhao360.github.io/2026/01/03/STM32/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lijianhao360.github.io/2026/01/03/STM32/","path":"2026/01/03/STM32/","title":"STM32学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STM32学习笔记 | 首页</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/utils.js" defer></script><script src="/MyBlogC/js/motion.js" defer></script><script src="/MyBlogC/js/sidebar.js" defer></script><script src="/MyBlogC/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/MyBlogC/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/MyBlogC/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">首页</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">分享技术，记录成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/MyBlogC/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/MyBlogC/categories/" rel="section"><i class="fa fa-folder fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/MyBlogC/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/MyBlogC/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-01-%E5%88%9D%E8%AF%86-STM32"><span class="nav-text">Day-01 初识 STM32</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-STM32%E6%A6%82%E8%BF%B0"><span class="nav-text">1.STM32概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-text">2.GPIO 初始化,新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-STM32%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0%EF%BC%88%E9%9D%9E%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9C%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89%E6%9D%A5%E9%85%8D%E7%BD%AEGPIOC13%E5%BC%95%E8%84%9A%E4%B8%BA%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E5%B9%B6%E7%BD%AE%E4%BD%8E%E7%94%B5%E5%B9%B3"><span class="nav-text">3.STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="nav-text">4.新建工程架构</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JianHao Li"
+      src="/MyBlogC/images/avatar.png">
+  <p class="site-author-name" itemprop="name">JianHao Li</p>
+  <div class="site-description" itemprop="description">一个专注 C/嵌入式 技术的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/MyBlogC/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/MyBlogC/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/MyBlogC/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lijianhao360/MyBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lijianhao360&#x2F;MyBlog" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2993746016@qq.com" title="邮箱 → mailto:2993746016@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>邮箱</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+
+<div class="post-block">
+  
+  
+
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    
+    <link itemprop="mainEntityOfPage" href="https://lijianhao360.github.io/2026/01/03/STM32/">
+
+    
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/MyBlogC/images/avatar.png">
+      <meta itemprop="name" content="JianHao Li">
+    </span>
+
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="首页">
+      <meta itemprop="description" content="一个专注 C/嵌入式 技术的博客">
+    </span>
+
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32学习笔记 | 首页">
+      <meta itemprop="description" content="">
+    </span>
+
+    
+      
+      <header class="post-header">
+        
+        <h1 class="post-title" itemprop="name headline">
+          
+            STM32学习笔记
+            
+        </h1>
+
+        
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-01-03 10:00:00" itemprop="dateCreated datePublished" datetime="2026-01-03T10:00:00+08:00">2026-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-03-19 22:46:20" itemprop="dateModified" datetime="2026-03-19T22:46:20+08:00">2026-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/MyBlogC/categories/STM32/" itemprop="url" rel="index"><span itemprop="name">STM32</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+          
+        </div>
+      </header>
+
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        
+        
+        <h1 id="Day-01-初识-STM32"><a href="#Day-01-初识-STM32" class="headerlink" title="Day-01 初识 STM32"></a>Day-01 初识 STM32</h1><h2 id="1-STM32概述"><a href="#1-STM32概述" class="headerlink" title="1.STM32概述"></a>1.STM32概述</h2><ul>
+<li>STM32是ST公司基于ARM Cortex‑M内核开发的32位微控制器</li>
+<li>STM32常应用在嵌入式领域，如智能车、无人机、机器人、无线通信、物联网、工业控制、娱乐电子产品等</li>
+<li>STM32功能强大、性能优异、片上资源丰富、功耗低，是一款经典的嵌入式微控制器</li>
+</ul>
+<ul>
+<li><strong>ARM:</strong></li>
+</ul>
+<ul>
+<li>ARM既指ARM公司，也指ARM处理器内核</li>
+<li>ARM公司是全球领先的半导体知识产权（IP）提供商，全世界超过95%的智能手机和平板电脑都采用ARM架构</li>
+<li>ARM公司设计ARM内核，半导体厂商完善内核周边电路并生产芯片</li>
+</ul>
+<img src="/MyBlogC/2026/01/03/STM32/STM32F1.png" class="" title="STM32F1">
+
+<img src="/MyBlogC/2026/01/03/STM32/STM32%E5%A4%96%E8%AE%BE.png" class="" title="STM32外设">
+
+
+<img src="/MyBlogC/2026/01/03/STM32/STM32%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png" class="" title="STM32">
+
+<img src="/MyBlogC/2026/01/03/STM32/STM32F103C8T6.png" class="" title="STM32">
+<img src="/MyBlogC/2026/01/03/STM32/STM32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%B7%AF.png" class="" title="STM32">
+
+<h2 id="2-GPIO-初始化-新建工程"><a href="#2-GPIO-初始化-新建工程" class="headerlink" title="2.GPIO 初始化,新建工程"></a>2.GPIO 初始化,新建工程</h2><ul>
+<li><strong>代码功能解析</strong><br>这段代码是基于STM32F10x系列单片机的最基础GPIO初始化代码，核心功能是<strong>配置GPIOC的第13引脚为推挽输出模式，并将该引脚置低电平</strong></li>
+</ul>
+<p>作为嵌入式新手，这个问题核心是理解<strong>十六进制与二进制的转换</strong>，以及<strong>寄存器位编号的规则</strong>，用最基础的方式一步步拆解，保证能看懂。</p>
+<ul>
+<li><strong>一、先搞懂：0x00000010的二进制为什么是0001 0000？</strong><br>首先明确两个基础规则：</li>
+</ul>
+<ol>
+<li><strong>十六进制（0x开头）转二进制</strong>：1个十六进制位 &#x3D; 4个二进制位（因为16&#x3D;2⁴）；</li>
+<li><strong>数字的“有效位”和“补零”</strong>：<code>0x00000010</code> 是32位寄存器的写法（STM32的寄存器大多是32位），但核心有效位是最后两位<code>10</code>，前面的<code>000000</code>都是补零。</li>
+</ol>
+<ul>
+<li><strong>分步转换：</strong><table>
+<thead>
+<tr>
+<th>十六进制数</th>
+<th>拆分（按4位一组）</th>
+<th>对应二进制</th>
+<th>简化后（只看有效位）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x00000010</td>
+<td>00 00 00 10</td>
+<td>0000 0000 0000 0000 0000 0000 0001 0000</td>
+<td>0001 0000（最后8位）</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li>关键：<code>0x10</code>（十六进制）&#x3D; <code>16</code>（十进制）&#x3D; <code>2⁴</code>（2的4次方），而二进制中“2的n次方”对应的就是<strong>第n位为1，其余位为0</strong>（比如2⁰&#x3D;1 → 第0位1，2¹&#x3D;2 → 第1位1，以此类推）。</li>
+<li>所以<code>0x10=16=2⁴</code> → 二进制只有<strong>第4位</strong>是1，其余位是0，也就是<code>0001 0000</code>（8位视角）。</li>
+</ul>
+<ul>
+<li><p><strong>二、再理解：为什么对应APB2ENR寄存器的第4位（IOPCEN位）？</strong><br>STM32的寄存器是<strong>32位</strong>，但我们关注的是低16位（APB2ENR的有效位集中在低16位），寄存器的位编号遵循“从右往左，从0开始数”的规则，这是所有单片机&#x2F;处理器的通用规则。</p>
+</li>
+<li><p><strong>直观举例（APB2ENR寄存器低8位）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>位编号</th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>IOPCEN</td>
+<td>IOPBEN</td>
+<td>IOPAEN</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>二进制</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>对应值</td>
+<td>0×80</td>
+<td>0×40</td>
+<td>0×20</td>
+<td>0×10</td>
+<td>0×08</td>
+<td>0×04</td>
+<td>0×02</td>
+<td>0×01</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li>你代码中的<code>0x00000010</code>，就是把第4位（IOPCEN位）置1，其余位置0；</li>
+<li>IOPCEN是“IO Port C Enable”的缩写，翻译过来就是“GPIOC端口使能”——置1就代表开启GPIOC的时钟。</li>
+</ul>
+<ul>
+<li><strong>三、新手易踩坑的补充说明</strong></li>
+</ul>
+<ol>
+<li><p><strong>位编号“从0开始”是关键</strong>：<br>很多新手会误以为<code>0x10</code>对应第16位（因为10是十六进制），或第10位（因为数字是10），核心错误是忘了“位编号从0开始”。<br>记住：<code>2ⁿ</code>对应第n位，<code>0x10=2⁴</code> → 第4位。</p>
+</li>
+<li><p><strong>为什么原代码写0x00000010而不是0x10？</strong><br>这是32位寄存器的“完整写法”，前面的0是补位，让代码更清晰（明确是32位值），但实际效果和<code>0x10</code>完全一样——编译器会自动识别为32位。</p>
+</li>
+<li><p><strong>对比理解（更易记）</strong>：</p>
+<ul>
+<li>0x01 → 2⁰ → 第0位（IOPAEN，GPIOA时钟）；</li>
+<li>0x04 → 2² → 第2位（IOPBEN，GPIOB时钟）；</li>
+<li>0x10 → 2⁴ → 第4位（IOPCEN，GPIOC时钟）。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>总结</strong></li>
+</ul>
+<ol>
+<li><code>0x00000010</code>的核心是<code>0x10</code>，转换为十进制是16&#x3D;2⁴，因此二进制只有第4位为1，表现为<code>0001 0000</code>；</li>
+<li>寄存器位编号“从右往左、从0开始”，第4位正好是APB2ENR的IOPCEN位（GPIOC时钟使能位）；</li>
+<li>本质是通过“置1第4位”来开启GPIOC的时钟，这是操作GPIOC的前提。</li>
+</ol>
+<ul>
+<li><strong>优化后的代码（更规范、易读）</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 引入STM32F10x系列单片机的核心头文件，包含所有寄存器的地址定义、位定义等</span></span><br><span class="line"><span class="comment">// 没有这个头文件，编译器无法识别RCC、GPIOC等寄存器名称</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="comment">/* 第一步：开启GPIOC外设的时钟 */</span></span><br><span class="line">	<span class="comment">// RCC：复位和时钟控制寄存器（相当于单片机的&quot;总配电室&quot;）</span></span><br><span class="line">	<span class="comment">// APB2ENR：RCC下的APB2总线外设时钟使能寄存器，负责控制GPIO等外设的时钟开关</span></span><br><span class="line">	<span class="comment">// 0x00000010：十六进制值，二进制为0000 0000 0000 0000 0000 0000 0001 0000</span></span><br><span class="line">	<span class="comment">// 该数值的第4位（从0开始数）为1，对应APB2ENR寄存器的IOPCEN位（GPIOC时钟使能位）</span></span><br><span class="line">	<span class="comment">// 置1表示开启GPIOC的时钟（STM32所有外设使用前必须先开时钟，否则无法操作）</span></span><br><span class="line">	RCC -&gt;APB2ENR = <span class="number">0x00000010</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第二步：配置GPIOC的13号引脚为推挽输出模式（50MHz） */</span></span><br><span class="line">	<span class="comment">// GPIOC：GPIO C端口的寄存器组</span></span><br><span class="line">	<span class="comment">// CRH：GPIO端口配置高寄存器，负责控制8~15号引脚的工作模式（CRL控制0~7号引脚）</span></span><br><span class="line">	<span class="comment">// 0x00300000：十六进制值，二进制为0000 0000 0011 0000 0000 0000 0000 0000</span></span><br><span class="line">	<span class="comment">// 该数值对应CRH寄存器的19~16位（Pin13的配置位）：</span></span><br><span class="line">	<span class="comment">// - MODE13[1:0] = 11：引脚输出速度为50MHz</span></span><br><span class="line">	<span class="comment">// - CNF13[1:0] = 00：引脚为通用推挽输出模式</span></span><br><span class="line">	GPIOC -&gt;CRH = <span class="number">0x00300000</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第三步：将GPIOC的13号引脚置为低电平 */</span></span><br><span class="line">	<span class="comment">// ODR：GPIO输出数据寄存器，每一位对应一个引脚的电平（1=高电平，0=低电平）</span></span><br><span class="line">	<span class="comment">// 0x00000000：将GPIOC所有引脚置低电平，重点是第13位为0 → PC13引脚低电平</span></span><br><span class="line">	<span class="comment">// 若开发板上PC13外接LED，此时LED会点亮</span></span><br><span class="line">	GPIOC -&gt;ODR = <span class="number">0x00000000</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 死循环：让程序常驻此处 */</span></span><br><span class="line">	<span class="comment">// 单片机程序不能执行完main函数就结束，否则会进入未知状态</span></span><br><span class="line">	<span class="comment">// while(1)是嵌入式编程的常用写法，程序会一直停在这个循环里</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 理论上不会执行到这里，仅满足C语言main函数的语法要求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平"><a href="#3-STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平" class="headerlink" title="3.STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平"></a>3.STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 引入STM32F10x标准库核心头文件，包含所有外设的函数、宏定义、结构体定义</span></span><br><span class="line"><span class="comment">// 标准库封装了底层寄存器操作，无需直接写十六进制值，降低开发难度</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">/* 第一步：开启GPIOC外设的时钟（标准库函数版） */</span></span><br><span class="line">	<span class="comment">// RCC_APB2PeriphClockCmd：APB2总线外设时钟使能函数</span></span><br><span class="line">	<span class="comment">// 参数1：要开启时钟的外设 → RCC_APB2Periph_GPIOC（GPIOC外设）</span></span><br><span class="line">	<span class="comment">// 参数2：使能/禁用 → ENABLE（开启），DISABLE（关闭）</span></span><br><span class="line">	<span class="comment">// 作用等价于寄存器操作：RCC-&gt;APB2ENR |= RCC_APB2ENR_IOPCEN;</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第二步：定义GPIO初始化结构体变量 */</span></span><br><span class="line">	<span class="comment">// GPIO_InitTypeDef：标准库定义的GPIO初始化结构体，包含引脚、模式、速度等配置项</span></span><br><span class="line">	<span class="comment">// 结构体变量名GPIO_InitStructure是行业通用命名，便于阅读</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第三步：配置GPIO工作模式为推挽输出 */</span></span><br><span class="line">	<span class="comment">// GPIO_Mode_Out_PP：GPIO模式为通用推挽输出（Push-Pull）</span></span><br><span class="line">	<span class="comment">// 推挽输出特点：能输出高低电平，驱动能力强（适合接LED、继电器等）</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第四步：指定要配置的GPIO引脚 */</span></span><br><span class="line">	<span class="comment">// GPIO_Pin_13：指定配置GPIOC的13号引脚（仅配置该引脚，不影响其他引脚）</span></span><br><span class="line">	<span class="comment">// 若要配置多个引脚，可用|拼接，如GPIO_Pin_13 | GPIO_Pin_14</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第五步：配置GPIO输出速度 */</span></span><br><span class="line">	<span class="comment">// GPIO_Speed_50MHz：引脚输出速度为50MHz（STM32F10x支持2MHz/10MHz/50MHz三档）</span></span><br><span class="line">	<span class="comment">// 速度越高，电平切换越快，适合高频信号，接LED时选50MHz即可</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第六步：应用GPIO配置到GPIOC端口 */</span></span><br><span class="line">	<span class="comment">// GPIO_Init：将上面配置的结构体参数写入GPIOC的寄存器，完成引脚初始化</span></span><br><span class="line">	<span class="comment">// 参数1：要配置的GPIO端口 → GPIOC</span></span><br><span class="line">	<span class="comment">// 参数2：GPIO初始化结构体指针 → &amp;GPIO_InitStructure</span></span><br><span class="line">	GPIO_Init(GPIOC,&amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第七步：将GPIOC13引脚置为低电平 */</span></span><br><span class="line">	<span class="comment">// GPIO_ResetBits：将指定GPIO引脚置低电平（Reset=复位/置0）</span></span><br><span class="line">	<span class="comment">// 参数1：GPIO端口 → GPIOC</span></span><br><span class="line">	<span class="comment">// 参数2：要操作的引脚 → GPIO_Pin_13</span></span><br><span class="line">	<span class="comment">// 作用等价于寄存器操作：GPIOC-&gt;ODR &amp;= ~GPIO_ODR_ODR13;</span></span><br><span class="line">	<span class="comment">// 注释掉的GPIO_SetBits：将引脚置高电平（Set=置1），取消注释可切换电平</span></span><br><span class="line">	<span class="comment">// GPIO_SetBits(GPIOC,GPIO_Pin_13);</span></span><br><span class="line">	GPIO_ResetBits(GPIOC,GPIO_Pin_13);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 死循环：程序常驻，保持引脚电平状态 */</span></span><br><span class="line">	<span class="comment">// 单片机程序不能执行完main函数就结束，否则会进入未知状态</span></span><br><span class="line">	<span class="comment">// while(1)是嵌入式编程的标准写法，程序会一直停在此处</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>总结</strong></li>
+</ul>
+<ol>
+<li>核心逻辑：标准库方式开启GPIOC时钟 → 配置PC13为50MHz推挽输出 → 置PC13低电平 → 死循环保持状态；</li>
+<li>关键优势：标准库函数（如<code>RCC_APB2PeriphClockCmd</code>、<code>GPIO_Init</code>）封装了底层寄存器操作，无需记忆十六进制值，代码可读性和可移植性更强；</li>
+<li>核心函数：<code>GPIO_ResetBits</code>（置低）&#x2F;<code>GPIO_SetBits</code>（置高）是标准库操作GPIO电平的专用函数，比直接写ODR寄存器更安全。</li>
+</ol>
+<p>如果想实现LED闪烁，只需在<code>while(1)</code>中添加延时函数，交替调用<code>GPIO_SetBits</code>和<code>GPIO_ResetBits</code>即可，我可以补充对应的代码。</p>
+<ul>
+<li><strong>完整新建工程步骤总结（补充细节版）</strong></li>
+<li><strong>1. 建立工程文件夹，Keil中新建工程，选择型号</strong></li>
+</ul>
+<ul>
+<li><strong>操作细节</strong>：<ol>
+<li>在电脑非系统盘新建总工程文件夹（如<code>STM32_Project</code>），<strong>禁用中文路径&#x2F;特殊字符</strong>（避免Keil编译&#x2F;下载报错）。</li>
+<li>打开Keil，点击<code>Project → New μVision Project</code>，选择总文件夹，命名工程（如<code>Project</code>）并保存。</li>
+<li>在<code>Select Device for Target</code>窗口，依次展开<code>STMicroelectronics → STM32F103</code>，选择与开发板匹配的芯片型号（如<code>STM32F103C8</code>），点击OK。</li>
+<li>弹出<code>Manage Run-Time Environment</code>窗口，直接点击<code>Cancel</code>（标准库工程无需启用RTE）。</li>
+</ol>
+</li>
+<li><strong>核心作用</strong>：完成工程基础框架创建，指定目标芯片（决定后续Flash算法、寄存器映射）。</li>
+<li><strong>新手避坑</strong>：芯片型号必须与实物一致（如C8T6选<code>STM32F103C8</code>，ZET6选<code>STM32F103ZE</code>），否则会出现烧录失败&#x2F;功能异常。</li>
+</ul>
+<ul>
+<li><strong>2. 工程文件夹里建立Start、Library、User等文件夹，复制固件库里面的文件到工程文件夹</strong></li>
+</ul>
+<ul>
+<li><strong>操作细节</strong>：<ol>
+<li>在总工程文件夹内新建3个功能子文件夹：<ul>
+<li><code>Start</code>：存放芯片启动文件（汇编文件，决定程序入口）；</li>
+<li><code>Library</code>：存放标准库驱动源码&#x2F;头文件；</li>
+<li><code>User</code>：存放用户自定义代码（如<code>main.c</code>）。</li>
+</ul>
+</li>
+<li>从STM32F10x标准固件库（<code>V3.5.0</code>）中复制对应文件：<ul>
+<li><strong>Start文件夹</strong>：复制<code>Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm</code>下的启动文件（中容量芯片如C8T6选<code>startup_stm32f10x_md.s</code>，大容量选<code>hd.s</code>）；</li>
+<li><strong>Library文件夹</strong>：<ul>
+<li>复制<code>Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x</code>下的<code>stm32f10x.h</code>、<code>system_stm32f10x.h</code>、<code>system_stm32f10x.c</code>；</li>
+<li>复制<code>Libraries\STM32F10x_StdPeriph_Driver\src</code>（所有<code>.c</code>）和<code>inc</code>（所有<code>.h</code>）下的文件；</li>
+</ul>
+</li>
+<li><strong>User文件夹</strong>：复制固件库根目录的<code>stm32f10x_conf.h</code>、<code>stm32f10x_it.h</code>、<code>stm32f10x_it.c</code>，并新建空白<code>main.c</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>核心作用</strong>：按功能分类管理文件，避免源码混乱；本地化固件库文件，防止工程依赖外部路径。</li>
+<li><strong>新手避坑</strong>：启动文件需匹配芯片容量（C8T6&#x3D;中容量&#x3D;md，ZET6&#x3D;大容量&#x3D;hd），漏选&#x2F;错选会导致<code>undefined symbol __main</code>编译错误。</li>
+</ul>
+<ul>
+<li><strong>3. 工程里对应建立Start、Library、User等同名称的分组，然后将文件夹内的文件添加到工程分组里</strong></li>
+</ul>
+<ul>
+<li><strong>操作细节</strong>：<ol>
+<li>在Keil左侧<code>Project</code>窗口，右键<code>Target 1</code> → <code>Manage Project Items</code>。</li>
+<li>在<code>Groups</code>栏点击<code>Add</code>，依次创建<code>Start</code>、<code>Library</code>、<code>User</code>分组，点击OK。</li>
+<li>右键对应分组 → <code>Add Existing Files to Group</code>：<ul>
+<li><code>Start</code>分组：添加<code>Start</code>文件夹下的<code>startup_stm32f10x_md.s</code>；</li>
+<li><code>Library</code>分组：添加<code>Library</code>文件夹下所有<code>.c</code>文件（如<code>stm32f10x_gpio.c</code>、<code>stm32f10x_rcc.c</code>）；</li>
+<li><code>User</code>分组：添加<code>User</code>文件夹下的<code>main.c</code>、<code>stm32f10x_it.c</code>、<code>system_stm32f10x.c</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>核心作用</strong>：将本地文件与Keil工程关联，让编译器识别并编译这些源码。</li>
+<li><strong>新手避坑</strong>：不要漏加启动文件（<code>.s</code>），否则链接阶段会提示“找不到程序入口”。</li>
+</ul>
+<ul>
+<li><strong>4. 工程选项，C&#x2F;C++，Include Paths内声明所有包含头文件的文件夹</strong></li>
+</ul>
+<ul>
+<li><strong>操作细节</strong>：<ol>
+<li>点击Keil工具栏魔法棒图标 → 切换到<code>C/C++</code>选项卡。</li>
+<li>点击<code>Include Paths</code>右侧的<code>...</code>按钮，在弹窗中点击<code>Add</code>，依次添加3个文件夹路径：<ul>
+<li><code>.\Start</code>（当前工程目录下的Start文件夹）；</li>
+<li><code>.\Library</code>；</li>
+<li><code>.\User</code>。</li>
+</ul>
+</li>
+<li>点击OK保存配置。</li>
+</ol>
+</li>
+<li><strong>核心作用</strong>：告诉编译器头文件的存放位置，避免<code>xxx.h: No such file or directory</code>编译错误。</li>
+<li><strong>新手避坑</strong>：路径用相对路径（<code>.\</code>表示当前工程目录），而非绝对路径（如<code>D:\STM32\Project</code>），便于工程移植。</li>
+</ul>
+<ul>
+<li><strong>5. 工程选项，C&#x2F;C++，Define内定义USE_STDPERIPH_DRIVER</strong></li>
+</ul>
+<ul>
+<li><strong>操作细节</strong>：<ol>
+<li>在<code>C/C++</code>选项卡的<code>Define</code>输入框中，输入<code>USE_STDPERIPH_DRIVER</code>（<strong>大小写严格匹配，无引号</strong>）。</li>
+<li>（可选）补充定义<code>HSE_VALUE=8000000</code>（匹配8MHz外部晶振，与开发板硬件一致）。</li>
+</ol>
+</li>
+<li><strong>核心作用</strong>：启用STM32标准库驱动（标准库通过该宏控制头文件&#x2F;include逻辑，未定义则无法使用<code>GPIO_Init</code>等库函数）。</li>
+<li><strong>新手避坑</strong>：宏名拼写错误（如少写<code>_DRIVER</code>）会导致标准库函数编译失败。</li>
+</ul>
+<ul>
+<li>**6. 工程选项，Debug，下拉列表选择对应调试器，Settings，Flash Download里勾选Reset and Run</li>
+</ul>
+<ul>
+<li><strong>操作细节</strong>：<ol>
+<li>切换到<code>Debug</code>选项卡，在<code>Use</code>下拉列表选择实际使用的调试器（如<code>ST-Link Debugger</code>），点击<code>Settings</code>。</li>
+<li>在<code>Debug</code>页面：<ul>
+<li><code>Port</code>选择<code>SW</code>（SWD模式，仅需4根线，比JTAG省引脚）；</li>
+<li><code>Clock</code>设为<code>4MHz</code>（降低时钟避免通信不稳定）；</li>
+<li>勾选<code>Reset after Connect</code>。</li>
+</ul>
+</li>
+<li>切换到<code>Flash Download</code>选项卡：<ul>
+<li>勾选<code>Erase Full Chip</code>（全片擦除，清除旧程序）；</li>
+<li>勾选<code>Program</code>（烧录程序到Flash）；</li>
+<li>勾选<code>Verify</code>（校验烧录结果）；</li>
+<li>勾选<code>Reset and Run</code>（烧录完成后自动复位并运行程序）。</li>
+</ul>
+</li>
+<li>确认<code>Programming Algorithm</code>中添加了对应芯片的Flash算法（如<code>STM32F10x Medium-density Flash</code>），点击OK保存。</li>
+</ol>
+</li>
+<li><strong>核心作用</strong>：配置调试器和烧录参数，确保程序能正确下载到STM32并自动运行。</li>
+<li><strong>新手避坑</strong>：<ul>
+<li>调试器型号需与实物一致（ST-Link不要选J-Link）；</li>
+<li>Flash算法需匹配芯片容量（中容量选<code>Medium-density</code>），否则会提示<code>Flash Download failed</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-新建工程架构"><a href="#4-新建工程架构" class="headerlink" title="4.新建工程架构"></a>4.新建工程架构</h2><img src="/MyBlogC/2026/01/03/STM32/%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84.png" class="">
+    </div>
+
+    
+    
+    
+
+    
+    <footer class="post-footer">
+        
+        
+
+        
+
+        
+
+        
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+  </div>
+</div>
+
+
+        
+          <div class="post-tags">
+              <a href="/MyBlogC/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+        
+
+
+        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2025/01/03/C%E8%AF%AD%E8%A8%80/" rel="prev" title="C语言基础学习笔记">
+                  <i class="fa fa-angle-left"></i> C语言基础学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="isso-thread"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">true</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+<!-- ✅✅✅ 修复目录跳转延迟 最终版 JS | 仅修改3处卡顿核心 | 其他功能完全保留不变 ✅✅✅ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ====== 核心元素 & 原版配置 (一丝不改) ======
+    const header = document.querySelector('.header');
+    const headerInner = document.querySelector('.header-inner');
+    const body = document.body;
+    const tocLinks = document.querySelectorAll('.sidebar .post-toc a.toc-link');
+    const searchBtn = document.querySelector('.header .search');
+    const searchOverlay = document.querySelector('.search-pop-overlay');
+    const searchCloseBtn = document.querySelector('.search-popup .fa-times');
+    // ✅ 修改1【核心优化】：精准计算导航栏高度，删除冗余数值，解决滚动计算慢+定位偏差
+    const headerFullHeight = header ? (header.offsetHeight + 8) : 0;
+    let timer = null;
+    const CONFIG = { HIDE_DELAY: 3000, WAKE_AREA_HEIGHT: 120, SCROLL_SPEED: 500 };
+
+    // ====== ✅ 物理级开关 - 给body加类，配合CSS锁死显示+防偏移 ======
+    const openSearch = () => {
+        body.classList.add('search-active');
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        body.style.overflow = 'auto';
+    };
+    const closeSearch = () => {
+        body.classList.remove('search-active');
+        clearTimeout(timer);
+        timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        body.style.overflow = '';
+    };
+
+    // ====== ✅ 原版隐藏/显示逻辑 一丝不改 ======
+    const hideNav = () => {
+        if(body.classList.contains('search-active')) return;
+        clearTimeout(timer);
+        header?.classList.add('hide-nav');
+        headerInner?.classList.add('hide-nav');
+    };
+    const showNav = () => {
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        if(!body.classList.contains('search-active')) {
+            timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        }
+    };
+
+    // ====== ✅ 修改2【极致优化】：重构滚动函数，浏览器最高优先级执行，0延迟丝滑无卡顿 ======
+    const smoothScrollTo = (targetId) => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const targetTop = target.offsetTop - headerFullHeight;
+        // 强制浏览器优先执行滚动，跳过所有阻塞，瞬间触发，这是根治延迟的核心！
+        window.requestAnimationFrame(() => {
+            window.scrollTo({ top: targetTop, left: 0, behavior: 'smooth' });
+        });
+    };
+
+    // ====== ✅ 绑定所有搜索事件 - 优先级拉满 ======
+    searchBtn?.addEventListener('click', openSearch, { capture: true });
+    searchCloseBtn?.addEventListener('click', closeSearch, { capture: true });
+    searchOverlay?.addEventListener('click', (e) => {
+        if(e.target === searchOverlay) closeSearch();
+    }, { capture: true });
+
+    // ====== ✅ 所有原版监听事件 一丝不改 除了【目录点击事件】 ======
+    document.addEventListener('mousemove', (e) => { e.clientY < CONFIG.WAKE_AREA_HEIGHT && showNav(); });
+    header?.addEventListener('mouseenter', showNav);
+    headerInner?.addEventListener('mouseenter', showNav);
+    header?.addEventListener('mouseleave', hideNav);
+    headerInner?.addEventListener('mouseleave', hideNav);
+    // ✅ 修改3【重中之重】：删除卡顿元凶 hideNav() + 多余配置，这是延迟99%的原因，0延迟核心！
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // 只保留阻止默认锚点跳转，其他全部精简，无任何阻塞
+            smoothScrollTo(link.getAttribute('href').replace('#',''));
+        });
+    });
+    document.addEventListener('sidebar:show', hideNav);
+    document.addEventListener('sidebar:hide', showNav);
+    window.addEventListener('scroll', () => {
+        body.classList.contains('sidebar-active') && hideNav();
+    }, { passive: true });
+
+    // ====== ✅ 页面初始化 一丝不改 ======
+    showNav();
+});
+</script>
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="isso" type="application/json">{"enable":false}</script>
+<script src="/MyBlogC/js/third-party/comments/isso.js" defer></script>
+
+</body>
+</html>
