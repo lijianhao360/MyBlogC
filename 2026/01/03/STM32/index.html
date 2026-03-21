@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
 
-    <meta name="description" content="Day-01 初识 STM321.STM32概述 STM32是ST公司基于ARM Cortex‑M内核开发的32位微控制器 STM32常应用在嵌入式领域，如智能车、无人机、机器人、无线通信、物联网、工业控制、娱乐电子产品等 STM32功能强大、性能优异、片上资源丰富、功耗低，是一款经典的嵌入式微控制器   ARM:   ARM既指ARM公司，也指ARM处理器内核 ARM公司是全球领先的半导体知识产">
+    <meta name="description" content="Day-01 初识 STM32 与工程搭建1. STM32 概述 什么是 STM32？  STM32 是 ST（意法半导体）公司基于 ARM Cortex‑M 内核开发的 32 位微控制器（MCU）。 具备功能强大、性能优异、片上资源丰富、功耗低等特点，是一款经典的嵌入式微控制器。 应用场景：广泛应用于智能车、无人机、机器人、无线通信、物联网、工业控制、消费电子等领域。   关于 ARM：  AR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STM32学习笔记">
 <meta property="og:url" content="https://lijianhao360.github.io/2026/01/03/STM32/index.html">
 <meta property="og:site_name" content="首页">
-<meta property="og:description" content="Day-01 初识 STM321.STM32概述 STM32是ST公司基于ARM Cortex‑M内核开发的32位微控制器 STM32常应用在嵌入式领域，如智能车、无人机、机器人、无线通信、物联网、工业控制、娱乐电子产品等 STM32功能强大、性能优异、片上资源丰富、功耗低，是一款经典的嵌入式微控制器   ARM:   ARM既指ARM公司，也指ARM处理器内核 ARM公司是全球领先的半导体知识产">
+<meta property="og:description" content="Day-01 初识 STM32 与工程搭建1. STM32 概述 什么是 STM32？  STM32 是 ST（意法半导体）公司基于 ARM Cortex‑M 内核开发的 32 位微控制器（MCU）。 具备功能强大、性能优异、片上资源丰富、功耗低等特点，是一款经典的嵌入式微控制器。 应用场景：广泛应用于智能车、无人机、机器人、无线通信、物联网、工业控制、消费电子等领域。   关于 ARM：  AR">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32F1.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32%E5%A4%96%E8%AE%BE.png">
@@ -33,8 +33,12 @@
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32F103C8T6.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/STM32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%B7%AF.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/GPIO%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/GPIO%E4%BD%8D%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/GPIO%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/LED%E5%92%8C%E8%9C%82%E9%B8%A3%E5%99%A8.png">
 <meta property="article:published_time" content="2026-01-03T02:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-19T14:46:20.657Z">
+<meta property="article:modified_time" content="2026-03-21T11:52:58.770Z">
 <meta property="article:author" content="JianHao Li">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="学习笔记">
@@ -168,7 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-01-%E5%88%9D%E8%AF%86-STM32"><span class="nav-text">Day-01 初识 STM32</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-STM32%E6%A6%82%E8%BF%B0"><span class="nav-text">1.STM32概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-text">2.GPIO 初始化,新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-STM32%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0%EF%BC%88%E9%9D%9E%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9C%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89%E6%9D%A5%E9%85%8D%E7%BD%AEGPIOC13%E5%BC%95%E8%84%9A%E4%B8%BA%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E5%B9%B6%E7%BD%AE%E4%BD%8E%E7%94%B5%E5%B9%B3"><span class="nav-text">3.STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="nav-text">4.新建工程架构</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-01-%E5%88%9D%E8%AF%86-STM32-%E4%B8%8E%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA"><span class="nav-text">Day-01 初识 STM32 与工程搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-STM32-%E6%A6%82%E8%BF%B0"><span class="nav-text">1. STM32 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E5%AF%84%E5%AD%98%E5%99%A8%E5%88%9D%E4%BD%93%E9%AA%8C%EF%BC%89"><span class="nav-text">2. GPIO 初始化（寄存器初体验）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%EF%BC%9A0x00000010-%E6%98%AF%E6%80%8E%E4%B9%88%E6%9D%A5%E7%9A%84%EF%BC%9F"><span class="nav-text">💡 核心原理解析：0x00000010 是怎么来的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0%E7%89%88%EF%BC%89"><span class="nav-text">3. GPIO 初始化（标准库函数版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Keil-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%A0%87%E5%87%86%E6%AD%A5%E9%AA%A4"><span class="nav-text">4. Keil 新建工程标准步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-02-GPIO-%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90"><span class="nav-text">Day-02 GPIO 深入解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GPIO-%E7%AE%80%E4%BB%8B"><span class="nav-text">1. GPIO 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91"><span class="nav-text">2. GPIO 基本架构与数据流向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GPIO-%E4%BD%8D%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3"><span class="nav-text">3. GPIO 位结构详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E8%BE%93%E5%85%A5%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-text">① 输入驱动电路（输入模式核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-%E8%BE%93%E5%87%BA%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-text">② 输出驱动电路（输出模式核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-%E4%BF%9D%E6%8A%A4%E7%94%B5%E8%B7%AF"><span class="nav-text">③ 保护电路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-LED%E6%B5%81%E6%B0%B4%E7%81%AF%E5%92%8C%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">4. LED流水灯和蜂鸣器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-LED%E9%97%AA%E7%83%81"><span class="nav-text">4.1 LED闪烁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">4.2 蜂鸣器</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -288,7 +292,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-03-19 22:46:20" itemprop="dateModified" datetime="2026-03-19T22:46:20+08:00">2026-03-19</time>
+      <time title="修改时间：2026-03-21 19:52:58" itemprop="dateModified" datetime="2026-03-21T19:52:58+08:00">2026-03-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -322,134 +326,187 @@
     <div class="post-body" itemprop="articleBody">
         
         
-        <h1 id="Day-01-初识-STM32"><a href="#Day-01-初识-STM32" class="headerlink" title="Day-01 初识 STM32"></a>Day-01 初识 STM32</h1><h2 id="1-STM32概述"><a href="#1-STM32概述" class="headerlink" title="1.STM32概述"></a>1.STM32概述</h2><ul>
-<li>STM32是ST公司基于ARM Cortex‑M内核开发的32位微控制器</li>
-<li>STM32常应用在嵌入式领域，如智能车、无人机、机器人、无线通信、物联网、工业控制、娱乐电子产品等</li>
-<li>STM32功能强大、性能优异、片上资源丰富、功耗低，是一款经典的嵌入式微控制器</li>
-</ul>
+        <h1 id="Day-01-初识-STM32-与工程搭建"><a href="#Day-01-初识-STM32-与工程搭建" class="headerlink" title="Day-01 初识 STM32 与工程搭建"></a>Day-01 初识 STM32 与工程搭建</h1><h2 id="1-STM32-概述"><a href="#1-STM32-概述" class="headerlink" title="1. STM32 概述"></a>1. STM32 概述</h2><ul>
+<li><p><strong>什么是 STM32？</strong></p>
 <ul>
-<li><strong>ARM:</strong></li>
+<li>STM32 是 ST（意法半导体）公司基于 ARM Cortex‑M 内核开发的 32 位微控制器（MCU）。</li>
+<li>具备功能强大、性能优异、片上资源丰富、功耗低等特点，是一款经典的嵌入式微控制器。</li>
+<li><strong>应用场景</strong>：广泛应用于智能车、无人机、机器人、无线通信、物联网、工业控制、消费电子等领域。</li>
 </ul>
+</li>
+<li><p><strong>关于 ARM：</strong></p>
 <ul>
-<li>ARM既指ARM公司，也指ARM处理器内核</li>
-<li>ARM公司是全球领先的半导体知识产权（IP）提供商，全世界超过95%的智能手机和平板电脑都采用ARM架构</li>
-<li>ARM公司设计ARM内核，半导体厂商完善内核周边电路并生产芯片</li>
+<li>ARM 既指 ARM 公司，也指 ARM 处理器架构（内核）。</li>
+<li>ARM 公司是全球领先的半导体 IP 提供商，全世界超过 95% 的智能设备都采用 ARM 架构。</li>
+<li><strong>生态分工</strong>：ARM 公司负责设计内核，ST 等半导体厂商在内核基础上完善周边外设电路，并生产出最终的芯片。</li>
+</ul>
+</li>
 </ul>
 <img src="/MyBlogC/2026/01/03/STM32/STM32F1.png" class="" title="STM32F1">
-
 <img src="/MyBlogC/2026/01/03/STM32/STM32%E5%A4%96%E8%AE%BE.png" class="" title="STM32外设">
-
-
 <img src="/MyBlogC/2026/01/03/STM32/STM32%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png" class="" title="STM32">
-
 <img src="/MyBlogC/2026/01/03/STM32/STM32F103C8T6.png" class="" title="STM32">
 <img src="/MyBlogC/2026/01/03/STM32/STM32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%B7%AF.png" class="" title="STM32">
 
-<h2 id="2-GPIO-初始化-新建工程"><a href="#2-GPIO-初始化-新建工程" class="headerlink" title="2.GPIO 初始化,新建工程"></a>2.GPIO 初始化,新建工程</h2><ul>
-<li><strong>代码功能解析</strong><br>这段代码是基于STM32F10x系列单片机的最基础GPIO初始化代码，核心功能是<strong>配置GPIOC的第13引脚为推挽输出模式，并将该引脚置低电平</strong></li>
-</ul>
-<p>作为嵌入式新手，这个问题核心是理解<strong>十六进制与二进制的转换</strong>，以及<strong>寄存器位编号的规则</strong>，用最基础的方式一步步拆解，保证能看懂。</p>
+<hr>
+<h2 id="2-GPIO-初始化（寄存器初体验）"><a href="#2-GPIO-初始化（寄存器初体验）" class="headerlink" title="2. GPIO 初始化（寄存器初体验）"></a>2. GPIO 初始化（寄存器初体验）</h2><p>以下这段代码是基于 STM32F10x 系列最基础的寄存器操作，核心目标是：<strong>配置 GPIOC 的第 13 引脚为推挽输出模式，并将该引脚置为低电平</strong>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header：包含所有寄存器地址与位定义</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="comment">/* 1. 开启 GPIOC 外设的时钟 */</span></span><br><span class="line">  <span class="comment">// APB2ENR 寄存器的第 4 位（IOPCEN位）控制 GPIOC 时钟，置 1 开启。</span></span><br><span class="line">  RCC-&gt;APB2ENR = <span class="number">0x00000010</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 2. 配置 GPIOC_Pin13 为推挽输出模式（50MHz） */</span></span><br><span class="line">  <span class="comment">// CRH 寄存器控制 8~15 号引脚。0x00300000 对应 19~16 位（Pin13 配置位）。</span></span><br><span class="line">  <span class="comment">// MODE13=11 (50MHz输出), CNF13=00 (通用推挽输出)</span></span><br><span class="line">  GPIOC-&gt;CRH = <span class="number">0x00300000</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 3. 将 GPIOC_Pin13 置为低电平 */</span></span><br><span class="line">  <span class="comment">// ODR 寄存器控制引脚电平。将第 13 位置 0，对应 PC13 输出低电平。</span></span><br><span class="line">  GPIOC-&gt;ODR = <span class="number">0x00000000</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 4. 死循环：保持程序运行状态 */</span></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="💡-核心原理解析：0x00000010-是怎么来的？"><a href="#💡-核心原理解析：0x00000010-是怎么来的？" class="headerlink" title="💡 核心原理解析：0x00000010 是怎么来的？"></a>💡 核心原理解析：0x00000010 是怎么来的？</h3><p>作为嵌入式新手，理解<strong>十六进制与二进制的转换</strong>以及<strong>寄存器位编号</strong>是必修课。</p>
+<p><strong>1. 十六进制转二进制（找有效位）</strong><br><code>0x00000010</code> 是 32 位寄存器的完整写法，核心有效位是最后的 <code>10</code>。</p>
 <ul>
-<li><strong>一、先搞懂：0x00000010的二进制为什么是0001 0000？</strong><br>首先明确两个基础规则：</li>
+<li><code>0x10</code>（十六进制） &#x3D; <code>16</code>（十进制） &#x3D; <code>2⁴</code></li>
+<li>二进制中“2的 n 次方”代表<strong>第 n 位为 1，其余全为 0</strong>。因此 <code>0x10</code> 对应的二进制就是第 4 位为 1（即 <code>0001 0000</code>）。</li>
 </ul>
-<ol>
-<li><strong>十六进制（0x开头）转二进制</strong>：1个十六进制位 &#x3D; 4个二进制位（因为16&#x3D;2⁴）；</li>
-<li><strong>数字的“有效位”和“补零”</strong>：<code>0x00000010</code> 是32位寄存器的写法（STM32的寄存器大多是32位），但核心有效位是最后两位<code>10</code>，前面的<code>000000</code>都是补零。</li>
-</ol>
-<ul>
-<li><strong>分步转换：</strong><table>
-<thead>
-<tr>
-<th>十六进制数</th>
-<th>拆分（按4位一组）</th>
-<th>对应二进制</th>
-<th>简化后（只看有效位）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0x00000010</td>
-<td>00 00 00 10</td>
-<td>0000 0000 0000 0000 0000 0000 0001 0000</td>
-<td>0001 0000（最后8位）</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<ul>
-<li>关键：<code>0x10</code>（十六进制）&#x3D; <code>16</code>（十进制）&#x3D; <code>2⁴</code>（2的4次方），而二进制中“2的n次方”对应的就是<strong>第n位为1，其余位为0</strong>（比如2⁰&#x3D;1 → 第0位1，2¹&#x3D;2 → 第1位1，以此类推）。</li>
-<li>所以<code>0x10=16=2⁴</code> → 二进制只有<strong>第4位</strong>是1，其余位是0，也就是<code>0001 0000</code>（8位视角）。</li>
-</ul>
-<ul>
-<li><p><strong>二、再理解：为什么对应APB2ENR寄存器的第4位（IOPCEN位）？</strong><br>STM32的寄存器是<strong>32位</strong>，但我们关注的是低16位（APB2ENR的有效位集中在低16位），寄存器的位编号遵循“从右往左，从0开始数”的规则，这是所有单片机&#x2F;处理器的通用规则。</p>
-</li>
-<li><p><strong>直观举例（APB2ENR寄存器低8位）：</strong></p>
+<p><strong>2. 对应寄存器位（从 0 开始数）</strong><br>寄存器位编号遵循“从右往左，从 0 开始数”。以 APB2ENR 寄存器低 8 位为例：</p>
 <table>
 <thead>
 <tr>
-<th>位编号</th>
-<th>7</th>
-<th>6</th>
-<th>5</th>
-<th>4</th>
-<th>3</th>
-<th>2</th>
-<th>1</th>
-<th>0</th>
+<th align="left">位编号</th>
+<th align="left">7</th>
+<th align="left">6</th>
+<th align="left">5</th>
+<th align="left"><strong>4 (IOPCEN)</strong></th>
+<th align="left">3 (IOPBEN)</th>
+<th align="left">2 (IOPAEN)</th>
+<th align="left">1</th>
+<th align="left">0</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>名称</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>IOPCEN</td>
-<td>IOPBEN</td>
-<td>IOPAEN</td>
-<td>-</td>
-<td>-</td>
+<td align="left"><strong>二进制</strong></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left"><strong>1</strong></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
 </tr>
 <tr>
-<td>二进制</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>对应值</td>
-<td>0×80</td>
-<td>0×40</td>
-<td>0×20</td>
-<td>0×10</td>
-<td>0×08</td>
-<td>0×04</td>
-<td>0×02</td>
-<td>0×01</td>
+<td align="left"><strong>十六进制</strong></td>
+<td align="left">0x80</td>
+<td align="left">0x40</td>
+<td align="left">0x20</td>
+<td align="left"><strong>0x10</strong></td>
+<td align="left">0x08</td>
+<td align="left">0x04</td>
+<td align="left">0x02</td>
+<td align="left">0x01</td>
 </tr>
 </tbody></table>
+<blockquote>
+<p><strong>⚠️ 新手避坑指南</strong>：<br>很多新手会误以为 <code>0x10</code> 对应第 10 位或第 16 位。记住公式：<strong><code>2ⁿ</code> 对应第 n 位</strong>。<code>0x10 = 2⁴</code>，所以正好对应开启 GPIOC 时钟的第 4 位！</p>
+</blockquote>
+<hr>
+<h2 id="3-GPIO-初始化（标准库函数版）"><a href="#3-GPIO-初始化（标准库函数版）" class="headerlink" title="3. GPIO 初始化（标准库函数版）"></a>3. GPIO 初始化（标准库函数版）</h2><p>直接操作寄存器虽然高效，但可读性差且容易出错。实际开发中，我们更多使用<strong>STM32标准库</strong>来完成相同的功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// 引入标准库核心头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">  <span class="comment">/* 1. 开启 GPIOC 外设的时钟 */</span></span><br><span class="line">  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 2. 定义 GPIO 初始化结构体 */</span></span><br><span class="line">  GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 3. 配置引脚、模式与速度 */</span></span><br><span class="line">  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   <span class="comment">// 推挽输出 (Push-Pull)</span></span><br><span class="line">  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;         <span class="comment">// 指定 PC13 引脚</span></span><br><span class="line">  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  <span class="comment">// 速度 50MHz</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 4. 调用 Init 函数写入寄存器 */</span></span><br><span class="line">  GPIO_Init(GPIOC, &amp;GPIO_InitStructure);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 5. 将 PC13 置为低电平 */</span></span><br><span class="line">  <span class="comment">// 若要置为高电平，可使用 GPIO_SetBits(GPIOC, GPIO_Pin_13);</span></span><br><span class="line">  GPIO_ResetBits(GPIOC, GPIO_Pin_13);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="comment">// 如果要实现闪烁，可以在这里加入延时函数，并交替调用 Set/Reset</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-Keil-新建工程标准步骤"><a href="#4-Keil-新建工程标准步骤" class="headerlink" title="4. Keil 新建工程标准步骤"></a>4. Keil 新建工程标准步骤</h2><p>为了规范代码管理，新建一个标准的 STM32 工程需要以下 6 步：</p>
+<ol>
+<li><strong>建立物理文件夹</strong>：在非系统盘新建总工程文件夹（<strong>禁用中文路径</strong>），并在内部创建 <code>Start</code>、<code>Library</code>、<code>User</code> 三个子文件夹。</li>
+<li><strong>复制固件库文件</strong>：<ul>
+<li><code>Start</code>：放入启动文件（如 <code>startup_stm32f10x_md.s</code>）。</li>
+<li><code>Library</code>：放入标准库的 <code>.c</code> 和 <code>.h</code> 源码文件。</li>
+<li><code>User</code>：放入 <code>stm32f10x_conf.h</code>、中断文件及自行创建的 <code>main.c</code>。</li>
+</ul>
+</li>
+<li><strong>Keil 工程内部分组</strong>：在 Keil 中创建同名的 <code>Start</code>、<code>Library</code>、<code>User</code> Group，并将上述文件一一添加进去。</li>
+<li><strong>配置头文件路径</strong>：魔术棒工具 -&gt; <code>C/C++</code> -&gt; <code>Include Paths</code>，将三个文件夹的相对路径（如 <code>.\User</code>）添加进去。</li>
+<li><strong>定义全局宏</strong>：魔术棒工具 -&gt; <code>C/C++</code> -&gt; <code>Define</code>，填入 <code>USE_STDPERIPH_DRIVER</code>（启用标准库）。</li>
+<li><strong>配置调试与烧录</strong>：<ul>
+<li><code>Debug</code>：选择对应的调试器（如 ST-Link），端口选 <code>SW</code>，勾选 <code>Reset after Connect</code>。</li>
+<li><code>Flash Download</code>：勾选 <code>Reset and Run</code> 并确认添加了正确的 Flash 算法。</li>
+</ul>
+</li>
+</ol>
+<img src="/MyBlogC/2026/01/03/STM32/%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84.png" class="" title="新建工程架构">
+
+<hr>
+<h1 id="Day-02-GPIO-深入解析"><a href="#Day-02-GPIO-深入解析" class="headerlink" title="Day-02 GPIO 深入解析"></a>Day-02 GPIO 深入解析</h1><h2 id="1-GPIO-简介"><a href="#1-GPIO-简介" class="headerlink" title="1. GPIO 简介"></a>1. GPIO 简介</h2><p><strong>GPIO (General Purpose Input Output)</strong> 即通用输入输出端口，是单片机与外部硬件交互的核心接口。</p>
+<ul>
+<li><strong>电平特性</strong>：标准工作电平为 0V~3.3V，部分引脚具备容忍 5V 的能力。</li>
+<li><strong>核心功能分类</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">具体模式</th>
+<th align="left">典型应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>输出模式</strong></td>
+<td align="left">推挽、开漏、复用推挽、复用开漏</td>
+<td align="left">驱动 LED、蜂鸣器、继电器、I2C&#x2F;SPI 时序输出</td>
+</tr>
+<tr>
+<td align="left"><strong>输入模式</strong></td>
+<td align="left">浮空、上拉、下拉、模拟输入</td>
+<td align="left">按键检测、红外接收、传感器信号读取、ADC 采集</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-GPIO-基本架构与数据流向"><a href="#2-GPIO-基本架构与数据流向" class="headerlink" title="2. GPIO 基本架构与数据流向"></a>2. GPIO 基本架构与数据流向</h2><img src="/MyBlogC/2026/01/03/STM32/GPIO%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" class="" title="GPIO基本结构">
+<p>GPIO 的运行逻辑可以划分为三个核心层级：</p>
+<ol>
+<li><strong>上层（通信枢纽）- APB2 总线</strong>：连接 CPU 与外设，负责时钟使能和数据传输。</li>
+<li><strong>中层（软件接口）- 寄存器组</strong>：存储配置参数（模式&#x2F;速度）和电平状态，代码操作的本质就是读写这些寄存器。</li>
+<li><strong>下层（硬件执行）- 驱动器与引脚</strong>：将数字信号转换为实际的高低电平，或对外部输入信号进行采样滤波。</li>
+</ol>
+<blockquote>
+<p><strong>数据流向逻辑</strong>：</p>
+<ul>
+<li><strong>输出</strong>：CPU -&gt; 写入输出数据寄存器 -&gt; 驱动器 -&gt; 引脚输出电平。</li>
+<li><strong>输入</strong>：外部信号 -&gt; 引脚 -&gt; 驱动器采样 -&gt; 输入数据寄存器 -&gt; CPU 读取。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="3-GPIO-位结构详解"><a href="#3-GPIO-位结构详解" class="headerlink" title="3. GPIO 位结构详解"></a>3. GPIO 位结构详解</h2><img src="/MyBlogC/2026/01/03/STM32/GPIO%E4%BD%8D%E7%BB%93%E6%9E%84.png" class="" title="GPIO位结构">
+<p>理解引脚内部的硬件电路，是弄懂 8 种工作模式的终极钥匙。单个引脚内部主要包含以下核心模块：</p>
+<h3 id="①-输入驱动电路（输入模式核心）"><a href="#①-输入驱动电路（输入模式核心）" class="headerlink" title="① 输入驱动电路（输入模式核心）"></a>① 输入驱动电路（输入模式核心）</h3><ul>
+<li><strong>TTL 肖特基触发器</strong>：负责将不稳定的模拟电平“整形”为标准的数字电平（高&#x2F;低），有效抑制噪声。</li>
+<li><strong>上拉&#x2F;下拉电阻</strong>：<ul>
+<li><strong>上拉输入</strong>：引脚悬空时默认高电平，适合接低电平触发的按键。</li>
+<li><strong>下拉输入</strong>：引脚悬空时默认低电平。</li>
+</ul>
 </li>
 </ul>
-<ul>
-<li>你代码中的<code>0x00000010</code>，就是把第4位（IOPCEN位）置1，其余位置0；</li>
-<li>IOPCEN是“IO Port C Enable”的缩写，翻译过来就是“GPIOC端口使能”——置1就代表开启GPIOC的时钟。</li>
+<h3 id="②-输出驱动电路（输出模式核心）"><a href="#②-输出驱动电路（输出模式核心）" class="headerlink" title="② 输出驱动电路（输出模式核心）"></a>② 输出驱动电路（输出模式核心）</h3><ul>
+<li><strong>P-MOS &#x2F; N-MOS 架构</strong>：<ul>
+<li><strong>推挽输出 (Push-Pull)</strong>：P-MOS 和 N-MOS 交替导通。可主动输出强高&#x2F;低电平，驱动能力强，适合直接点亮 LED。</li>
+<li><strong>开漏输出 (Open-Drain)</strong>：只有 N-MOS 工作。只能主动输出低电平，高电平需要依靠外部上拉电阻实现。多用于 I2C 等总线通信，防止多设备总线冲突。</li>
+<li><strong>关闭状态</strong>：两者均关闭，引脚呈高阻态（用于输入模式）。</li>
 </ul>
+</li>
+<li><strong>复用功能切换</strong>：可将输出控制权从普通寄存器转移给片上外设（如 UART、SPI）。</li>
+</ul>
+<h3 id="③-保护电路"><a href="#③-保护电路" class="headerlink" title="③ 保护电路"></a>③ 保护电路</h3><ul>
+<li>引脚内部设有<strong>上下两个保护二极管</strong>。当输入电压高于 3.3V 或低于 0V 时，二极管导通，防止异常电压直接击穿内部核心电路，实现 ESD 静电防护。</li>
+</ul>
+<img src="/MyBlogC/2026/01/03/STM32/GPIO%E6%A8%A1%E5%BC%8F.png" class="" title="GPIO">
+
+
+<h2 id="4-LED流水灯和蜂鸣器"><a href="#4-LED流水灯和蜂鸣器" class="headerlink" title="4. LED流水灯和蜂鸣器"></a>4. LED流水灯和蜂鸣器</h2><img src="/MyBlogC/2026/01/03/STM32/LED%E5%92%8C%E8%9C%82%E9%B8%A3%E5%99%A8.png" class="" title="GPIO">
+
+<h3 id="4-1-LED闪烁"><a href="#4-1-LED闪烁" class="headerlink" title="4.1 LED闪烁"></a>4.1 LED闪烁</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 核心头文件：包含STM32F10x所有外设（GPIO/RCC等）的函数、宏定义、结构体定义</span></span><br><span class="line"><span class="comment">// 没有这个文件，编译器无法识别RCC_APB2PeriphClockCmd、GPIO_Init等标准库函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Delay.h&quot;</span>                       <span class="comment">// 延时函数头文件（修正原DElay.h拼写错误）</span></span></span><br><span class="line"><span class="comment">// 注意：头文件命名要和实际文件一致，拼写错误会导致&quot;找不到头文件&quot;编译报错</span></span><br><span class="line"><span class="comment">// 该头文件声明了Delay_ms()函数，用于实现毫秒级延时（让LED保持亮/灭状态）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// main函数：嵌入式程序的入口（整个程序从这里开始执行）</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* ========== 1. 开启GPIOA外设时钟（STM32外设使用前必须开时钟） ========== */</span></span><br><span class="line">    <span class="comment">// STM32为了节能，所有外设时钟默认关闭，必须手动开启才能操作外设</span></span><br><span class="line">    <span class="comment">// RCC_APB2PeriphClockCmd：专门控制APB2总线外设时钟的函数</span></span><br><span class="line">    <span class="comment">// 参数1：RCC_APB2Periph_GPIOA → 要开启时钟的外设是GPIOA</span></span><br><span class="line">    <span class="comment">// 参数2：ENABLE → 开启（DISABLE则是关闭，写反了GPIOA会无法操作）</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* ========== 2. 配置GPIOA引脚为推挽输出 ========== */</span></span><br><span class="line">    <span class="comment">// GPIO_InitTypeDef：标准库预定义的GPIO配置结构体</span></span><br><span class="line">    <span class="comment">// 作用：把引脚的模式、速度、编号等配置参数&quot;打包&quot;，一次性传给初始化函数</span></span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置引脚工作模式：GPIO_Mode_Out_PP（通用推挽输出模式）</span></span><br><span class="line">    <span class="comment">// 推挽输出特点：能直接输出高低电平，驱动能力强（适合接LED、继电器等负载）</span></span><br><span class="line">    <span class="comment">// 对比：开漏输出（GPIO_Mode_Out_OD）需要外接上拉电阻才能输出高电平，新手优先用推挽</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置要控制的引脚：PA0~PA7（8个引脚，对应8个LED）</span></span><br><span class="line">    <span class="comment">// GPIO_Pin_0 | GPIO_Pin_1...：用&quot;|&quot;拼接表示同时配置多个引脚</span></span><br><span class="line">    <span class="comment">// 注意：只配置需要用到的引脚（PA0~PA7），不要写GPIO_Pin_All（会配置全部16个引脚，浪费资源）</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 |</span><br><span class="line">                                  GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置引脚输出速度：GPIO_Speed_50MHz（50兆赫兹）</span></span><br><span class="line">    <span class="comment">// STM32F10x支持3档速度：2MHz/10MHz/50MHz</span></span><br><span class="line">    <span class="comment">// 接LED时速度不影响功能，选50MHz是行业通用习惯（兼容高速场景）</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 应用配置：把上面的参数写入GPIOA的寄存器，完成引脚初始化</span></span><br><span class="line">    <span class="comment">// 参数1：GPIOA → 要配置的端口；参数2：&amp;GPIO_InitStructure → 结构体的地址（必须传地址）</span></span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* ========== 3. 死循环：用GPIO_Write+按位取反实现快慢流水灯 ========== */</span></span><br><span class="line">    <span class="comment">// while(1)：嵌入式程序的&quot;常驻循环&quot;，程序会一直在这里执行，不会退出</span></span><br><span class="line">    <span class="comment">// 若没有死循环，程序执行完main函数后会进入未知状态（死机）</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// -------------------- 前4个引脚（PA0~PA3）：100ms快速流水 --------------------</span></span><br><span class="line">        <span class="comment">// GPIO_Write(GPIOx, PortVal)：批量控制整个GPIO端口的电平</span></span><br><span class="line">        <span class="comment">// 规则：PortVal的每1位对应1个引脚 → 0=低电平（LED亮），1=高电平（LED灭）</span></span><br><span class="line">        <span class="comment">// ~0x0001：按位取反运算（新手核心知识点）</span></span><br><span class="line">        <span class="comment">// 0x0001（十六进制）= 二进制0000 0000 0000 0001 → 取反后=1111 1111 1111 1110</span></span><br><span class="line">        <span class="comment">// 效果：只有PA0（第0位）是0（亮），其余所有引脚都是1（灭）</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0001</span>);  </span><br><span class="line">        Delay_ms(<span class="number">100</span>);  <span class="comment">// 保持PA0亮100毫秒（快速流水，视觉上更灵动）</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ~0x0002：0x0002=二进制0000 0000 0000 0010 → 取反=1111 1111 1111 1101</span></span><br><span class="line">        <span class="comment">// 效果：只有PA1（第1位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0002</span>);  </span><br><span class="line">        Delay_ms(<span class="number">100</span>);  <span class="comment">// 保持PA1亮100ms</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ~0x0004：0x0004=二进制0000 0000 0000 0100 → 取反=1111 1111 1111 1011</span></span><br><span class="line">        <span class="comment">// 效果：只有PA2（第2位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0004</span>);  </span><br><span class="line">        Delay_ms(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ~0x0008：0x0008=二进制0000 0000 0000 1000 → 取反=1111 1111 1111 0111</span></span><br><span class="line">        <span class="comment">// 效果：只有PA3（第3位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0008</span>);  </span><br><span class="line">        Delay_ms(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// -------------------- 后4个引脚（PA4~PA7）：500ms慢速流水 --------------------</span></span><br><span class="line">        <span class="comment">// ~0x0010：0x0010=二进制0000 0000 0001 0000 → 取反=1111 1111 1110 1111</span></span><br><span class="line">        <span class="comment">// 效果：只有PA4（第4位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0010</span>);  </span><br><span class="line">        Delay_ms(<span class="number">500</span>);  <span class="comment">// 保持PA4亮500毫秒（慢速流水，和前4个形成节奏差）</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ~0x0020：0x0020=二进制0000 0000 0010 0000 → 取反=1111 1111 1101 1111</span></span><br><span class="line">        <span class="comment">// 效果：只有PA5（第5位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0020</span>);  </span><br><span class="line">        Delay_ms(<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ~0x0040：0x0040=二进制0000 0000 0100 0000 → 取反=1111 1111 1011 1111</span></span><br><span class="line">        <span class="comment">// 效果：只有PA6（第6位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0040</span>);  </span><br><span class="line">        Delay_ms(<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ~0x0080：0x0080=二进制0000 0000 1000 0000 → 取反=1111 1111 0111 1111</span></span><br><span class="line">        <span class="comment">// 效果：只有PA7（第7位）是0（亮），其余灭</span></span><br><span class="line">        GPIO_Write(GPIOA, ~<span class="number">0x0080</span>);  </span><br><span class="line">        Delay_ms(<span class="number">500</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><strong>三、新手易踩坑的补充说明</strong></li>
+<li><strong>核心注释补充说明（新手重点）</strong></li>
 </ul>
 <ol>
-<li><p><strong>位编号“从0开始”是关键</strong>：<br>很多新手会误以为<code>0x10</code>对应第16位（因为10是十六进制），或第10位（因为数字是10），核心错误是忘了“位编号从0开始”。<br>记住：<code>2ⁿ</code>对应第n位，<code>0x10=2⁴</code> → 第4位。</p>
+<li><p><strong>位运算核心逻辑</strong>：<br>代码中<code>~0x0001</code>这类写法是嵌入式编程的常用技巧——利用「按位取反」快速得到「仅单个引脚低电平、其余全高电平」的数值，比手动写<code>0xFFFE</code>更直观，也避免了计算错误。</p>
 </li>
-<li><p><strong>为什么原代码写0x00000010而不是0x10？</strong><br>这是32位寄存器的“完整写法”，前面的0是补位，让代码更清晰（明确是32位值），但实际效果和<code>0x10</code>完全一样——编译器会自动识别为32位。</p>
+<li><p><strong>流水灯节奏设计</strong>：<br>前4个引脚（PA0<del>PA3）用<code>100ms</code>延时实现「快速流水」，后4个引脚（PA4</del>PA7）用<code>500ms</code>延时实现「慢速流水」，形成视觉上的快慢对比，是嵌入式小项目的常见创意。</p>
 </li>
-<li><p><strong>对比理解（更易记）</strong>：</p>
+<li><p><strong>新手易踩坑点</strong>：</p>
 <ul>
-<li>0x01 → 2⁰ → 第0位（IOPAEN，GPIOA时钟）；</li>
-<li>0x04 → 2² → 第2位（IOPBEN，GPIOB时钟）；</li>
-<li>0x10 → 2⁴ → 第4位（IOPCEN，GPIOC时钟）。</li>
+<li>忘记开启GPIO时钟：会导致引脚配置无效，LED完全不亮；</li>
+<li>头文件拼写错误（如<code>DElay.h</code>）：编译时会提示<code>No such file or directory</code>；</li>
+<li><code>GPIO_Write</code>参数写反：若写成<code>0x0001</code>而非<code>~0x0001</code>，会变成「PA0灭、其余亮」，和预期效果相反。</li>
 </ul>
 </li>
 </ol>
@@ -457,147 +514,19 @@
 <li><strong>总结</strong></li>
 </ul>
 <ol>
-<li><code>0x00000010</code>的核心是<code>0x10</code>，转换为十进制是16&#x3D;2⁴，因此二进制只有第4位为1，表现为<code>0001 0000</code>；</li>
-<li>寄存器位编号“从右往左、从0开始”，第4位正好是APB2ENR的IOPCEN位（GPIOC时钟使能位）；</li>
-<li>本质是通过“置1第4位”来开启GPIOC的时钟，这是操作GPIOC的前提。</li>
+<li>代码核心逻辑：开GPIOA时钟 → 配置PA0~PA7为推挽输出 → 死循环中用<code>GPIO_Write</code>+按位取反控制单个引脚亮灭，配合不同延时实现快慢流水灯；</li>
+<li>关键知识点：<code>GPIO_Write</code>的批量电平控制、按位取反<code>~</code>的用法、STM32外设时钟的必开规则；</li>
+<li>设计巧思：快慢延时的搭配让流水灯有节奏差异，比单一速度更有层次感。</li>
 </ol>
-<ul>
-<li><strong>优化后的代码（更规范、易读）</strong></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 引入STM32F10x系列单片机的核心头文件，包含所有寄存器的地址定义、位定义等</span></span><br><span class="line"><span class="comment">// 没有这个头文件，编译器无法识别RCC、GPIOC等寄存器名称</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="comment">/* 第一步：开启GPIOC外设的时钟 */</span></span><br><span class="line">	<span class="comment">// RCC：复位和时钟控制寄存器（相当于单片机的&quot;总配电室&quot;）</span></span><br><span class="line">	<span class="comment">// APB2ENR：RCC下的APB2总线外设时钟使能寄存器，负责控制GPIO等外设的时钟开关</span></span><br><span class="line">	<span class="comment">// 0x00000010：十六进制值，二进制为0000 0000 0000 0000 0000 0000 0001 0000</span></span><br><span class="line">	<span class="comment">// 该数值的第4位（从0开始数）为1，对应APB2ENR寄存器的IOPCEN位（GPIOC时钟使能位）</span></span><br><span class="line">	<span class="comment">// 置1表示开启GPIOC的时钟（STM32所有外设使用前必须先开时钟，否则无法操作）</span></span><br><span class="line">	RCC -&gt;APB2ENR = <span class="number">0x00000010</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第二步：配置GPIOC的13号引脚为推挽输出模式（50MHz） */</span></span><br><span class="line">	<span class="comment">// GPIOC：GPIO C端口的寄存器组</span></span><br><span class="line">	<span class="comment">// CRH：GPIO端口配置高寄存器，负责控制8~15号引脚的工作模式（CRL控制0~7号引脚）</span></span><br><span class="line">	<span class="comment">// 0x00300000：十六进制值，二进制为0000 0000 0011 0000 0000 0000 0000 0000</span></span><br><span class="line">	<span class="comment">// 该数值对应CRH寄存器的19~16位（Pin13的配置位）：</span></span><br><span class="line">	<span class="comment">// - MODE13[1:0] = 11：引脚输出速度为50MHz</span></span><br><span class="line">	<span class="comment">// - CNF13[1:0] = 00：引脚为通用推挽输出模式</span></span><br><span class="line">	GPIOC -&gt;CRH = <span class="number">0x00300000</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第三步：将GPIOC的13号引脚置为低电平 */</span></span><br><span class="line">	<span class="comment">// ODR：GPIO输出数据寄存器，每一位对应一个引脚的电平（1=高电平，0=低电平）</span></span><br><span class="line">	<span class="comment">// 0x00000000：将GPIOC所有引脚置低电平，重点是第13位为0 → PC13引脚低电平</span></span><br><span class="line">	<span class="comment">// 若开发板上PC13外接LED，此时LED会点亮</span></span><br><span class="line">	GPIOC -&gt;ODR = <span class="number">0x00000000</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 死循环：让程序常驻此处 */</span></span><br><span class="line">	<span class="comment">// 单片机程序不能执行完main函数就结束，否则会进入未知状态</span></span><br><span class="line">	<span class="comment">// while(1)是嵌入式编程的常用写法，程序会一直停在这个循环里</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 理论上不会执行到这里，仅满足C语言main函数的语法要求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-蜂鸣器"><a href="#4-2-蜂鸣器" class="headerlink" title="4.2 蜂鸣器"></a>4.2 蜂鸣器</h3><p>这份代码是基于STM32标准库控制<strong>GPIOB12引脚驱动蜂鸣器发声</strong>的经典程序，核心逻辑是通过交替输出高低电平产生固定频率的方波，让蜂鸣器发出“滴-滴-滴”的间断响声。以下是针对蜂鸣器场景的<strong>超详细注释版</strong>，同时补充蜂鸣器驱动的关键硬件逻辑：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 核心头文件：包含STM32F10x所有外设（GPIO/RCC等）的函数、宏定义，无此文件无法操作硬件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;DElay.h&quot;</span></span></span><br><span class="line"><span class="comment">// 延时函数头文件（⚠️ 建议修正拼写为Delay.h，避免编译时找不到文件）</span></span><br><span class="line"><span class="comment">// 该头文件声明了Delay_ms()毫秒级延时函数，用于控制蜂鸣器发声的间隔</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* ========== 1. 开启GPIOB外设时钟（STM32外设使用前必须开启时钟） ========== */</span></span><br><span class="line">    <span class="comment">// RCC_APB2PeriphClockCmd：控制APB2总线外设时钟的开关函数</span></span><br><span class="line">    <span class="comment">// 参数1：RCC_APB2Periph_GPIOB → 要开启时钟的外设是GPIOB（蜂鸣器接在GPIOB12）</span></span><br><span class="line">    <span class="comment">// 参数2：ENABLE → 开启时钟（写DISABLE则GPIOB无法操作，蜂鸣器无反应）</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* ========== 2. 定义GPIO初始化结构体并配置GPIOB12引脚 ========== */</span></span><br><span class="line">    <span class="comment">// GPIO_InitTypeDef：标准库预定义的GPIO配置结构体，打包引脚模式/速度/编号等参数</span></span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 配置GPIO模式为推挽输出（蜂鸣器驱动的最佳选择） */</span></span><br><span class="line">    <span class="comment">// GPIO_Mode_Out_PP：通用推挽输出模式</span></span><br><span class="line">    <span class="comment">// 蜂鸣器需要一定的驱动电流，推挽输出能提供足够的高低电平驱动能力（对比开漏输出需上拉电阻）</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 指定要配置的引脚为GPIOB12 */</span></span><br><span class="line">    <span class="comment">// GPIO_Pin_12：仅配置GPIOB的12号引脚（蜂鸣器的控制端接此引脚）</span></span><br><span class="line">    <span class="comment">// 若需控制多个引脚，可用|拼接，如GPIO_Pin_12 | GPIO_Pin_13</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 配置GPIO输出速度为50MHz */</span></span><br><span class="line">    <span class="comment">// GPIO_Speed_50MHz：引脚电平切换的最大速度（蜂鸣器对速度无要求，选50MHz是通用配置）</span></span><br><span class="line">    <span class="comment">// 即使选2MHz也能正常驱动蜂鸣器，不影响功能</span></span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 应用配置到GPIOB端口，完成引脚初始化 */</span></span><br><span class="line">    <span class="comment">// GPIO_Init：将结构体中的配置写入GPIOB的寄存器，使配置生效</span></span><br><span class="line">    <span class="comment">// 参数1：GPIOB → 目标端口；参数2：&amp;GPIO_InitStructure → 结构体地址（必须传地址）</span></span><br><span class="line">    GPIO_Init(GPIOB,&amp;GPIO_InitStructure);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* 以下为注释掉的电平操作示例（适配GPIOA，仅作参考，当前用GPIOB需忽略） */</span></span><br><span class="line">    <span class="comment">// GPIO_ResetBits(GPIOA,GPIO_Pin_0);  // 将GPIOA0置低电平（Reset=置0）</span></span><br><span class="line">    <span class="comment">// GPIO_SetBits(GPIOA,GPIO_Pin_0);    // 将GPIOA0置高电平（Set=置1）</span></span><br><span class="line">    <span class="comment">// GPIO_WriteBit(GPIOA,GPIO_Pin_0,Bit_RESET);  // 等价于GPIO_ResetBits，函数式写法</span></span><br><span class="line">    <span class="comment">// GPIO_WriteBit(GPIOA,GPIO_Pin_0,Bit_SET);    // 等价于GPIO_SetBits，函数式写法</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* ========== 3. 死循环：控制蜂鸣器间断发声 ========== */</span></span><br><span class="line">    <span class="comment">// while(1)：嵌入式程序常驻循环，程序会一直执行此循环，不会退出</span></span><br><span class="line">    <span class="comment">// 若无此循环，程序执行完main后会进入未知状态，蜂鸣器仅响一次就停止</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 第一步：将GPIOB12置低电平（Bit_RESET=0），驱动蜂鸣器发声</span></span><br><span class="line">        <span class="comment">// 注：蜂鸣器发声逻辑取决于硬件接线：</span></span><br><span class="line">        <span class="comment">// - 共阴极蜂鸣器：低电平触发发声，高电平停止；</span></span><br><span class="line">        <span class="comment">// - 共阳极蜂鸣器：高电平触发发声，低电平停止（需交换Bit_RESET和Bit_SET）</span></span><br><span class="line">        GPIO_WriteBit(GPIOB,GPIO_Pin_12,Bit_RESET);</span><br><span class="line">        Delay_ms(<span class="number">200</span>);  <span class="comment">// 保持发声200毫秒（延时越短，蜂鸣器频率越高，声音越尖）</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 第二步：将GPIOB12置高电平（Bit_SET=1），停止蜂鸣器发声</span></span><br><span class="line">        GPIO_WriteBit(GPIOB,GPIO_Pin_12,Bit_SET);</span><br><span class="line">        Delay_ms(<span class="number">200</span>);  <span class="comment">// 保持静音200毫秒，形成“滴-停-滴-停”的间断声</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="3-STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平"><a href="#3-STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平" class="headerlink" title="3.STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平"></a>3.STM32标准库函数（非直接操作寄存器）来配置GPIOC13引脚为推挽输出并置低电平</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 引入STM32F10x标准库核心头文件，包含所有外设的函数、宏定义、结构体定义</span></span><br><span class="line"><span class="comment">// 标准库封装了底层寄存器操作，无需直接写十六进制值，降低开发难度</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">/* 第一步：开启GPIOC外设的时钟（标准库函数版） */</span></span><br><span class="line">	<span class="comment">// RCC_APB2PeriphClockCmd：APB2总线外设时钟使能函数</span></span><br><span class="line">	<span class="comment">// 参数1：要开启时钟的外设 → RCC_APB2Periph_GPIOC（GPIOC外设）</span></span><br><span class="line">	<span class="comment">// 参数2：使能/禁用 → ENABLE（开启），DISABLE（关闭）</span></span><br><span class="line">	<span class="comment">// 作用等价于寄存器操作：RCC-&gt;APB2ENR |= RCC_APB2ENR_IOPCEN;</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第二步：定义GPIO初始化结构体变量 */</span></span><br><span class="line">	<span class="comment">// GPIO_InitTypeDef：标准库定义的GPIO初始化结构体，包含引脚、模式、速度等配置项</span></span><br><span class="line">	<span class="comment">// 结构体变量名GPIO_InitStructure是行业通用命名，便于阅读</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第三步：配置GPIO工作模式为推挽输出 */</span></span><br><span class="line">	<span class="comment">// GPIO_Mode_Out_PP：GPIO模式为通用推挽输出（Push-Pull）</span></span><br><span class="line">	<span class="comment">// 推挽输出特点：能输出高低电平，驱动能力强（适合接LED、继电器等）</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第四步：指定要配置的GPIO引脚 */</span></span><br><span class="line">	<span class="comment">// GPIO_Pin_13：指定配置GPIOC的13号引脚（仅配置该引脚，不影响其他引脚）</span></span><br><span class="line">	<span class="comment">// 若要配置多个引脚，可用|拼接，如GPIO_Pin_13 | GPIO_Pin_14</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第五步：配置GPIO输出速度 */</span></span><br><span class="line">	<span class="comment">// GPIO_Speed_50MHz：引脚输出速度为50MHz（STM32F10x支持2MHz/10MHz/50MHz三档）</span></span><br><span class="line">	<span class="comment">// 速度越高，电平切换越快，适合高频信号，接LED时选50MHz即可</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第六步：应用GPIO配置到GPIOC端口 */</span></span><br><span class="line">	<span class="comment">// GPIO_Init：将上面配置的结构体参数写入GPIOC的寄存器，完成引脚初始化</span></span><br><span class="line">	<span class="comment">// 参数1：要配置的GPIO端口 → GPIOC</span></span><br><span class="line">	<span class="comment">// 参数2：GPIO初始化结构体指针 → &amp;GPIO_InitStructure</span></span><br><span class="line">	GPIO_Init(GPIOC,&amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 第七步：将GPIOC13引脚置为低电平 */</span></span><br><span class="line">	<span class="comment">// GPIO_ResetBits：将指定GPIO引脚置低电平（Reset=复位/置0）</span></span><br><span class="line">	<span class="comment">// 参数1：GPIO端口 → GPIOC</span></span><br><span class="line">	<span class="comment">// 参数2：要操作的引脚 → GPIO_Pin_13</span></span><br><span class="line">	<span class="comment">// 作用等价于寄存器操作：GPIOC-&gt;ODR &amp;= ~GPIO_ODR_ODR13;</span></span><br><span class="line">	<span class="comment">// 注释掉的GPIO_SetBits：将引脚置高电平（Set=置1），取消注释可切换电平</span></span><br><span class="line">	<span class="comment">// GPIO_SetBits(GPIOC,GPIO_Pin_13);</span></span><br><span class="line">	GPIO_ResetBits(GPIOC,GPIO_Pin_13);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 死循环：程序常驻，保持引脚电平状态 */</span></span><br><span class="line">	<span class="comment">// 单片机程序不能执行完main函数就结束，否则会进入未知状态</span></span><br><span class="line">	<span class="comment">// while(1)是嵌入式编程的标准写法，程序会一直停在此处</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>
 
-<ul>
-<li><strong>总结</strong></li>
-</ul>
-<ol>
-<li>核心逻辑：标准库方式开启GPIOC时钟 → 配置PC13为50MHz推挽输出 → 置PC13低电平 → 死循环保持状态；</li>
-<li>关键优势：标准库函数（如<code>RCC_APB2PeriphClockCmd</code>、<code>GPIO_Init</code>）封装了底层寄存器操作，无需记忆十六进制值，代码可读性和可移植性更强；</li>
-<li>核心函数：<code>GPIO_ResetBits</code>（置低）&#x2F;<code>GPIO_SetBits</code>（置高）是标准库操作GPIO电平的专用函数，比直接写ODR寄存器更安全。</li>
-</ol>
-<p>如果想实现LED闪烁，只需在<code>while(1)</code>中添加延时函数，交替调用<code>GPIO_SetBits</code>和<code>GPIO_ResetBits</code>即可，我可以补充对应的代码。</p>
-<ul>
-<li><strong>完整新建工程步骤总结（补充细节版）</strong></li>
-<li><strong>1. 建立工程文件夹，Keil中新建工程，选择型号</strong></li>
-</ul>
-<ul>
-<li><strong>操作细节</strong>：<ol>
-<li>在电脑非系统盘新建总工程文件夹（如<code>STM32_Project</code>），<strong>禁用中文路径&#x2F;特殊字符</strong>（避免Keil编译&#x2F;下载报错）。</li>
-<li>打开Keil，点击<code>Project → New μVision Project</code>，选择总文件夹，命名工程（如<code>Project</code>）并保存。</li>
-<li>在<code>Select Device for Target</code>窗口，依次展开<code>STMicroelectronics → STM32F103</code>，选择与开发板匹配的芯片型号（如<code>STM32F103C8</code>），点击OK。</li>
-<li>弹出<code>Manage Run-Time Environment</code>窗口，直接点击<code>Cancel</code>（标准库工程无需启用RTE）。</li>
-</ol>
-</li>
-<li><strong>核心作用</strong>：完成工程基础框架创建，指定目标芯片（决定后续Flash算法、寄存器映射）。</li>
-<li><strong>新手避坑</strong>：芯片型号必须与实物一致（如C8T6选<code>STM32F103C8</code>，ZET6选<code>STM32F103ZE</code>），否则会出现烧录失败&#x2F;功能异常。</li>
-</ul>
-<ul>
-<li><strong>2. 工程文件夹里建立Start、Library、User等文件夹，复制固件库里面的文件到工程文件夹</strong></li>
-</ul>
-<ul>
-<li><strong>操作细节</strong>：<ol>
-<li>在总工程文件夹内新建3个功能子文件夹：<ul>
-<li><code>Start</code>：存放芯片启动文件（汇编文件，决定程序入口）；</li>
-<li><code>Library</code>：存放标准库驱动源码&#x2F;头文件；</li>
-<li><code>User</code>：存放用户自定义代码（如<code>main.c</code>）。</li>
-</ul>
-</li>
-<li>从STM32F10x标准固件库（<code>V3.5.0</code>）中复制对应文件：<ul>
-<li><strong>Start文件夹</strong>：复制<code>Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm</code>下的启动文件（中容量芯片如C8T6选<code>startup_stm32f10x_md.s</code>，大容量选<code>hd.s</code>）；</li>
-<li><strong>Library文件夹</strong>：<ul>
-<li>复制<code>Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x</code>下的<code>stm32f10x.h</code>、<code>system_stm32f10x.h</code>、<code>system_stm32f10x.c</code>；</li>
-<li>复制<code>Libraries\STM32F10x_StdPeriph_Driver\src</code>（所有<code>.c</code>）和<code>inc</code>（所有<code>.h</code>）下的文件；</li>
-</ul>
-</li>
-<li><strong>User文件夹</strong>：复制固件库根目录的<code>stm32f10x_conf.h</code>、<code>stm32f10x_it.h</code>、<code>stm32f10x_it.c</code>，并新建空白<code>main.c</code>。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><strong>核心作用</strong>：按功能分类管理文件，避免源码混乱；本地化固件库文件，防止工程依赖外部路径。</li>
-<li><strong>新手避坑</strong>：启动文件需匹配芯片容量（C8T6&#x3D;中容量&#x3D;md，ZET6&#x3D;大容量&#x3D;hd），漏选&#x2F;错选会导致<code>undefined symbol __main</code>编译错误。</li>
-</ul>
-<ul>
-<li><strong>3. 工程里对应建立Start、Library、User等同名称的分组，然后将文件夹内的文件添加到工程分组里</strong></li>
-</ul>
-<ul>
-<li><strong>操作细节</strong>：<ol>
-<li>在Keil左侧<code>Project</code>窗口，右键<code>Target 1</code> → <code>Manage Project Items</code>。</li>
-<li>在<code>Groups</code>栏点击<code>Add</code>，依次创建<code>Start</code>、<code>Library</code>、<code>User</code>分组，点击OK。</li>
-<li>右键对应分组 → <code>Add Existing Files to Group</code>：<ul>
-<li><code>Start</code>分组：添加<code>Start</code>文件夹下的<code>startup_stm32f10x_md.s</code>；</li>
-<li><code>Library</code>分组：添加<code>Library</code>文件夹下所有<code>.c</code>文件（如<code>stm32f10x_gpio.c</code>、<code>stm32f10x_rcc.c</code>）；</li>
-<li><code>User</code>分组：添加<code>User</code>文件夹下的<code>main.c</code>、<code>stm32f10x_it.c</code>、<code>system_stm32f10x.c</code>。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><strong>核心作用</strong>：将本地文件与Keil工程关联，让编译器识别并编译这些源码。</li>
-<li><strong>新手避坑</strong>：不要漏加启动文件（<code>.s</code>），否则链接阶段会提示“找不到程序入口”。</li>
-</ul>
-<ul>
-<li><strong>4. 工程选项，C&#x2F;C++，Include Paths内声明所有包含头文件的文件夹</strong></li>
-</ul>
-<ul>
-<li><strong>操作细节</strong>：<ol>
-<li>点击Keil工具栏魔法棒图标 → 切换到<code>C/C++</code>选项卡。</li>
-<li>点击<code>Include Paths</code>右侧的<code>...</code>按钮，在弹窗中点击<code>Add</code>，依次添加3个文件夹路径：<ul>
-<li><code>.\Start</code>（当前工程目录下的Start文件夹）；</li>
-<li><code>.\Library</code>；</li>
-<li><code>.\User</code>。</li>
-</ul>
-</li>
-<li>点击OK保存配置。</li>
-</ol>
-</li>
-<li><strong>核心作用</strong>：告诉编译器头文件的存放位置，避免<code>xxx.h: No such file or directory</code>编译错误。</li>
-<li><strong>新手避坑</strong>：路径用相对路径（<code>.\</code>表示当前工程目录），而非绝对路径（如<code>D:\STM32\Project</code>），便于工程移植。</li>
-</ul>
-<ul>
-<li><strong>5. 工程选项，C&#x2F;C++，Define内定义USE_STDPERIPH_DRIVER</strong></li>
-</ul>
-<ul>
-<li><strong>操作细节</strong>：<ol>
-<li>在<code>C/C++</code>选项卡的<code>Define</code>输入框中，输入<code>USE_STDPERIPH_DRIVER</code>（<strong>大小写严格匹配，无引号</strong>）。</li>
-<li>（可选）补充定义<code>HSE_VALUE=8000000</code>（匹配8MHz外部晶振，与开发板硬件一致）。</li>
-</ol>
-</li>
-<li><strong>核心作用</strong>：启用STM32标准库驱动（标准库通过该宏控制头文件&#x2F;include逻辑，未定义则无法使用<code>GPIO_Init</code>等库函数）。</li>
-<li><strong>新手避坑</strong>：宏名拼写错误（如少写<code>_DRIVER</code>）会导致标准库函数编译失败。</li>
-</ul>
-<ul>
-<li>**6. 工程选项，Debug，下拉列表选择对应调试器，Settings，Flash Download里勾选Reset and Run</li>
-</ul>
-<ul>
-<li><strong>操作细节</strong>：<ol>
-<li>切换到<code>Debug</code>选项卡，在<code>Use</code>下拉列表选择实际使用的调试器（如<code>ST-Link Debugger</code>），点击<code>Settings</code>。</li>
-<li>在<code>Debug</code>页面：<ul>
-<li><code>Port</code>选择<code>SW</code>（SWD模式，仅需4根线，比JTAG省引脚）；</li>
-<li><code>Clock</code>设为<code>4MHz</code>（降低时钟避免通信不稳定）；</li>
-<li>勾选<code>Reset after Connect</code>。</li>
-</ul>
-</li>
-<li>切换到<code>Flash Download</code>选项卡：<ul>
-<li>勾选<code>Erase Full Chip</code>（全片擦除，清除旧程序）；</li>
-<li>勾选<code>Program</code>（烧录程序到Flash）；</li>
-<li>勾选<code>Verify</code>（校验烧录结果）；</li>
-<li>勾选<code>Reset and Run</code>（烧录完成后自动复位并运行程序）。</li>
-</ul>
-</li>
-<li>确认<code>Programming Algorithm</code>中添加了对应芯片的Flash算法（如<code>STM32F10x Medium-density Flash</code>），点击OK保存。</li>
-</ol>
-</li>
-<li><strong>核心作用</strong>：配置调试器和烧录参数，确保程序能正确下载到STM32并自动运行。</li>
-<li><strong>新手避坑</strong>：<ul>
-<li>调试器型号需与实物一致（ST-Link不要选J-Link）；</li>
-<li>Flash算法需匹配芯片容量（中容量选<code>Medium-density</code>），否则会提示<code>Flash Download failed</code>。</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-新建工程架构"><a href="#4-新建工程架构" class="headerlink" title="4.新建工程架构"></a>4.新建工程架构</h2><img src="/MyBlogC/2026/01/03/STM32/%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84.png" class="">
+</code></pre>
+
     </div>
 
     
