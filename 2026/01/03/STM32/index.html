@@ -46,8 +46,13 @@
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/%E7%BB%93%E6%9E%84%E4%BD%93.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/%E6%9E%9A%E4%B8%BE.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6LED.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/%E5%85%89%E6%95%8F%E7%94%B5%E9%98%BB%E6%8E%A7%E5%88%B6%E8%9C%82%E9%B8%A3%E5%99%A8.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/OLED%E5%B1%8F%E5%B9%95.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/OLED%E5%B1%8F%E5%B9%95%E7%A1%AC%E4%BB%B6%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/OLED%E9%A9%B1%E5%8A%A8%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/01/03/STM32/OLED%E5%B1%8F%E5%B9%95%E6%8E%A5%E7%BA%BF%E5%9B%BE.png">
 <meta property="article:published_time" content="2026-01-03T02:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-22T15:08:40.685Z">
+<meta property="article:modified_time" content="2026-03-23T15:42:07.304Z">
 <meta property="article:author" content="JianHao Li">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="学习笔记">
@@ -181,7 +186,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-01-%E5%88%9D%E8%AF%86-STM32-%E4%B8%8E%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA"><span class="nav-text">Day-01 初识 STM32 与工程搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-STM32-%E6%A6%82%E8%BF%B0"><span class="nav-text">1. STM32 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E5%AF%84%E5%AD%98%E5%99%A8%E5%88%9D%E4%BD%93%E9%AA%8C%EF%BC%89"><span class="nav-text">2. GPIO 初始化（寄存器初体验）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%EF%BC%9A0x00000010-%E6%98%AF%E6%80%8E%E4%B9%88%E6%9D%A5%E7%9A%84%EF%BC%9F"><span class="nav-text">💡 核心原理解析：0x00000010 是怎么来的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0%E7%89%88%EF%BC%89"><span class="nav-text">3. GPIO 初始化（标准库函数版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Keil-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%A0%87%E5%87%86%E6%AD%A5%E9%AA%A4"><span class="nav-text">4. Keil 新建工程标准步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-02-GPIO-%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90"><span class="nav-text">Day-02 GPIO 深入解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GPIO-%E7%AE%80%E4%BB%8B"><span class="nav-text">1. GPIO 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91"><span class="nav-text">2. GPIO 基本架构与数据流向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GPIO-%E4%BD%8D%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3"><span class="nav-text">3. GPIO 位结构详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E8%BE%93%E5%85%A5%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-text">① 输入驱动电路（输入模式核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-%E8%BE%93%E5%87%BA%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-text">② 输出驱动电路（输出模式核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-%E4%BF%9D%E6%8A%A4%E7%94%B5%E8%B7%AF"><span class="nav-text">③ 保护电路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-LED%E6%B5%81%E6%B0%B4%E7%81%AF%E5%92%8C%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">4. LED流水灯和蜂鸣器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-LED%E9%97%AA%E7%83%81"><span class="nav-text">4.1 LED闪烁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">4.2 蜂鸣器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-GPIO%E8%BE%93%E5%85%A5"><span class="nav-text">5. GPIO输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="nav-text">5.1 模块介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-C%E8%AF%AD%E8%A8%80%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E5%9B%9E%E9%A1%BE"><span class="nav-text">5.2 C语言重要知识点回顾</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6%E7%81%AF%E7%9A%84%E4%BA%AE%E7%81%AD"><span class="nav-text">6. 按键控制灯的亮灭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85%EF%BC%88%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%8C%89%E9%94%AE%E5%BC%80%E5%8F%91%EF%BC%89"><span class="nav-text">核心知识点补充（嵌入式按键开发）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8A%E6%8B%89%E8%BE%93%E5%85%A5%EF%BC%88GPIO-Mode-IPU%EF%BC%89%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%80%BB%E8%BE%91"><span class="nav-text">1. 上拉输入（GPIO_Mode_IPU）的硬件逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BD%AF%E4%BB%B6%E6%B6%88%E6%8A%96%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">2. 软件消抖的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91"><span class="nav-text">3. 函数设计逻辑</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-01-%E5%88%9D%E8%AF%86-STM32-%E4%B8%8E%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA"><span class="nav-text">Day-01 初识 STM32 与工程搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-STM32-%E6%A6%82%E8%BF%B0"><span class="nav-text">1. STM32 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E5%AF%84%E5%AD%98%E5%99%A8%E5%88%9D%E4%BD%93%E9%AA%8C%EF%BC%89"><span class="nav-text">2. GPIO 初始化（寄存器初体验）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%EF%BC%9A0x00000010-%E6%98%AF%E6%80%8E%E4%B9%88%E6%9D%A5%E7%9A%84%EF%BC%9F"><span class="nav-text">💡 核心原理解析：0x00000010 是怎么来的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GPIO-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%88%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0%E7%89%88%EF%BC%89"><span class="nav-text">3. GPIO 初始化（标准库函数版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Keil-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E6%A0%87%E5%87%86%E6%AD%A5%E9%AA%A4"><span class="nav-text">4. Keil 新建工程标准步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-02-GPIO-%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90"><span class="nav-text">Day-02 GPIO 深入解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GPIO-%E7%AE%80%E4%BB%8B"><span class="nav-text">1. GPIO 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GPIO-%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91"><span class="nav-text">2. GPIO 基本架构与数据流向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-GPIO-%E4%BD%8D%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3"><span class="nav-text">3. GPIO 位结构详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E8%BE%93%E5%85%A5%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-text">① 输入驱动电路（输入模式核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-%E8%BE%93%E5%87%BA%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF%EF%BC%88%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-text">② 输出驱动电路（输出模式核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-%E4%BF%9D%E6%8A%A4%E7%94%B5%E8%B7%AF"><span class="nav-text">③ 保护电路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-LED%E6%B5%81%E6%B0%B4%E7%81%AF%E5%92%8C%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">4. LED流水灯和蜂鸣器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-LED%E9%97%AA%E7%83%81"><span class="nav-text">4.1 LED闪烁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">4.2 蜂鸣器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-GPIO%E8%BE%93%E5%85%A5"><span class="nav-text">5. GPIO输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="nav-text">5.1 模块介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-C%E8%AF%AD%E8%A8%80%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E5%9B%9E%E9%A1%BE"><span class="nav-text">5.2 C语言重要知识点回顾</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6%E7%81%AF%E7%9A%84%E4%BA%AE%E7%81%AD"><span class="nav-text">6. 按键控制灯的亮灭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85%EF%BC%88%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%8C%89%E9%94%AE%E5%BC%80%E5%8F%91%EF%BC%89"><span class="nav-text">核心知识点补充（嵌入式按键开发）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8A%E6%8B%89%E8%BE%93%E5%85%A5%EF%BC%88GPIO-Mode-IPU%EF%BC%89%E7%9A%84%E7%A1%AC%E4%BB%B6%E9%80%BB%E8%BE%91"><span class="nav-text">1. 上拉输入（GPIO_Mode_IPU）的硬件逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BD%AF%E4%BB%B6%E6%B6%88%E6%8A%96%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">2. 软件消抖的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E9%80%BB%E8%BE%91"><span class="nav-text">3. 函数设计逻辑</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%85%89%E6%95%8F%E7%94%B5%E9%98%BB%E6%8E%A7%E5%88%B6%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-text">7. 光敏电阻控制蜂鸣器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-03-OLED%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-text">Day-03 OLED调试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-OLED%E5%B1%8F%E5%B9%95%E6%A6%82%E8%BF%B0"><span class="nav-text">1.OLED屏幕概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-OLED%E5%B1%8F%E5%B9%95%E6%BC%94%E7%A4%BA"><span class="nav-text">2.OLED屏幕演示</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -196,7 +201,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/MyBlogC/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -207,7 +212,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/MyBlogC/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -301,7 +306,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-03-22 23:08:40" itemprop="dateModified" datetime="2026-03-22T23:08:40+08:00">2026-03-22</time>
+      <time title="修改时间：2026-03-23 23:42:07" itemprop="dateModified" datetime="2026-03-23T23:42:07+08:00">2026-03-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -682,6 +687,75 @@
 <li>关键错误：按键2的释放等待引脚写错（B1→B11），修正后才能正常检测按键2；</li>
 <li>设计思路：符合嵌入式按键开发的“初始化+轮询读取+消抖”标准流程，是按键控制的基础模板。</li>
 </ol>
+<h2 id="7-光敏电阻控制蜂鸣器"><a href="#7-光敏电阻控制蜂鸣器" class="headerlink" title="7. 光敏电阻控制蜂鸣器"></a>7. 光敏电阻控制蜂鸣器</h2><img src="/MyBlogC/2026/01/03/STM32/%E5%85%89%E6%95%8F%E7%94%B5%E9%98%BB%E6%8E%A7%E5%88%B6%E8%9C%82%E9%B8%A3%E5%99%A8.png" class="">
+
+
+<h1 id="Day-03-OLED调试工具"><a href="#Day-03-OLED调试工具" class="headerlink" title="Day-03 OLED调试工具"></a>Day-03 OLED调试工具</h1><h2 id="1-OLED屏幕概述"><a href="#1-OLED屏幕概述" class="headerlink" title="1.OLED屏幕概述"></a>1.OLED屏幕概述</h2><img src="/MyBlogC/2026/01/03/STM32/OLED%E5%B1%8F%E5%B9%95.png" class="">
+<img src="/MyBlogC/2026/01/03/STM32/OLED%E5%B1%8F%E5%B9%95%E7%A1%AC%E4%BB%B6%E7%94%B5%E8%B7%AF.png" class="">
+<img src="/MyBlogC/2026/01/03/STM32/OLED%E9%A9%B1%E5%8A%A8%E5%87%BD%E6%95%B0.png" class="">
+
+<h2 id="2-OLED屏幕演示"><a href="#2-OLED屏幕演示" class="headerlink" title="2.OLED屏幕演示"></a>2.OLED屏幕演示</h2><img src="/MyBlogC/2026/01/03/STM32/OLED%E5%B1%8F%E5%B9%95%E6%8E%A5%E7%BA%BF%E5%9B%BE.png" class="">
+<p>这份代码是STM32F10x系列单片机驱动OLED屏的基础示例，包含OLED初始化、字符&#x2F;字符串&#x2F;数字等多种显示功能调用，以下是逐行超详细注释（适配新手理解，标注关键注意点）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span>                  <span class="comment">// Device header</span></span></span><br><span class="line"><span class="comment">// 核心头文件：包含STM32F10x所有外设（GPIO/RCC/I2C/SPI等）的函数、宏定义、结构体</span></span><br><span class="line"><span class="comment">// 是STM32硬件操作的基础，无此文件无法识别底层寄存器和外设函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;DElay.h&quot;</span></span></span><br><span class="line"><span class="comment">// 延时函数头文件（⚠️ 拼写建议修正为Delay.h，需与实际文件名称一致，否则编译报错）</span></span><br><span class="line"><span class="comment">// 该头文件声明了Delay_ms()/Delay_us()等延时函数，OLED初始化和显示刷新依赖稳定延时</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;OLED.h&quot;</span></span></span><br><span class="line"><span class="comment">// OLED屏驱动头文件：包含OLED_Init()、OLED_ShowChar()等显示函数的声明</span></span><br><span class="line"><span class="comment">// 需配套OLED.c文件（实现具体的I2C/SPI通信、显存操作、显示逻辑）</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> KeyNum;</span><br><span class="line"><span class="comment">// 全局变量：存储按键编号（当前代码未使用，预留用于后续按键控制OLED显示）</span></span><br><span class="line"><span class="comment">// 若仅做OLED显示测试，可删除该变量；若保留，建议添加注释说明用途</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// ========== 外设初始化：仅需执行一次，放在main函数开头 ==========</span></span><br><span class="line">    OLED_Init();  <span class="comment">// OLED屏初始化函数</span></span><br><span class="line">    <span class="comment">// 初始化逻辑：配置OLED的通信引脚（I2C/SPI）、屏幕参数（分辨率如128x64）、显存清零</span></span><br><span class="line">    <span class="comment">// 注意：OLED_Init()内部通常包含延时操作，需确保Delay.h的延时函数正常实现</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ========== OLED显示功能调用（坐标规则：行从1开始，列从1开始，不同驱动可能略有差异） ==========</span></span><br><span class="line">    <span class="comment">// 1. 显示单个字符：OLED_ShowChar(行, 列, 要显示的字符)</span></span><br><span class="line">    OLED_ShowChar(<span class="number">1</span>,<span class="number">1</span>,<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">    <span class="comment">// 参数说明：第1行、第1列显示字符&#x27;a&#x27;</span></span><br><span class="line">    <span class="comment">// 字符范围：ASCII码可见字符（0x20~0x7E），如数字、字母、符号</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 显示字符串：OLED_ShowString(行, 列, 字符串常量/数组)</span></span><br><span class="line">    OLED_ShowString(<span class="number">2</span>,<span class="number">2</span>,<span class="string">&quot;lijianhao&quot;</span>);</span><br><span class="line">    <span class="comment">// 参数说明：第2行、第2列显示字符串&quot;lijianhao&quot;</span></span><br><span class="line">    <span class="comment">// 注意：字符串需以&#x27;\0&#x27;结尾，超出屏幕列数的部分会被截断（如128列OLED每行最多显示16个8x16字符）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 显示无符号十进制数字：OLED_ShowNum(行, 列, 数字, 显示位数)</span></span><br><span class="line">    OLED_ShowNum(<span class="number">3</span>,<span class="number">1</span>,<span class="number">12345</span>,<span class="number">5</span>);</span><br><span class="line">    <span class="comment">// 参数说明：第3行、第1列显示数字12345，固定显示5位</span></span><br><span class="line">    <span class="comment">// 若数字位数不足，前面补0；若超过，只显示低N位（如数字123，显示5位则为00123）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 显示有符号十进制数字：OLED_ShowSignedNum(行, 列, 数字, 显示位数)</span></span><br><span class="line">    OLED_ShowSignedNum(<span class="number">4</span>,<span class="number">1</span>,<span class="number">-11</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="comment">// 参数说明：第4行、第1列显示有符号数字-11，固定显示2位</span></span><br><span class="line">    <span class="comment">// 符号占1位，数字占剩余位（如-11显示2位：-1；显示3位：-11）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5. 显示二进制数字：OLED_ShowBinNum(行, 列, 数字, 显示位数)</span></span><br><span class="line">    OLED_ShowBinNum(<span class="number">5</span>,<span class="number">1</span>,<span class="number">0xAA55</span>,<span class="number">16</span>);</span><br><span class="line">    <span class="comment">// 参数说明：第5行、第1列显示十六进制0xAA55的二进制形式，固定显示16位</span></span><br><span class="line">    <span class="comment">// 0xAA55的二进制：10101010 01010101，会完整显示16位（不足补0）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 6. 清屏操作：OLED_Clear()</span></span><br><span class="line">    OLED_Clear();</span><br><span class="line">    <span class="comment">// 功能：将OLED显存全部置0，屏幕所有显示内容清空</span></span><br><span class="line">    <span class="comment">// 注意：清屏后之前的显示内容会消失，若想保留显示，需注释此行</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ========== 死循环：嵌入式程序核心执行逻辑（常驻运行） ==========</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 死循环体为空：当前仅做OLED初始化和一次性显示→清屏，无循环刷新逻辑</span></span><br><span class="line">        <span class="comment">// 拓展方向：</span></span><br><span class="line">        <span class="comment">// 1. 在此添加延时+动态显示（如数字自增）：Delay_ms(1000); OLED_ShowNum(3,1,num++,5);</span></span><br><span class="line">        <span class="comment">// 2. 添加按键控制（KeyNum）：读取按键后切换显示内容</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>关键知识点补充</strong></li>
+</ul>
+<ul>
+<li><ol>
+<li>OLED显示坐标规则<br>多数OLED驱动的坐标定义（以128x64屏为例）：</li>
+</ol>
+</li>
+<li><p>行：1<del>8（8行，8x8点阵）或1</del>4（4行，16x8点阵），代码中<code>1~5行</code>需匹配实际驱动的行定义；</p>
+</li>
+<li><p>列：1~128，超出列数的内容会被截断或换行（取决于驱动实现）。</p>
+</li>
+<li><ol start="2">
+<li>函数参数注意事项<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>关键参数说明</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OLED_ShowNum</td>
+<td>显示位数需≥数字实际位数，否则截断</td>
+<td>位数不足时前面补0（如123显示2位→23）</td>
+</tr>
+<tr>
+<td>OLED_ShowSignedNum</td>
+<td>符号占1位，位数需包含符号</td>
+<td>-11显示2位→-1（而非11）</td>
+</tr>
+<tr>
+<td>OLED_ShowBinNum</td>
+<td>显示位数通常为8&#x2F;16&#x2F;32（匹配数据类型）</td>
+<td>0xAA55显示8位→10101010（仅低8位）</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>常见问题排查</li>
+</ol>
+</li>
+<li><p>编译报错“DElay.h: No such file or directory”：修正头文件名为<code>Delay.h</code>（与实际文件一致）；</p>
+</li>
+<li><p>屏幕无显示：检查OLED_Init()的通信引脚（I2C&#x2F;SPI）配置、电源供电、延时函数是否生效；</p>
+</li>
+<li><p>显示乱码：确认字符编码为ASCII，字符串以<code>&#39;\0&#39;</code>结尾，显存地址计算正确。</p>
+</li>
+<li><p>总结</p>
+</li>
+</ul>
+<ol>
+<li>代码核心功能：初始化OLED屏→调用多种显示函数→清屏→空死循环；</li>
+<li>关键注意点：<code>DElay.h</code>拼写修正、OLED坐标规则、显示位数与数字的匹配；</li>
+<li>拓展方向：在死循环中添加<strong>动态显示</strong>（数字自增、字符串滚动）、<strong>按键控制</strong>（切换显示页面）、<strong>传感器数据显示</strong>（如温度&#x2F;湿度）。</li>
+</ol>
 <pre><code>
 
 
@@ -724,8 +798,8 @@
         
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/MyBlogC/2025/01/03/C%E8%AF%AD%E8%A8%80/" rel="prev" title="C语言基础学习笔记">
-                  <i class="fa fa-angle-left"></i> C语言基础学习笔记
+                <a href="/MyBlogC/2026/01/02/%E7%AE%97%E6%B3%95/" rel="prev" title="算法练习">
+                  <i class="fa fa-angle-left"></i> 算法练习
                 </a>
             </div>
             <div class="post-nav-item">
