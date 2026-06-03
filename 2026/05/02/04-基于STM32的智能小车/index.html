@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlogC/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlogC/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlogC/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/MyBlogC/images/logo.svg" color="#ffffff">
+
+<link rel="stylesheet" href="/MyBlogC/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
+
+    <meta name="description" content="1.模块1.TB6612电机驱动模块    TB6612FNG 参数表   参数项 参数值    型号 TB6612FNG   驱动电压 VM输入(4.5- 12V)   逻辑电平 VCC输入(2.7-5.5V)   工作电流 1.2A   峰值电流 3.2A        AIN1 (PA5) AIN2 (PA4) PWMA (PA1) 电机状态 代码调用场景    高电平 (1) 低电平 (0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-基于STM32的智能小车">
+<meta property="og:url" content="https://lijianhao360.github.io/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/index.html">
+<meta property="og:site_name" content="首页">
+<meta property="og:description" content="1.模块1.TB6612电机驱动模块    TB6612FNG 参数表   参数项 参数值    型号 TB6612FNG   驱动电压 VM输入(4.5- 12V)   逻辑电平 VCC输入(2.7-5.5V)   工作电流 1.2A   峰值电流 3.2A        AIN1 (PA5) AIN2 (PA4) PWMA (PA1) 电机状态 代码调用场景    高电平 (1) 低电平 (0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/TB6612%E7%9A%84%E5%AE%9E%E7%89%A9%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E5%BC%95%E8%84%9A%E7%94%B5%E5%8E%8B.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/OLED%E6%98%BE%E7%A4%BA%E5%99%A8.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E8%B6%85%E5%A3%B0%E6%B3%A2.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E8%88%B5%E6%9C%BA.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E5%9B%9B%E8%B7%AF%E5%BE%AA%E8%BF%B9%E6%A8%A1%E5%9D%97.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E7%BA%A2%E5%A4%96%E5%85%89%E7%94%B5%E4%BC%A0%E6%84%9F%E5%99%A8.png">
+<meta property="article:published_time" content="2026-05-02T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-01T11:25:41.762Z">
+<meta property="article:author" content="JianHao Li">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lijianhao360.github.io/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/TB6612%E7%9A%84%E5%AE%9E%E7%89%A9%E5%9B%BE.png">
+
+
+<link rel="canonical" href="https://lijianhao360.github.io/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lijianhao360.github.io/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/","path":"2026/05/02/04-基于STM32的智能小车/","title":"04-基于STM32的智能小车"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>04-基于STM32的智能小车 | 首页</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/utils.js" defer></script><script src="/MyBlogC/js/motion.js" defer></script><script src="/MyBlogC/js/sidebar.js" defer></script><script src="/MyBlogC/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/MyBlogC/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/MyBlogC/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">首页</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">分享技术，记录成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/MyBlogC/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/MyBlogC/categories/" rel="section"><i class="fa fa-folder fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/MyBlogC/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/MyBlogC/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%A8%A1%E5%9D%97"><span class="nav-text">1.模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TB6612%E7%94%B5%E6%9C%BA%E9%A9%B1%E5%8A%A8%E6%A8%A1%E5%9D%97"><span class="nav-text">1.TB6612电机驱动模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-OLED%E6%98%BE%E7%A4%BA%E5%B1%8F%E6%A8%A1%E5%9D%97"><span class="nav-text">2.OLED显示屏模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-HC-SR04%E8%B6%85%E5%A3%B0%E6%B3%A2%E6%A8%A1%E5%9D%97"><span class="nav-text">3.HC-SR04超声波模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%9B%9B%E8%B7%AF%E7%BA%A2%E5%A4%96%E5%BE%AA%E8%BF%B9%E6%A8%A1%E5%9D%97%EF%BC%88%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E4%B8%93%E7%94%A8%EF%BC%89"><span class="nav-text">4.四路红外循迹模块（智能小车专用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%BA%A2%E5%A4%96%E5%85%89%E7%94%B5%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="nav-text">5.红外光电传感器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-HC05%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97"><span class="nav-text">6.HC05蓝牙模块</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JianHao Li"
+      src="/MyBlogC/images/avatar.png">
+  <p class="site-author-name" itemprop="name">JianHao Li</p>
+  <div class="site-description" itemprop="description">一个专注 C/嵌入式 技术的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/MyBlogC/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/MyBlogC/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/MyBlogC/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lijianhao360/MyBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lijianhao360&#x2F;MyBlog" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2993746016@qq.com" title="邮箱 → mailto:2993746016@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>邮箱</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+
+<div class="post-block">
+  
+  
+
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    
+    <link itemprop="mainEntityOfPage" href="https://lijianhao360.github.io/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/">
+
+    
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/MyBlogC/images/avatar.png">
+      <meta itemprop="name" content="JianHao Li">
+    </span>
+
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="首页">
+      <meta itemprop="description" content="一个专注 C/嵌入式 技术的博客">
+    </span>
+
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="04-基于STM32的智能小车 | 首页">
+      <meta itemprop="description" content="">
+    </span>
+
+    
+      
+      <header class="post-header">
+        
+        <h1 class="post-title" itemprop="name headline">
+          
+            04-基于STM32的智能小车
+            
+        </h1>
+
+        
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-05-02 10:00:00" itemprop="dateCreated datePublished" datetime="2026-05-02T10:00:00+08:00">2026-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-01 19:25:41" itemprop="dateModified" datetime="2026-06-01T19:25:41+08:00">2026-06-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/MyBlogC/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+          
+        </div>
+      </header>
+
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        
+        
+        <h1 id="1-模块"><a href="#1-模块" class="headerlink" title="1.模块"></a>1.模块</h1><h2 id="1-TB6612电机驱动模块"><a href="#1-TB6612电机驱动模块" class="headerlink" title="1.TB6612电机驱动模块"></a>1.TB6612电机驱动模块</h2><img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/TB6612%E7%9A%84%E5%AE%9E%E7%89%A9%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E5%BC%95%E8%84%9A%E7%94%B5%E5%8E%8B.png" class="">
+
+<ul>
+<li><strong>TB6612FNG 参数表</strong><table>
+<thead>
+<tr>
+<th>参数项</th>
+<th>参数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>型号</td>
+<td>TB6612FNG</td>
+</tr>
+<tr>
+<td>驱动电压</td>
+<td>VM输入(4.5- 12V)</td>
+</tr>
+<tr>
+<td>逻辑电平</td>
+<td>VCC输入(2.7-5.5V)</td>
+</tr>
+<tr>
+<td>工作电流</td>
+<td>1.2A</td>
+</tr>
+<tr>
+<td>峰值电流</td>
+<td>3.2A</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>AIN1 (PA5)</th>
+<th>AIN2 (PA4)</th>
+<th>PWMA (PA1)</th>
+<th>电机状态</th>
+<th>代码调用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高电平 (1)</td>
+<td>低电平 (0)</td>
+<td>输入PWM</td>
+<td>正转（前进）</td>
+<td><code>LeftMotor_Speed(30);</code></td>
+</tr>
+<tr>
+<td>低电平 (0)</td>
+<td>高电平 (1)</td>
+<td>输入PWM</td>
+<td>反转（倒车）</td>
+<td><code>LeftMotor_Speed(-30);</code></td>
+</tr>
+<tr>
+<td>低电平 (0)</td>
+<td>低电平 (0)</td>
+<td>任意电平</td>
+<td>自由滑行（断电）</td>
+<td>电机停止滑行模式</td>
+</tr>
+<tr>
+<td>高电平 (1)</td>
+<td>高电平 (1)</td>
+<td>任意电平</td>
+<td>紧急刹车（锁死）</td>
+<td>电机急停模式</td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li><strong>补充说明</strong></li>
+</ul>
+<ol>
+<li><strong>核心逻辑</strong><br>TB6612 通过 <strong>AIN1&#x2F;AIN2 电平组合</strong> 控制电机方向，<strong>PWMA  PWM占空比</strong> 控制转速；</li>
+<li><strong>速度控制</strong><br>PWM占空比越大，转速越快，<code>LeftMotor_Speed(30)</code> 代表30%占空比正转；</li>
+<li><strong>停止模式区别</strong><ul>
+<li>自由滑行：电机断电，靠惯性转动（温和停止）</li>
+<li>紧急刹车：电机短接，立即锁死（快速停止）</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>TB6612 与 STM32 硬件接线对照表</strong><table>
+<thead>
+<tr>
+<th>TB6612 驱动引脚</th>
+<th>STM32 单片机引脚</th>
+<th>核心功能描述</th>
+<th>硬件接线备注</th>
+<th>定时器&#x2F;PWM 映射</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PWMA</td>
+<td>PA1</td>
+<td>左电机组速度控制（2个电机并联）</td>
+<td>输出PWM波形，调节转速</td>
+<td>TIM2_CH2</td>
+</tr>
+<tr>
+<td>AIN2</td>
+<td>PA4</td>
+<td>左电机组方向控制引脚1</td>
+<td>普通GPIO推挽输出</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AIN1</td>
+<td>PA5</td>
+<td>左电机组方向控制引脚2</td>
+<td>普通GPIO推挽输出</td>
+<td>-</td>
+</tr>
+<tr>
+<td>PWMB</td>
+<td>PA0</td>
+<td>右电机组速度控制（2个电机并联）</td>
+<td>输出PWM波形，调节转速</td>
+<td>TIM2_CH1</td>
+</tr>
+<tr>
+<td>BIN1</td>
+<td>PA6</td>
+<td>右电机组方向控制引脚1</td>
+<td>普通GPIO推挽输出</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BIN2</td>
+<td>PA7</td>
+<td>右电机组方向控制引脚2</td>
+<td>普通GPIO推挽输出</td>
+<td>-</td>
+</tr>
+<tr>
+<td>STBY</td>
+<td>-</td>
+<td>芯片待机控制</td>
+<td>直接接 <strong>3.3V&#x2F;5V</strong> (高电平)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>VM</td>
+<td>-</td>
+<td>电机电源输入</td>
+<td>接 <strong>12V电池</strong> (电机供电)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>-</td>
+<td>芯片逻辑电源</td>
+<td>接 <strong>3.3V&#x2F;5V</strong> (STM32系统电源)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>-</td>
+<td>公共地</td>
+<td>接STM32 GND + 电池GND</td>
+<td>-</td>
+</tr>
+<tr>
+<td>OUT1、OUT2</td>
+<td>左电机2个</td>
+<td>左电机组输出</td>
+<td>2个左电机<strong>并联</strong>接线</td>
+<td>-</td>
+</tr>
+<tr>
+<td>OUT3、OUT4</td>
+<td>右电机2个</td>
+<td>右电机组输出</td>
+<td>2个右电机<strong>并联</strong>接线</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ol>
+<li><strong>电机分组</strong><br>TB6612为<strong>双路直流电机驱动</strong>，4个TT电机采用<strong>并联方式</strong>：<ul>
+<li>左路（A路）：2个左电机并联 → 统一转速、统一方向</li>
+<li>右路（B路）：2个右电机并联 → 统一转速、统一方向</li>
+</ul>
+</li>
+<li><strong>差速转向原理</strong><br>通过控制<strong>左右路PWM占空比（速度）+ 方向引脚电平</strong>，实现前进、后退、左转、右转、原地转向</li>
+<li><strong>关键强制要求</strong><ul>
+<li><code>STBY</code> <strong>必须接高电平</strong>，否则电机无输出</li>
+<li>所有电源<strong>共地</strong>，避免驱动板烧坏</li>
+</ul>
+</li>
+<li><strong>代码映射</strong><ul>
+<li><code>PWM.c</code>：负责 TIM2_CH1(PA0)、TIM2_CH2(PA1) 输出PWM</li>
+<li><code>Motor.c</code>：负责 PA4&#x2F;PA5&#x2F;PA6&#x2F;PA7 方向GPIO控制</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-OLED显示屏模块"><a href="#2-OLED显示屏模块" class="headerlink" title="2.OLED显示屏模块"></a>2.OLED显示屏模块</h2><img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/OLED%E6%98%BE%E7%A4%BA%E5%99%A8.png" class="">
+
+<p>OLED是（OLED，即有机发光二极管），又称为有机电激光显示（Organic Electroluminescence Display, OLED）。OLED由于同时具备自发光，不需背光源、对比度高、厚度薄、视角广、反应速度快、可用于挠曲性面板、使用温度范围广、构造及制程较简单等优异之特性，被认为是下一代的平面显示器新兴应用技术。</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">规格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">尺寸</td>
+<td align="left">0.96寸</td>
+</tr>
+<tr>
+<td align="left">模块电压</td>
+<td align="left">DC：3~5V</td>
+</tr>
+<tr>
+<td align="left">分辨率</td>
+<td align="left">128×64</td>
+</tr>
+<tr>
+<td align="left">驱动</td>
+<td align="left">SSD1306</td>
+</tr>
+<tr>
+<td align="left">管脚数</td>
+<td align="left">4针</td>
+</tr>
+<tr>
+<td align="left">接口</td>
+<td align="left">IIC</td>
+</tr>
+<tr>
+<td align="left">工作温度</td>
+<td align="left">-20℃~70℃</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>0.96寸 I2C OLED 显示屏 ↔ STM32 接线表</strong><table>
+<thead>
+<tr>
+<th>OLED 模块引脚</th>
+<th>STM32 引脚</th>
+<th>功能描述</th>
+<th>关键备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SCL</td>
+<td>PB8</td>
+<td>I2C 时钟线</td>
+<td>软件I2C时钟引脚</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>PB9</td>
+<td>I2C 数据线</td>
+<td>软件I2C数据引脚</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>3.3V</td>
+<td>模块供电</td>
+<td>推荐3.3V，兼容5V</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>公共地</td>
+<td><strong>必须共地</strong>，否则无法通信</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<p>补充说明</p>
+<ol>
+<li><strong>通信协议</strong>：I2C（软件模拟I2C，驱动适配PB8&#x2F;PB9）</li>
+<li><strong>模块参数</strong>：0.96寸、128×64分辨率、驱动芯片SSD1306</li>
+<li><strong>硬件要求</strong>：STM32与OLED的GND必须连接，保证电平参考一致</li>
+</ol>
+<h2 id="3-HC-SR04超声波模块"><a href="#3-HC-SR04超声波模块" class="headerlink" title="3.HC-SR04超声波模块"></a>3.HC-SR04超声波模块</h2><img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E8%B6%85%E5%A3%B0%E6%B3%A2.png" class="">
+
+<p>HC-SR04 超声波模块核心参数表</p>
+<table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">规格详情</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">模块型号</td>
+<td align="left">HC-SR04 超声波测距模块</td>
+</tr>
+<tr>
+<td align="left">工作电压</td>
+<td align="left">DC 5V</td>
+</tr>
+<tr>
+<td align="left">工作电流</td>
+<td align="left">15mA</td>
+</tr>
+<tr>
+<td align="left">工作频率</td>
+<td align="left">40kHz</td>
+</tr>
+<tr>
+<td align="left">测距范围</td>
+<td align="left">2cm ~ 4m</td>
+</tr>
+<tr>
+<td align="left">测量角度</td>
+<td align="left">15°</td>
+</tr>
+<tr>
+<td align="left">触发信号</td>
+<td align="left">10μs 的 TTL 高电平脉冲</td>
+</tr>
+<tr>
+<td align="left">回响输出</td>
+<td align="left">TTL 电平信号，脉冲宽度与目标距离成正比</td>
+</tr>
+<tr>
+<td align="left">物理尺寸</td>
+<td align="left">45×20×15mm</td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li><strong>模块工作原理与使用要点</strong></li>
+</ul>
+<ol>
+<li><p><strong>工作流程</strong></p>
+<ul>
+<li>发送端：给 <code>Trig</code> 引脚输入10μs以上的高电平脉冲，模块会自动发送8个40kHz的超声波方波。</li>
+<li>接收端：超声波遇到障碍物反射后，模块通过 <code>Echo</code> 引脚输出一个高电平脉冲，脉冲持续时间等于超声波往返的时间。</li>
+<li>计算方式：<code>距离(cm) = 高电平时间(μs) × 声速(340m/s) ÷ 2 ÷ 10000</code>，简化公式为 <code>距离 = 时间 × 0.017</code>。</li>
+</ul>
+</li>
+<li><p><strong>接线与STM32使用建议</strong></p>
+<ul>
+<li><code>VCC</code>：接5V电源（模块需5V供电，不能直接接3.3V）</li>
+<li><code>GND</code>：与STM32共地</li>
+<li><code>Trig</code>：接普通GPIO推挽输出引脚（用于发送触发信号）</li>
+<li><code>Echo</code>：接支持输入捕获的GPIO引脚（如TIM通道，用于测量高电平时间）</li>
+</ul>
+</li>
+<li><p><strong>注意事项</strong></p>
+<ul>
+<li>避免在强电磁干扰、强光直射环境使用，会影响测量精度。</li>
+<li>目标表面尽量平整，软质&#x2F;不规则物体（如布料、泡沫）会导致反射信号弱，测距误差增大。</li>
+<li>单次测量间隔建议≥60ms，避免前一次回波干扰下一次测量。</li>
+</ul>
+</li>
+</ol>
+<p>HC-SR04 超声波模块 ↔ STM32 接线说明</p>
+<p>一、接线对照表</p>
+<table>
+<thead>
+<tr>
+<th align="left">HC-SR04 模块引脚</th>
+<th align="left">STM32&#x2F;外部电路</th>
+<th align="left">功能描述</th>
+<th align="left">关键备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Trig（发波）</td>
+<td align="left">PB14</td>
+<td align="left">触发信号输入引脚</td>
+<td align="left">普通GPIO推挽输出，用于发送10μs高电平脉冲启动测距</td>
+</tr>
+<tr>
+<td align="left">Echo（收波）</td>
+<td align="left">PB15</td>
+<td align="left">回波信号输出引脚</td>
+<td align="left">输出与距离成正比的TTL电平，<strong>需分压后接STM32</strong></td>
+</tr>
+<tr>
+<td align="left">VCC</td>
+<td align="left">面包板 5V</td>
+<td align="left">模块供电引脚</td>
+<td align="left">⚠️ 必须接5V，接3.3V会导致模块不工作，测距恒为0</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">STM32 GND</td>
+<td align="left">公共地</td>
+<td align="left">必须与STM32共地，否则电平参考不一致，测量结果异常</td>
+</tr>
+</tbody></table>
+<hr>
+<p>二、模块工作流程</p>
+<ol>
+<li>给 <code>Trig</code> 引脚输入一个 <strong>10μs 以上的高电平脉冲</strong>，模块启动测距。</li>
+<li>模块自动发送8个40kHz的超声波方波，遇到障碍物反射。</li>
+<li><code>Echo</code> 引脚输出高电平，持续时间等于超声波往返的时间。</li>
+<li>简化距离计算公式：<code>距离(cm) = 高电平持续时间(μs) × 0.017</code>（基于声速340m&#x2F;s推导）。</li>
+</ol>
+<ul>
+<li><strong>舵机（SG90&#x2F;MG90S）核心知识</strong></li>
+</ul>
+<img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E8%88%B5%E6%9C%BA.png" class="">
+<ul>
+<li>一、舵机基础定义（精简重点）<br>舵机是<strong>角度可控、角度自锁</strong>的专用执行电机，仅能在固定角度范围内旋转（无法连续转圈），通电后可精准保持指定角度，适用于需要频繁调整角度、定位的场景。</li>
+</ul>
+<hr>
+<ul>
+<li>二、舵机型号与核心参数<br>本项目使用 <strong>SG90 舵机</strong>（搭配超声波旋转测距），兼容 MG90S 微型舵机：<table>
+<thead>
+<tr>
+<th align="left">参数项</th>
+<th align="left">SG90 规格</th>
+<th align="left">MG90S 规格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">工作电压</td>
+<td align="left">4.8V~5V</td>
+<td align="left">4.8V~5V</td>
+</tr>
+<tr>
+<td align="left">旋转角度</td>
+<td align="left">0°~180°</td>
+<td align="left">0°~180°</td>
+</tr>
+<tr>
+<td align="left">控制信号</td>
+<td align="left">50Hz 标准PWM</td>
+<td align="left">50Hz 标准PWM</td>
+</tr>
+<tr>
+<td align="left">扭矩</td>
+<td align="left">1.8kg·cm</td>
+<td align="left">2.0kg·cm</td>
+</tr>
+<tr>
+<td align="left">适用场景</td>
+<td align="left">轻负载旋转测距</td>
+<td align="left">轻负载旋转测距</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li>三、📌 SG90 舵机 ↔ STM32 精准接线表<br>（本项目专用：驱动超声波模块180°旋转扫描）<table>
+<thead>
+<tr>
+<th>舵机引脚</th>
+<th>线色</th>
+<th>连接目标</th>
+<th>功能</th>
+<th>强制要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PWM 信号脚</td>
+<td>橙色</td>
+<td>STM32 <strong>PB1 (TIM3_CH4)</strong></td>
+<td>角度控制信号</td>
+<td>定时器PWM输出，不可接普通GPIO</td>
+</tr>
+<tr>
+<td>VCC 电源脚</td>
+<td>红色</td>
+<td>面包板 <strong>5V</strong></td>
+<td>舵机供电</td>
+<td>⚠️ 必须5V，3.3V无法驱动</td>
+</tr>
+<tr>
+<td>GND 接地脚</td>
+<td>棕色</td>
+<td>STM32 <strong>GND</strong></td>
+<td>公共地</td>
+<td>⚠️ 必须共地，否则舵机不工作&#x2F;抖动</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>四、标准PWM控制原理（核心重点）</p>
+</li>
+<li><ol>
+<li>时序参数（固定不变）</li>
+</ol>
+</li>
+<li><p><strong>PWM频率</strong>：<code>50Hz</code></p>
+</li>
+<li><p><strong>信号周期</strong>：<code>20ms</code></p>
+</li>
+<li><p><strong>有效脉冲</strong>：<code>0.5ms ~ 2.5ms</code>（决定角度）</p>
+</li>
+<li><ol start="2">
+<li>脉冲宽度 ↔ 旋转角度 对照表<table>
+<thead>
+<tr>
+<th align="left">高电平脉冲宽度</th>
+<th align="left">舵机旋转角度</th>
+<th align="left">功能定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0.5ms</td>
+<td align="left">0°</td>
+<td align="left">最左侧</td>
+</tr>
+<tr>
+<td align="left">1.0ms</td>
+<td align="left">45°</td>
+<td align="left">左前方</td>
+</tr>
+<tr>
+<td align="left">1.5ms</td>
+<td align="left">90°</td>
+<td align="left">正前方（中位）</td>
+</tr>
+<tr>
+<td align="left">2.0ms</td>
+<td align="left">135°</td>
+<td align="left">右前方</td>
+</tr>
+<tr>
+<td align="left">2.5ms</td>
+<td align="left">180°</td>
+<td align="left">最右侧</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<ul>
+<li>五、本项目应用场景<br>SG90 舵机搭载 <strong>HC-SR04 超声波模块</strong>，实现 <strong>0°~180° 扇形区域旋转测距</strong>，完成小车避障、环境扫描功能。</li>
+</ul>
+<hr>
+<ul>
+<li>六、⚠️ 必看关键注意事项（优先级排序）**</li>
+</ul>
+<ol>
+<li><strong>供电核心</strong><br>舵机峰值电流大，<strong>5V电源必须独立供电</strong>，不可直接用STM32板载5V，避免电压跌落导致抖动&#x2F;死机。</li>
+<li><strong>共地原则</strong><br>舵机、STM32、电源、TB6612、超声波模块 <strong>所有GND必须连通</strong>，这是所有硬件正常工作的基础。</li>
+<li><strong>定时器配置</strong><br>PB1 为 <code>TIM3_CH4</code> 复用功能，代码必须初始化定时器3，输出<strong>50Hz PWM</strong>，普通GPIO无法驱动舵机。</li>
+<li><strong>角度限制</strong><br>严格控制在 <code>0°~180°</code>，强行超角度会损坏舵机齿轮。</li>
+<li><strong>信号要求</strong><br>PWM信号必须稳定，时序精准，否则舵机会出现抖动、角度偏移。</li>
+</ol>
+<h2 id="4-四路红外循迹模块（智能小车专用）"><a href="#4-四路红外循迹模块（智能小车专用）" class="headerlink" title="4.四路红外循迹模块（智能小车专用）"></a>4.四路红外循迹模块（智能小车专用）</h2><img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E5%9B%9B%E8%B7%AF%E5%BE%AA%E8%BF%B9%E6%A8%A1%E5%9D%97.png" class="">
+
+<p>这是一款四路漫反射式红外光电传感器，专为智能小车黑线寻迹场景设计，通过检测地面黑白线的反射率差异，输出稳定TTL电平信号，实现自动循迹导航。</p>
+<hr>
+<ul>
+<li>一、模块核心参数表<table>
+<thead>
+<tr>
+<th align="left">参数项</th>
+<th align="left">规格详情</th>
+<th align="left">关键备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">工作电压</td>
+<td align="left">3.3V~5V</td>
+<td align="left">兼容STM32的3.3V供电，也可接5V</td>
+</tr>
+<tr>
+<td align="left">工作温度</td>
+<td align="left">-10℃~+50℃</td>
+<td align="left">室内常温环境使用无压力</td>
+</tr>
+<tr>
+<td align="left">安装孔径</td>
+<td align="left">M3铜柱&#x2F;螺丝</td>
+<td align="left">可直接固定在小车底盘</td>
+</tr>
+<tr>
+<td align="left">工作电流</td>
+<td align="left">10mA~50mA</td>
+<td align="left">功耗低，不占用额外供电资源</td>
+</tr>
+<tr>
+<td align="left">检测距离</td>
+<td align="left">1mm~50mm可调</td>
+<td align="left">推荐安装高度为8mm左右，平衡灵敏度与稳定性</td>
+</tr>
+<tr>
+<td align="left">产品尺寸</td>
+<td align="left">70×29mm</td>
+<td align="left">适配常规小车底盘安装空间</td>
+</tr>
+<tr>
+<td align="left">输出接口</td>
+<td align="left">6Pin接口</td>
+<td align="left"><code>+</code>为电源正，<code>-</code>为电源负，<code>1/2/3/4</code>为4路独立信号端</td>
+</tr>
+<tr>
+<td align="left">输出信号</td>
+<td align="left">TTL电平</td>
+<td align="left">可直接连接STM32普通GPIO口，无需额外电平转换</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li>二、STM32 接线对照表（项目专用）<table>
+<thead>
+<tr>
+<th align="left">循迹模块引脚</th>
+<th align="left">STM32 引脚</th>
+<th align="left">功能定位</th>
+<th align="left">关键备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">X1</td>
+<td align="left">PB10</td>
+<td align="left">最左侧循迹通道</td>
+<td align="left">检测左边缘&#x2F;左弯道，GPIO上拉输入</td>
+</tr>
+<tr>
+<td align="left">X2</td>
+<td align="left">PB11</td>
+<td align="left">左中循迹通道</td>
+<td align="left">辅助直线行驶校正，GPIO上拉输入</td>
+</tr>
+<tr>
+<td align="left">X3</td>
+<td align="left">PB12</td>
+<td align="left">右中循迹通道</td>
+<td align="left">辅助直线行驶校正，GPIO上拉输入</td>
+</tr>
+<tr>
+<td align="left">X4</td>
+<td align="left">PB13</td>
+<td align="left">最右侧循迹通道</td>
+<td align="left">检测右边缘&#x2F;右弯道，GPIO上拉输入</td>
+</tr>
+<tr>
+<td align="left">VCC</td>
+<td align="left">面包板 3.3V</td>
+<td align="left">模块供电</td>
+<td align="left">避免电压波动，建议使用独立供电支路</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">STM32 GND</td>
+<td align="left">公共地</td>
+<td align="left">⚠️ 必须与STM32、电机驱动、电源<strong>全部共地</strong>，否则信号会乱跳</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>三、核心工作原理与循迹逻辑</p>
+</li>
+<li><ol>
+<li>基础检测逻辑<br>模块通过红外光反射强度判断地面状态，输出对应电平：</li>
+</ol>
+</li>
+<li><p>遇到<strong>黑色轨道</strong>：红外光被吸收，反射弱 → 输出<strong>低电平（0）</strong></p>
+</li>
+<li><p>遇到<strong>白色地面</strong>：红外光被反射，反射强 → 输出<strong>高电平（1）</strong><br>可通过模块上的电位器调节检测灵敏度，适配不同黑白线对比度。</p>
+</li>
+<li><ol start="2">
+<li>四路信号组合含义（典型场景）<br>通过四路电平组合，可精准判断小车相对轨道的位置，实现差速控制：<table>
+<thead>
+<tr>
+<th align="left">四路电平（X1-X2-X3-X4）</th>
+<th align="left">小车状态</th>
+<th align="left">对应控制动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1111</td>
+<td align="left">全部在白线上，轨道丢失</td>
+<td align="left">停止&#x2F;后退&#x2F;启动寻线逻辑</td>
+</tr>
+<tr>
+<td align="left">1101</td>
+<td align="left">轨道居中，直线行驶</td>
+<td align="left">保持左右轮匀速前进</td>
+</tr>
+<tr>
+<td align="left">1001</td>
+<td align="left">轨道偏左，需向右修正</td>
+<td align="left">左轮减速&#x2F;停止，右轮正常前进</td>
+</tr>
+<tr>
+<td align="left">1100</td>
+<td align="left">轨道偏右，需向左修正</td>
+<td align="left">右轮减速&#x2F;停止，左轮正常前进</td>
+</tr>
+<tr>
+<td align="left">1000</td>
+<td align="left">轨道在最左侧，急左转</td>
+<td align="left">左轮停止，右轮快速前进</td>
+</tr>
+<tr>
+<td align="left">0011</td>
+<td align="left">轨道在最右侧，急右转</td>
+<td align="left">右轮停止，左轮快速前进</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<ul>
+<li>四、调试&amp;避坑指南</li>
+</ul>
+<ol>
+<li><strong>安装调试（必做步骤）</strong><ul>
+<li>安装高度：探头距离地面<strong>8mm左右</strong>，过高会导致灵敏度不足，过低容易误触地面</li>
+<li>灵敏度校准：上电后，对着标准黑白线调节电位器，确保黑线稳定输出低电平、白线输出高电平，无跳变</li>
+</ul>
+</li>
+<li><strong>干扰问题解决</strong><ul>
+<li>避免强光：阳光、强灯光会干扰红外检测，建议在室内无强光环境调试</li>
+<li>远离强电干扰：循迹模块接线需与电机电源线分开布线，避免电机工作时产生的电磁干扰导致电平跳变</li>
+</ul>
+</li>
+<li><strong>循迹逻辑优化</strong><ul>
+<li>不要依赖单路信号判断位置，用四路组合信号实现分级修正，减少跑偏概率</li>
+<li>增加软件滤波：多次读取信号取稳定值，避免单次误判导致小车动作异常</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="5-红外光电传感器"><a href="#5-红外光电传感器" class="headerlink" title="5.红外光电传感器"></a>5.红外光电传感器</h2><img src="/MyBlogC/2026/05/02/04-%E5%9F%BA%E4%BA%8ESTM32%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6/%E7%BA%A2%E5%A4%96%E5%85%89%E7%94%B5%E4%BC%A0%E6%84%9F%E5%99%A8.png" class="">
+
+<p>这是一款<strong>数字输出型红外反射式光电传感器</strong>，通过红外发射与接收实现<strong>极近距离障碍物检测</strong>，专为智能小车<strong>左右两侧防撞保护</strong>设计，检测到障碍物时立即触发电机紧急刹车，属于小车核心安全防护硬件。</p>
+<hr>
+<ul>
+<li>一、模块核心参数表<table>
+<thead>
+<tr>
+<th align="left">参数项</th>
+<th align="left">规格详情</th>
+<th align="left">关键说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">工作电压</td>
+<td align="left">3.3V~5V</td>
+<td align="left">兼容STM32供电，3.3V&#x2F;5V均可使用</td>
+</tr>
+<tr>
+<td align="left">阈值调节</td>
+<td align="left">板载电位器可调</td>
+<td align="left">精准调节检测距离与抗干扰灵敏度</td>
+</tr>
+<tr>
+<td align="left">产品尺寸</td>
+<td align="left">15mm × 31mm</td>
+<td align="left">小型化设计，便于安装在小车左右外侧</td>
+</tr>
+<tr>
+<td align="left">输出方式</td>
+<td align="left">数字量（DO）</td>
+<td align="left">TTL电平输出，可直连STM32 GPIO口</td>
+</tr>
+<tr>
+<td align="left">检测距离</td>
+<td align="left">2cm~30cm 可调</td>
+<td align="left"><strong>防撞专用：校准为2~5cm极近距离</strong></td>
+</tr>
+<tr>
+<td align="left">工作方式</td>
+<td align="left">红外反射检测</td>
+<td align="left">依靠物体红外反射率判断障碍物</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li>二、硬件精准接线表<table>
+<thead>
+<tr>
+<th align="left">传感器位置</th>
+<th align="left">模块引脚</th>
+<th align="left">STM32 引脚</th>
+<th align="left">功能描述</th>
+<th align="left">引脚配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">左侧防撞模块</td>
+<td align="left">OUT&#x2F;DO</td>
+<td align="left">PC15</td>
+<td align="left">左侧障碍物检测信号输入</td>
+<td align="left">GPIO 上拉输入</td>
+</tr>
+<tr>
+<td align="left">右侧防撞模块</td>
+<td align="left">OUT&#x2F;DO</td>
+<td align="left">PC14</td>
+<td align="left">右侧障碍物检测信号输入</td>
+<td align="left">GPIO 上拉输入</td>
+</tr>
+<tr>
+<td align="left">双侧通用</td>
+<td align="left">VCC</td>
+<td align="left">面包板 3.3V&#x2F;5V</td>
+<td align="left">模块供电</td>
+<td align="left">稳定供电，避免电压波动</td>
+</tr>
+<tr>
+<td align="left">双侧通用</td>
+<td align="left">GND</td>
+<td align="left">STM32 GND</td>
+<td align="left">公共地</td>
+<td align="left">⚠️ <strong>全系统必须共地</strong>，保证信号稳定</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li>三、核心工作逻辑（防撞专用）</li>
+</ul>
+<ol>
+<li><strong>无障碍物</strong>：模块输出 <strong>高电平</strong> → 小车正常行驶</li>
+<li><strong>检测到极近障碍物</strong>：模块输出 <strong>低电平</strong> → <strong>立即触发电机紧急刹车</strong></li>
+<li>检测距离固定为 <strong>2~5cm</strong>，仅作为<strong>最后一道防撞保护</strong>，不参与常规避障逻辑</li>
+</ol>
+<hr>
+<ul>
+<li>四、调试与使用注意事项</li>
+</ul>
+<ol>
+<li><strong>安装位置</strong><br>固定在小车左右最外侧，探头朝向外侧，确保侧面障碍物可被精准检测</li>
+<li><strong>灵敏度校准</strong><br>调节板载电位器，仅保留<strong>极近距离触发</strong>，防止正常行驶时误刹车</li>
+<li><strong>信号优先级</strong><br>防撞信号为<strong>最高优先级</strong>，高于循迹、超声波避障，触发即执行急停</li>
+<li><strong>抗干扰要求</strong><br>远离电机驱动电源线，避免电磁干扰导致信号误触发</li>
+<li><strong>环境要求</strong><br>避免强光直射，室内使用效果最佳，防止红外检测失效</li>
+</ol>
+<h2 id="6-HC05蓝牙模块"><a href="#6-HC05蓝牙模块" class="headerlink" title="6.HC05蓝牙模块"></a>6.HC05蓝牙模块</h2><p>HC05是一款经典的<strong>蓝牙2.0串口透传模块</strong>，通过串口通信实现STM32与手机&#x2F;蓝牙遥控器的无线数据传输，专为智能小车<strong>无线遥控控制、状态数据回传</strong>设计，是小车无线操控的核心通信模块。</p>
+<hr>
+<ul>
+<li>一、模块核心参数表<table>
+<thead>
+<tr>
+<th align="left">参数项</th>
+<th align="left">规格详情</th>
+<th align="left">关键说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">工作电压</td>
+<td align="left">3.3V</td>
+<td align="left">⚠️ 仅支持3.3V供电，<strong>严禁接5V</strong>，会烧毁模块</td>
+</tr>
+<tr>
+<td align="left">通信方式</td>
+<td align="left">UART 串口异步通信</td>
+<td align="left">与STM32串口直连，无需额外转换电路</td>
+</tr>
+<tr>
+<td align="left">默认波特率</td>
+<td align="left">9600 bps</td>
+<td align="left">8N1格式（8数据位、无校验、1停止位）</td>
+</tr>
+<tr>
+<td align="left">通信距离</td>
+<td align="left">10m（经典蓝牙）</td>
+<td align="left">室内无障碍环境，满足小车遥控需求</td>
+</tr>
+<tr>
+<td align="left">工作模式</td>
+<td align="left">透传模式&#x2F;AT配置模式</td>
+<td align="left">透传模式：无线转发串口数据；AT模式：配置模块参数</td>
+</tr>
+<tr>
+<td align="left">配对密码</td>
+<td align="left">1234 &#x2F; 0000</td>
+<td align="left">手机蓝牙配对默认密码</td>
+</tr>
+<tr>
+<td align="left">模块尺寸</td>
+<td align="left">25mm × 13mm</td>
+<td align="left">小型化封装，便于小车安装</td>
+</tr>
+<tr>
+<td align="left">工作电流</td>
+<td align="left">30mA~40mA</td>
+<td align="left">功耗较低，适配小车供电系统</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li>二、硬件精准接线表<table>
+<thead>
+<tr>
+<th align="left">HC05 模块引脚</th>
+<th align="left">STM32 引脚</th>
+<th align="left">功能描述</th>
+<th align="left">接线要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TXD</td>
+<td align="left">PA10 (USART1_RX)</td>
+<td align="left">模块发送 → 单片机接收</td>
+<td align="left">串口直连，无需电平转换</td>
+</tr>
+<tr>
+<td align="left">RXD</td>
+<td align="left">PA9 (USART1_TX)</td>
+<td align="left">单片机发送 → 模块接收</td>
+<td align="left">串口直连，无需电平转换</td>
+</tr>
+<tr>
+<td align="left">VCC</td>
+<td align="left">面包板 3.3V</td>
+<td align="left">模块供电</td>
+<td align="left">⚠️ 必须3.3V，禁止接5V</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">STM32 GND</td>
+<td align="left">公共地</td>
+<td align="left">⚠️ 全系统必须共地，保证通信稳定</td>
+</tr>
+<tr>
+<td align="left">KEY</td>
+<td align="left">悬空&#x2F;PC13</td>
+<td align="left">AT配置模式触发</td>
+<td align="left">正常使用悬空，配置参数时接高电平</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<hr>
+<ul>
+<li>三、核心工作逻辑（小车遥控专用）</li>
+</ul>
+<ol>
+<li><strong>初始化配对</strong>：STM32上电→HC05进入等待配对状态→手机蓝牙搜索<code>HC05</code>并输入密码配对</li>
+<li><strong>透传通信</strong>：配对成功后进入<strong>串口透传模式</strong>，手机与STM32实现无线串口通信</li>
+<li><strong>指令执行</strong>：手机发送遥控指令（如前进、后退、左转、右转、刹车）→STM32串口接收→解析指令→控制TB6612驱动电机执行对应动作</li>
+<li><strong>数据回传</strong>：可将小车距离、状态等数据通过蓝牙回传至手机，实现状态监控</li>
+</ol>
+<hr>
+<ul>
+<li>四、调试与使用注意事项</li>
+</ul>
+<ol>
+<li><strong>供电安全</strong><br>模块核心芯片耐压3.3V，<strong>绝对不能接5V电源</strong>，否则直接损坏</li>
+<li><strong>串口接线</strong><br>TX接RX、RX接TX，交叉接线是串口通信的核心，接反无法通信</li>
+<li><strong>参数配置</strong><br>出厂默认波特率9600，无需修改；若需修改名称、波特率，需进入AT指令模式配置</li>
+<li><strong>抗干扰</strong><br>远离电机、TB6612等强电磁干扰源，避免无线信号中断、指令延迟</li>
+<li><strong>配对限制</strong><br>仅支持一对一配对，同一时间只能连接一个蓝牙设备</li>
+<li><strong>共地要求</strong><br>与STM32、所有传感器、电机驱动的GND连通，保证电平一致</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    
+    <footer class="post-footer">
+        
+        
+
+        
+
+        
+
+        
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+  </div>
+</div>
+
+
+        
+          <div class="post-tags">
+              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+              <a href="/MyBlogC/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+        
+
+
+        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2026/01/03/03-STM32/" rel="prev" title="03-STM32">
+                  <i class="fa fa-angle-left"></i> 03-STM32
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="isso-thread"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">true</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+<!-- ✅✅✅ 修复目录跳转延迟 最终版 JS | 仅修改3处卡顿核心 | 其他功能完全保留不变 ✅✅✅ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ====== 核心元素 & 原版配置 (一丝不改) ======
+    const header = document.querySelector('.header');
+    const headerInner = document.querySelector('.header-inner');
+    const body = document.body;
+    const tocLinks = document.querySelectorAll('.sidebar .post-toc a.toc-link');
+    const searchBtn = document.querySelector('.header .search');
+    const searchOverlay = document.querySelector('.search-pop-overlay');
+    const searchCloseBtn = document.querySelector('.search-popup .fa-times');
+    // ✅ 修改1【核心优化】：精准计算导航栏高度，删除冗余数值，解决滚动计算慢+定位偏差
+    const headerFullHeight = header ? (header.offsetHeight + 8) : 0;
+    let timer = null;
+    const CONFIG = { HIDE_DELAY: 3000, WAKE_AREA_HEIGHT: 120, SCROLL_SPEED: 500 };
+
+    // ====== ✅ 物理级开关 - 给body加类，配合CSS锁死显示+防偏移 ======
+    const openSearch = () => {
+        body.classList.add('search-active');
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        body.style.overflow = 'auto';
+    };
+    const closeSearch = () => {
+        body.classList.remove('search-active');
+        clearTimeout(timer);
+        timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        body.style.overflow = '';
+    };
+
+    // ====== ✅ 原版隐藏/显示逻辑 一丝不改 ======
+    const hideNav = () => {
+        if(body.classList.contains('search-active')) return;
+        clearTimeout(timer);
+        header?.classList.add('hide-nav');
+        headerInner?.classList.add('hide-nav');
+    };
+    const showNav = () => {
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        if(!body.classList.contains('search-active')) {
+            timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        }
+    };
+
+    // ====== ✅ 修改2【极致优化】：重构滚动函数，浏览器最高优先级执行，0延迟丝滑无卡顿 ======
+    const smoothScrollTo = (targetId) => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const targetTop = target.offsetTop - headerFullHeight;
+        // 强制浏览器优先执行滚动，跳过所有阻塞，瞬间触发，这是根治延迟的核心！
+        window.requestAnimationFrame(() => {
+            window.scrollTo({ top: targetTop, left: 0, behavior: 'smooth' });
+        });
+    };
+
+    // ====== ✅ 绑定所有搜索事件 - 优先级拉满 ======
+    searchBtn?.addEventListener('click', openSearch, { capture: true });
+    searchCloseBtn?.addEventListener('click', closeSearch, { capture: true });
+    searchOverlay?.addEventListener('click', (e) => {
+        if(e.target === searchOverlay) closeSearch();
+    }, { capture: true });
+
+    // ====== ✅ 所有原版监听事件 一丝不改 除了【目录点击事件】 ======
+    document.addEventListener('mousemove', (e) => { e.clientY < CONFIG.WAKE_AREA_HEIGHT && showNav(); });
+    header?.addEventListener('mouseenter', showNav);
+    headerInner?.addEventListener('mouseenter', showNav);
+    header?.addEventListener('mouseleave', hideNav);
+    headerInner?.addEventListener('mouseleave', hideNav);
+    // ✅ 修改3【重中之重】：删除卡顿元凶 hideNav() + 多余配置，这是延迟99%的原因，0延迟核心！
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // 只保留阻止默认锚点跳转，其他全部精简，无任何阻塞
+            smoothScrollTo(link.getAttribute('href').replace('#',''));
+        });
+    });
+    document.addEventListener('sidebar:show', hideNav);
+    document.addEventListener('sidebar:hide', showNav);
+    window.addEventListener('scroll', () => {
+        body.classList.contains('sidebar-active') && hideNav();
+    }, { passive: true });
+
+    // ====== ✅ 页面初始化 一丝不改 ======
+    showNav();
+});
+</script>
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="isso" type="application/json">{"enable":false}</script>
+<script src="/MyBlogC/js/third-party/comments/isso.js" defer></script>
+
+</body>
+</html>
