@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlogC/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlogC/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlogC/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/MyBlogC/images/logo.svg" color="#ffffff">
+
+<link rel="stylesheet" href="/MyBlogC/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
+
+    <meta name="description" content="1.GPIO输出与点灯 1.GPIO简介    GPIO是通用输入输出端口的简称，简单来说就是STM32可控制的引脚，STM32芯片的GPIO引脚与外部设备连接起来，从而实现与外部通讯、控制以及数据采集的功能。所有的GPIO引脚都有基本的输入输出功能。 最基本的输出功能是由STM32控制引脚输出高、低电平，实现开关控制，如把GPIO引脚接入到LED灯，那就可以控制LED灯的亮灭，引脚接入到继电器或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-STM32HAL库">
+<meta property="og:url" content="https://lijianhao360.github.io/2026/08/03/04-STM32HAL%E5%BA%93/index.html">
+<meta property="og:site_name" content="首页">
+<meta property="og:description" content="1.GPIO输出与点灯 1.GPIO简介    GPIO是通用输入输出端口的简称，简单来说就是STM32可控制的引脚，STM32芯片的GPIO引脚与外部设备连接起来，从而实现与外部通讯、控制以及数据采集的功能。所有的GPIO引脚都有基本的输入输出功能。 最基本的输出功能是由STM32控制引脚输出高、低电平，实现开关控制，如把GPIO引脚接入到LED灯，那就可以控制LED灯的亮灭，引脚接入到继电器或">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/GPIO%E5%BC%95%E8%84%9A%E5%90%8D%E7%A7%B0.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/IO%E5%A4%8D%E7%94%A8.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%A4%8D%E7%94%A8%E5%8A%9F%E8%83%BD%E9%87%8D%E6%98%A0%E5%B0%84.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%85%AB%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/Mos%E7%AE%A1%E5%BC%80%E5%85%B3.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8E%A8%E6%8C%BD%E5%92%8C%E5%BC%80%E6%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%80%9A%E7%94%A8%E5%92%8C%E5%A4%8D%E7%94%A8.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/GPIO%E8%BE%93%E5%87%BA%E9%80%9F%E5%BA%A6.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%B8%A4%E7%A7%8D%E6%8E%A5%E6%B3%95%E7%9A%84%E4%B8%8D%E5%90%8C.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E7%82%B9%E4%BA%AE%E6%9D%BF%E8%BD%BDLED%E5%92%8C%E5%A4%96%E8%AE%BELED%E6%8E%A5%E7%BA%BF%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/CubeMX%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/CubeMX%E5%88%9D%E5%A7%8B%E5%80%BC.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%BC%95%E8%84%9A%E7%94%B5%E5%B9%B3%E5%92%8C%E5%BB%B6%E6%97%B6%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%9B%9B%E7%A7%8D%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8C%89%E9%92%AE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8C%89%E9%92%AE%E6%8E%A7%E5%88%B6%E6%9D%BF%E8%BD%BDLED.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8C%89%E9%92%AE%E6%8E%A7%E5%88%B6%E6%9D%BF%E8%BD%BDLED%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E8%AF%BB%E5%8F%96GPIO%E8%BE%93%E5%85%A5%E5%BC%95%E8%84%9A%E6%95%B0%E5%80%BC.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E5%9B%BE%E8%A7%A3.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%B8%B2%E5%8F%A3%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%A0%A1%E9%AA%8C%E4%BD%8D.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/UART%E5%92%8CUSART.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/UART%E5%AE%9E%E9%AA%8C%E6%8E%A5%E7%BA%BF%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%A4%8D%E4%B9%A0%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%80%BB%E8%BE%91%E7%BA%BF%E4%B8%8E.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E5%B7%A5%E4%BD%9C%E9%98%B6%E6%AE%B5.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%AF%BB%E5%9D%80%E9%98%B6%E6%AE%B5.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E5%81%9C%E6%AD%A2%E4%BD%8D.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%80%9A%E4%BF%A1%E9%80%9F%E5%BA%A6.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%8D%A0%E7%A9%BA%E6%AF%94.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/OLED%E5%B1%8F%E5%B9%95.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E6%8E%A7%E5%88%B6OLED%E5%B1%8F%E5%B9%95%E6%8E%A5%E7%BA%BF%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E6%A1%86%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E6%A0%91%E6%A1%86%E5%9B%BE2.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%AB%98%E9%80%9F%E5%92%8C%E4%BD%8E%E9%80%9F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E6%A1%86%E5%9B%BE3.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/SPI%E6%A1%86%E5%9B%BE1.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/SPI%E6%A1%86%E5%9B%BE2.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%AF%94%E7%89%B9%E4%BD%8D%E4%BC%A0%E8%BE%93%E9%A1%BA%E5%BA%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%BD%8D.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E7%9A%84%E6%9E%81%E6%80%A7.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E7%9A%84%E9%87%87%E9%9B%86.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E7%9A%84%E7%9B%B8%E4%BD%8D.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%9B%9B%E7%A7%8D%E6%97%B6%E9%92%9F%E6%A8%A1%E5%BC%8F.png">
+<meta property="article:published_time" content="2026-08-03T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-12T18:56:56.699Z">
+<meta property="article:author" content="JianHao Li">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/GPIO%E5%BC%95%E8%84%9A%E5%90%8D%E7%A7%B0.png">
+
+
+<link rel="canonical" href="https://lijianhao360.github.io/2026/08/03/04-STM32HAL%E5%BA%93/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lijianhao360.github.io/2026/08/03/04-STM32HAL%E5%BA%93/","path":"2026/08/03/04-STM32HAL库/","title":"04-STM32HAL库"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>04-STM32HAL库 | 首页</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/utils.js" defer></script><script src="/MyBlogC/js/motion.js" defer></script><script src="/MyBlogC/js/sidebar.js" defer></script><script src="/MyBlogC/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/MyBlogC/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/MyBlogC/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">首页</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">分享技术，记录成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/MyBlogC/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/MyBlogC/categories/" rel="section"><i class="fa fa-folder fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/MyBlogC/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/MyBlogC/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-GPIO%E8%BE%93%E5%87%BA%E4%B8%8E%E7%82%B9%E7%81%AF"><span class="nav-text">1.GPIO输出与点灯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-GPIO%E8%BE%93%E5%85%A5%E4%B8%8E%E7%82%B9%E7%81%AF"><span class="nav-text">2.GPIO输入与点灯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-UART"><span class="nav-text">3.UART</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-I2C"><span class="nav-text">4.I2C</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-STM32%E6%97%B6%E9%92%9F"><span class="nav-text">5.STM32时钟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-SPI%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84"><span class="nav-text">6.SPI总线结构</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JianHao Li"
+      src="/MyBlogC/images/avatar.png">
+  <p class="site-author-name" itemprop="name">JianHao Li</p>
+  <div class="site-description" itemprop="description">一个专注 C/嵌入式 技术的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/MyBlogC/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/MyBlogC/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/MyBlogC/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lijianhao360/MyBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lijianhao360&#x2F;MyBlog" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2993746016@qq.com" title="邮箱 → mailto:2993746016@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>邮箱</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+
+<div class="post-block">
+  
+  
+
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    
+    <link itemprop="mainEntityOfPage" href="https://lijianhao360.github.io/2026/08/03/04-STM32HAL%E5%BA%93/">
+
+    
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/MyBlogC/images/avatar.png">
+      <meta itemprop="name" content="JianHao Li">
+    </span>
+
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="首页">
+      <meta itemprop="description" content="一个专注 C/嵌入式 技术的博客">
+    </span>
+
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="04-STM32HAL库 | 首页">
+      <meta itemprop="description" content="">
+    </span>
+
+    
+      
+      <header class="post-header">
+        
+        <h1 class="post-title" itemprop="name headline">
+          
+            04-STM32HAL库
+            
+        </h1>
+
+        
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-08-03 10:00:00" itemprop="dateCreated datePublished" datetime="2026-08-03T10:00:00+08:00">2026-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-08-13 02:56:56" itemprop="dateModified" datetime="2026-08-13T02:56:56+08:00">2026-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/MyBlogC/categories/STM32/" itemprop="url" rel="index"><span itemprop="name">STM32</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+          
+        </div>
+      </header>
+
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        
+        
+        <h1 id="1-GPIO输出与点灯"><a href="#1-GPIO输出与点灯" class="headerlink" title="1.GPIO输出与点灯"></a>1.GPIO输出与点灯</h1><ul>
+<li><strong>1.GPIO简介</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/GPIO%E5%BC%95%E8%84%9A%E5%90%8D%E7%A7%B0.png" class="">
+
+<p>GPIO是通用输入输出端口的简称，简单来说就是STM32可控制的引脚，STM32芯片的GPIO引脚与外部设备连接起来，从而实现与外部通讯、控制以及数据采集的功能。所有的GPIO引脚都有基本的输入输出功能。</p>
+<p>最基本的输出功能是由STM32控制引脚输出高、低电平，实现开关控制，如把GPIO引脚接入到LED灯，那就可以控制LED灯的亮灭，引脚接入到继电器或三极管，那就可以通过继电器或三极管控制外部大功率电路的通断。</p>
+<p>最基本的输入功能是检测外部输入电平，如把GPIO引脚连接到按键，通过电平高低区分按键是否被按下。</p>
+<ul>
+<li><strong>2.IO复用和复用功能重映射</strong><br>IO复用 - 同一个IO引脚具备多个不同的功能，既可以被用户编程，也可以给芯片上的其他模块使用</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/IO%E5%A4%8D%E7%94%A8.png" class="">
+
+<p>复用功能重映射 - 将冲突的复用功能移动到备用的引脚上去</p>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%A4%8D%E7%94%A8%E5%8A%9F%E8%83%BD%E9%87%8D%E6%98%A0%E5%B0%84.png" class="">
+
+<ul>
+<li><strong>3.四种输出模式</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%85%AB%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.png" class="">
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>推挽</th>
+<th>开漏</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用</td>
+<td>通用输出推挽</td>
+<td>通用输出开漏</td>
+</tr>
+<tr>
+<td>复用</td>
+<td>复用输出推挽</td>
+<td>复用输出开漏</td>
+</tr>
+</tbody></table>
+<ul>
+<li>1.推挽和开漏</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/Mos%E7%AE%A1%E5%BC%80%E5%85%B3.png" class="">
+
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8E%A8%E6%8C%BD%E5%92%8C%E5%BC%80%E6%BC%8F.png" class="">
+
+<p>推挽输出 - 一对MOS管交替导通，对外输出低电压或高电压<br>开漏输出 - PMOS保持关断，可以对外输出低电压或高阻抗</p>
+<ul>
+<li>2.通用和复用</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%80%9A%E7%94%A8%E5%92%8C%E5%A4%8D%E7%94%A8.png" class="">
+
+<ul>
+<li><strong>4.IO最大输出速度</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/GPIO%E8%BE%93%E5%87%BA%E9%80%9F%E5%BA%A6.png" class="">
+
+<ul>
+<li><strong>GPIO驱动板载LED和外设LED</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%B8%A4%E7%A7%8D%E6%8E%A5%E6%B3%95%E7%9A%84%E4%B8%8D%E5%90%8C.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E7%82%B9%E4%BA%AE%E6%9D%BF%E8%BD%BDLED%E5%92%8C%E5%A4%96%E8%AE%BELED%E6%8E%A5%E7%BA%BF%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/CubeMX%E6%A8%A1%E5%BC%8F.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/CubeMX%E5%88%9D%E5%A7%8B%E5%80%BC.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%BC%95%E8%84%9A%E7%94%B5%E5%B9%B3%E5%92%8C%E5%BB%B6%E6%97%B6%E5%87%BD%E6%95%B0.png" class="">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="comment">/* USER CODE END WHILE */</span></span><br><span class="line">HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);</span><br><span class="line">HAL_GPIO_WritePin(GPIOA,GPIO_PIN_9,GPIO_PIN_SET);</span><br><span class="line">HAL_Delay(<span class="number">500</span>);</span><br><span class="line">  </span><br><span class="line">HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);</span><br><span class="line">HAL_GPIO_WritePin(GPIOA,GPIO_PIN_9,GPIO_PIN_RESET);</span><br><span class="line">HAL_Delay(<span class="number">500</span>);</span><br><span class="line">   <span class="comment">/* USER CODE BEGIN 3 */</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-GPIO输入与点灯"><a href="#2-GPIO输入与点灯" class="headerlink" title="2.GPIO输入与点灯"></a>2.GPIO输入与点灯</h1><ul>
+<li><strong>1.四种输入模式</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%9B%9B%E7%A7%8D%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F.png" class="">
+
+<ul>
+<li><strong>2.GPIO按钮实验</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8C%89%E9%92%AE.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8C%89%E9%92%AE%E6%8E%A7%E5%88%B6%E6%9D%BF%E8%BD%BDLED.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%8C%89%E9%92%AE%E6%8E%A7%E5%88%B6%E6%9D%BF%E8%BD%BDLED%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E8%AF%BB%E5%8F%96GPIO%E8%BE%93%E5%85%A5%E5%BC%95%E8%84%9A%E6%95%B0%E5%80%BC.png" class="">
+
+
+
+
+<h1 id="3-UART"><a href="#3-UART" class="headerlink" title="3.UART"></a>3.UART</h1><ul>
+<li><strong>1.串口</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E5%9B%BE%E8%A7%A3.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%B8%B2%E5%8F%A3%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F.png" class="">
+
+<ul>
+<li><strong>2.校验位</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%A0%A1%E9%AA%8C%E4%BD%8D.png" class="">
+
+<ul>
+<li><strong>3.同步和异步</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/UART%E5%92%8CUSART.png" class="">
+
+<ul>
+<li><strong>4.UART实验部分</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/UART%E5%AE%9E%E9%AA%8C%E6%8E%A5%E7%BA%BF%E5%9B%BE.png" class="">
+
+<ul>
+<li>HAL库 UART简单收发实验 CubeMX操作步骤（铁头山羊）<br>1.配置RCC时钟**</li>
+<li>RCC → High Speed Clock(HSE)，选择外部晶振Crystal&#x2F;Ceramic Resonator。</li>
+<li>配置系统时钟树，把系统主频配置到芯片最大主频。</li>
+</ul>
+<p>2.配置调试接口（必须配，否则下载后芯片锁死）</p>
+<ul>
+<li>SYS → Debug，选择Serial Wire（SWD调试）。</li>
+</ul>
+<p>3.配置USART外设</p>
+<ul>
+<li>进入Connectivity，选择要使用的USART（比如USART1）。</li>
+<li>Mode选择：<strong>Asynchronous 异步模式</strong>。</li>
+<li>硬件自动分配TX、RX引脚；不要改引脚。</li>
+<li>参数配置：波特率115200，数据位8bit，无校验位，停止位1bit。</li>
+</ul>
+<p>4.开启全局中断（串口中断方式收发才需要）</p>
+<ul>
+<li>NVIC Settings标签页，勾选 <strong>USARTx global interrupt</strong>，保持中断优先级默认即可。</li>
+</ul>
+<p>5.工程生成配置</p>
+<ul>
+<li><p>Project Manager → Project，填写工程名、选择保存路径，Toolchain选择MDK‑ARM。</p>
+</li>
+<li><p>Project Manager → Code Generator：勾选生成外设初始化<code>.c/.h</code>文件，每个外设独立文件。</p>
+</li>
+<li><p>点击GENERATE CODE生成工程。</p>
+</li>
+<li><p>CubeMX完成后，MDK里面核心代码要点</p>
+</li>
+</ul>
+<ol>
+<li>轮询收发：<code>HAL_UART_Transmit()</code>、<code>HAL_UART_Receive()</code>，阻塞式。</li>
+<li>中断接收：<code>HAL_UART_Receive_IT()</code>开启中断接收；回调函数<code>HAL_UART_RxCpltCallback()</code>处理收到的数据。</li>
+<li>不要忘记在main中调用 <code>HAL_UART_Init(&amp;huart1)</code>（CubeMX生成代码已经自动调用）。</li>
+</ol>
+<blockquote>
+<p>注意：简单收发实验两种方案：轮询（简单但阻塞）、中断（推荐，非阻塞）。CubeMX只做引脚、时钟、中断使能配置，接收逻辑需要自己写。</p>
+</blockquote>
+<br>
+<br>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UART_HandleTypeDef huart1;</span><br></pre></td></tr></table></figure>
+<p>串口1的句柄</p>
+<p>包含了跟串口1的所有相关数据</p>
+<ul>
+<li><p>解释<br><code>UART_HandleTypeDef</code>：HAL库串口句柄结构体类型，CubeMX自动生成。<br><code>huart1</code>：串口1句柄变量，结构体内部存放波特率、数据位、停止位、外设寄存器地址等串口全部配置信息。<br>调用HAL库串口函数时，传入<code>&amp;huart1</code>，用来指定操作串口1外设。</p>
+</li>
+<li><p>代码部分</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  UART阻塞式发送数据</span></span><br><span class="line"><span class="comment">  * @param  huart: 串口句柄指针，指向要使用的串口外设</span></span><br><span class="line"><span class="comment">  * @param  pData: 待发送数据缓冲区指针</span></span><br><span class="line"><span class="comment">  * @param  Size: 要发送的数据字节长度</span></span><br><span class="line"><span class="comment">  * @param  Timeout: 超时时间，单位ms，超过该时间未发送完成则直接退出</span></span><br><span class="line"><span class="comment">  * @retval HAL状态：HAL_OK成功，HAL_TIMEOUT超时，HAL_ERROR错误</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">HAL_StatusTypeDef <span class="title function_">HAL_UART_Transmit</span><span class="params">(UART_HandleTypeDef *huart,</span></span><br><span class="line"><span class="params">                                    <span class="type">uint8_t</span> *pData,</span></span><br><span class="line"><span class="params">                                    <span class="type">uint16_t</span> Size,</span></span><br><span class="line"><span class="params">                                    <span class="type">uint32_t</span> Timeout)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>作用：通过串口向外发送数据，<strong>阻塞发送</strong>，数据没发完或者没超时不会返回。<br>参数说明：</p>
+<ul>
+<li><code>huart</code>：填写串口句柄的指针，CubeMX自动生成，例如<code>&amp;huart1</code></li>
+<li><code>pData</code>：发送数据缓存，unsigned char类型数组指针</li>
+<li><code>Size</code>：需要发送多少个字节</li>
+<li><code>Timeout</code>：超时时间，毫秒，防止程序卡死</li>
+</ul>
+<p>调用示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> buf[] = <span class="string">&quot;hello\r\n&quot;</span>;</span><br><span class="line"><span class="comment">//发送，长度为数组大小，超时100ms</span></span><br><span class="line">HAL_UART_Transmit(&amp;huart1, buf, <span class="keyword">sizeof</span>(buf), <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HAL_StatusTypeDef <span class="title function_">HAL_UART_Transmit</span><span class="params">(&amp;huart1,</span></span><br><span class="line"><span class="params">                                    <span class="type">uint8_t</span> *pData,</span></span><br><span class="line"><span class="params">                                    <span class="type">uint16_t</span> Size,</span></span><br><span class="line"><span class="params">                                    <span class="type">uint32_t</span> HAL_MAX_DELAY)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>作用：通过串口向外发送数据<br>参数huart：填写串口句柄的指针<br>参数pData：填写要发送的数据的指针<br>参数Size：填写要发送数据的数量，以字节为单位<br>参数Timeout：超时时间，单位ms<br>返回值：返回数据发送的结果（成功还是失败）</p>
+<p>HAL_MAX_DELAY：无限期地等待下去，直到发送完成为止</p>
+<p>返回值枚举：<br>HAL_OK - 成功<br>HAL_ERROR - 发送出错<br>HAL_BUSY - 串口忙<br>HAL_TIMEOUT - 发送超时</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> byteNumber = <span class="number">0x5a</span>;</span><br><span class="line"><span class="type">uint8_t</span> byteArray[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">char</span> ch =  <span class="string">&#x27;a&#x27;</span> ;</span><br><span class="line"><span class="type">char</span> *str =  <span class="string">&quot;Hello world&quot;</span> ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送字节0x5a</span></span><br><span class="line">HAL_UART_Transmit(&amp;huart1, &amp;byteNumber, <span class="number">1</span>, HAL_MAX_DELAY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送字节数组&#123;1,2,3,4,5&#125;</span></span><br><span class="line">HAL_UART_Transmit(&amp;huart1, byteArray, <span class="number">5</span>, HAL_MAX_DELAY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送字母</span></span><br><span class="line">HAL_UART_Transmit(&amp;huart1, (<span class="type">uint8_t</span> *)&amp;ch, <span class="number">1</span>, HAL_MAX_DELAY);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送字符串</span></span><br><span class="line">HAL_UART_Transmit(&amp;huart1, (<span class="type">uint8_t</span> *)str, <span class="built_in">strlen</span>(str), HAL_MAX_DELAY);`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>UART实验部分-简单数据收发控制板载LED</strong></li>
+</ul>
+<ul>
+<li>代码1</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HAL_StatusTypeDef <span class="title function_">HAL_UART_Receive</span><span class="params">(&amp;huart1,</span></span><br><span class="line"><span class="params">                                   <span class="type">uint8_t</span> *pData,</span></span><br><span class="line"><span class="params">                                   <span class="type">uint16_t</span> Size,</span></span><br><span class="line"><span class="params">                                   <span class="type">uint32_t</span> HAL_MAX_DELAY)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>作用：通过串口接收一定数量的数据<br>参数huart：填写串口句柄的指针<br>参数pData：指向接收缓冲区的指针<br>参数Size：要接收数据的数量，以字节为单位<br>参数Timeout：超时时间，单位ms<br>返回值：返回数据接收的结果（成功还是失败）</p>
+<p>HAL_MAX_DELAY：无限期地等待下去，直到接收完成为止</p>
+<p>返回值枚举：<br>HAL_OK - 成功<br>HAL_ERROR - 接收出错<br>HAL_BUSY  - 串口忙<br>HAL_TIMEOUT - 接收超时</p>
+<p>补充：</p>
+<ol>
+<li>该函数是<strong>阻塞接收</strong>，程序停在函数内部，直到收到Size个字节或者超时才返回。</li>
+<li>pData一般传入数组名，数组用来存放串口收到的数据。</li>
+<li>HAL_MAX_DELAY代表无限等待，没有收到指定字节数程序就卡住。</li>
+</ol>
+<ul>
+<li>代码2</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收1个字节</span></span><br><span class="line"><span class="type">uint8_t</span> dataRcvd;</span><br><span class="line">HAL_UART_Receive(&amp;huart1, &amp;dataRcvd, <span class="number">1</span>, HAL_MAX_DELAY);</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收10个字节</span></span><br><span class="line"><span class="type">uint8_t</span> dataRcvd[<span class="number">10</span>];</span><br><span class="line">HAL_UART_Receive(&amp;huart1, dataRcvd, <span class="number">10</span>, HAL_MAX_DELAY);</span><br></pre></td></tr></table></figure>
+<p>笔记：</p>
+<ol>
+<li>接收单个变量：需要对变量取地址<code>&amp;dataRcvd</code>。</li>
+<li>接收数组：数组名本身就是首地址，不需要加<code>&amp;</code>。</li>
+<li>第三个参数Size要和接收缓冲区大小保持一致。</li>
+<li>HAL_MAX_DELAY代表阻塞无限等待，收不到对应字节数程序就停在此处。</li>
+</ol>
+<ul>
+<li>最终代码</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化所有已配置外设</span></span><br><span class="line">MX_GPIO_Init();</span><br><span class="line">MX_USART1_UART_Init();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> dataRcvd;</span><br><span class="line">    <span class="comment">// 串口1阻塞接收1字节数据，无限等待</span></span><br><span class="line">    HAL_UART_Receive(&amp;huart1, &amp;dataRcvd, <span class="number">1</span>, HAL_MAX_DELAY);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 收到字符&#x27;0&#x27;，PC13引脚置高，LED熄灭</span></span><br><span class="line">    <span class="keyword">if</span>(dataRcvd == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 收到字符&#x27;1&#x27;，PC13引脚置低，LED点亮</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(dataRcvd == <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-I2C"><a href="#4-I2C" class="headerlink" title="4.I2C"></a>4.I2C</h1><ul>
+<li><strong>1.I2C基础知识</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%A4%8D%E4%B9%A0%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA.png" class="">
+
+<ul>
+<li>为什么把SCL和SDA都设置为开漏输出，并且还有外接两个上拉电阻，其实是为了实现逻辑线与</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%80%BB%E8%BE%91%E7%BA%BF%E4%B8%8E.png" class="">
+
+<ul>
+<li><strong>2.I2C工作阶段</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E5%B7%A5%E4%BD%9C%E9%98%B6%E6%AE%B5.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%AF%BB%E5%9D%80%E9%98%B6%E6%AE%B5.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E5%81%9C%E6%AD%A2%E4%BD%8D.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B.png" class="">
+
+<ul>
+<li><strong>3.通信速度和占空比</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%80%9A%E4%BF%A1%E9%80%9F%E5%BA%A6.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%8D%A0%E7%A9%BA%E6%AF%94.png" class="">
+
+<ul>
+<li><strong>4.I2C控制OLED屏幕</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/OLED%E5%B1%8F%E5%B9%95.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/I2C%E6%8E%A7%E5%88%B6OLED%E5%B1%8F%E5%B9%95%E6%8E%A5%E7%BA%BF%E5%9B%BE.png" class="">
+<ul>
+<li><p>STM32 HAL库 I2C‑OLED CubeMX配置步骤</p>
+<blockquote>
+<p>硬件：I2C接口OLED，SCL、SDA引脚使用芯片硬件I2C外设</p>
+</blockquote>
+</li>
+<li><p>1.引脚配置<br>1.RCC配置：选择外部高速晶振HSE，系统时钟树配置到对应主频（一般72M）<br>2.SYS：Debug选择Serial Wire，开启下载调试<br>3.Connectivity → 选择硬件I2C（I2C1 &#x2F; I2C2）</p>
+<ul>
+<li>I2C Mode：I2C</li>
+<li>I2C Speed Mode：标准模式Standard Mode(100KHz)，OLED大多100K</li>
+<li>对应SCL、SDA引脚自动分配，若引脚不对手动改引脚<br>4.GPIO不用手动配置，开启I2C外设后，CubeMX自动把引脚设置为I2C开漏复用模式</li>
+</ul>
+</li>
+<li><p>2.生成工程设置<br>1.Project Manager → Project：设置工程名字、存储路径<br>2.Code Generator：</p>
+<ul>
+<li>勾选 Generate peripheral initialization as a pair of ‘.c&#x2F;.h’ files per peripheral</li>
+<li>每个外设生成独立c&#x2F;h文件，方便移植<br>3.生成代码GENERATE CODE</li>
+</ul>
+</li>
+<li><p>3.代码工程修改（重点，铁头山羊I2C‑OLED）<br>1.把 <code>oled.c</code>、<code>oled.h</code> 驱动文件复制到工程目录，添加到Keil<br>2.在main.c引入头文件 <code>#include &quot;oled.h&quot;</code><br>3.<strong>注意：驱动文件中hi2c句柄要和CubeMX生成的保持一致（hi2c1 &#x2F; hi2c2）</strong><br>4.在<code>main()</code>里面，外设初始化之后<code>while(1)</code>之前调用 <code>OLED_Init();</code><br>5.while循环内调用显示函数：<code>OLED_ShowString</code>、<code>OLED_ShowNum</code>等</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//I2C主机发送函数 向从机写数据</span></span><br><span class="line">HAL_StatusTypeDef <span class="title function_">HAL_I2C_Master_Transmit</span><span class="params">(I2C_HandleTypeDef *hi2c,</span></span><br><span class="line"><span class="params">                                          <span class="type">uint16_t</span> DevAddress,</span></span><br><span class="line"><span class="params">                                          <span class="type">uint8_t</span> *pData,</span></span><br><span class="line"><span class="params">                                          <span class="type">uint16_t</span> Size,</span></span><br><span class="line"><span class="params">                                          <span class="type">uint32_t</span> Timeout)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//I2C主机接收函数 从从机读数据</span></span><br><span class="line">HAL_StatusTypeDef <span class="title function_">HAL_I2C_Master_Receive</span><span class="params">(I2C_HandleTypeDef *hi2c,</span></span><br><span class="line"><span class="params">                                         <span class="type">uint16_t</span> DevAddress,</span></span><br><span class="line"><span class="params">                                         <span class="type">uint8_t</span> *pData,</span></span><br><span class="line"><span class="params">                                         <span class="type">uint16_t</span> Size,</span></span><br><span class="line"><span class="params">                                         <span class="type">uint32_t</span> Timeout)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">返回值</span></span><br><span class="line"><span class="comment">HAL_OK      - 成功</span></span><br><span class="line"><span class="comment">HAL_ERROR   - 出错</span></span><br><span class="line"><span class="comment">HAL_BUSY    - I2C接口忙</span></span><br><span class="line"><span class="comment">HAL_TIMEOUT - 超时</span></span><br><span class="line"><span class="comment">参数：</span></span><br><span class="line"><span class="comment">hi2c        I2C句柄指针</span></span><br><span class="line"><span class="comment">DevAddress  从机设备地址</span></span><br><span class="line"><span class="comment">pData       数据缓冲区指针</span></span><br><span class="line"><span class="comment">Size        传输字节数量</span></span><br><span class="line"><span class="comment">Timeout     超时时间 ms，HAL_MAX_DELAY代表无限阻塞等待</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//示例：I2C主机发送一组命令</span></span><br><span class="line"><span class="type">uint8_t</span> commands[]=&#123;<span class="number">0x00</span>, <span class="number">0x8d</span>, <span class="number">0x14</span>, <span class="number">0xaf</span>, <span class="number">0xa5</span>&#125;;</span><br><span class="line">HAL_I2C_Master_Transmit(&amp;hi2c1,        <span class="comment">//I2C句柄</span></span><br><span class="line">                        <span class="number">0x78</span>,          <span class="comment">//OLED从机地址</span></span><br><span class="line">                        commands,      <span class="comment">//待发送数据数组</span></span><br><span class="line">                        <span class="keyword">sizeof</span>(commands)/<span class="keyword">sizeof</span>(commands[<span class="number">0</span>]), <span class="comment">//数组元素个数</span></span><br><span class="line">                        HAL_MAX_DELAY); <span class="comment">//无限等待</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//示例：I2C主机读取1字节数据</span></span><br><span class="line"><span class="type">uint8_t</span> dataRcvd;</span><br><span class="line">HAL_I2C_Master_Receive(&amp;hi2c1,         <span class="comment">//I2C句柄</span></span><br><span class="line">                       <span class="number">0x78</span>,           <span class="comment">//从机地址</span></span><br><span class="line">                       &amp;dataRcvd,      <span class="comment">//接收变量地址</span></span><br><span class="line">                       <span class="number">1</span>,              <span class="comment">//接收字节数</span></span><br><span class="line">                       HAL_MAX_DELAY); <span class="comment">//无限等待</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断D6位，根据读取到的bit控制LED</span></span><br><span class="line"><span class="keyword">if</span>((dataRcvd &amp; (<span class="number">0x01</span> &lt;&lt; <span class="number">6</span>)) == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//D6等于0</span></span><br><span class="line">    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//D6等于1</span></span><br><span class="line">    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>笔记要点：</p>
+<ol>
+<li>两个函数都是<strong>阻塞式I2C</strong>，没完成传输程序会停住。</li>
+<li><code>DevAddress</code>传入OLED的7位左移后的地址，常见<code>0x78</code>或<code>0x7A</code>。</li>
+<li>数组求元素个数：<code>sizeof(arr)/sizeof(arr[0])</code>。</li>
+<li>位运算 <code>dataRcvd &amp; (0x01 &lt;&lt; 6)</code>，用来取出第6位(D6)的电平状态。</li>
+<li><code>HAL_MAX_DELAY</code>：无限超时，收&#x2F;发不完不退出函数。</li>
+<li>硬件I2C注意SDA&#x2F;SCL外部上拉电阻。</li>
+</ol>
+<h1 id="5-STM32时钟"><a href="#5-STM32时钟" class="headerlink" title="5.STM32时钟"></a>5.STM32时钟</h1><img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E6%A1%86%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E6%A0%91%E6%A1%86%E5%9B%BE2.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E9%AB%98%E9%80%9F%E5%92%8C%E4%BD%8E%E9%80%9F.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E6%A1%86%E5%9B%BE3.png" class="">
+
+<h1 id="6-SPI总线结构"><a href="#6-SPI总线结构" class="headerlink" title="6.SPI总线结构"></a>6.SPI总线结构</h1><ul>
+<li><strong>1.基础介绍</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/SPI%E6%A1%86%E5%9B%BE1.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/SPI%E6%A1%86%E5%9B%BE2.png" class="">
+
+<ul>
+<li><p>MOSI<br>Master Output Slave Input<br>主机 输出 从机 输入<br>主机发送从机接收</p>
+</li>
+<li><p>SCK<br>Serial Clock<br>串行 时钟<br>串行时钟线</p>
+</li>
+<li><p>MISO<br>Master Input Slave Output<br>主机 输入 从机 输出<br>主机接收从机发送</p>
+</li>
+<li><p>NSS<br>Negative Slave Select<br>低电压有效 从机 选择<br>从机选择（低电压有效）<br>主机向对应的NSS发送低电压可以选中从机</p>
+</li>
+</ul>
+<ul>
+<li><strong>2.SPI的5个参数</strong></li>
+</ul>
+<ul>
+<li><p>1.波特率<br>SPI波特率选取的原则：</p>
+</li>
+<li><p>选择允许的最大值</p>
+</li>
+<li><p>考虑设备所能承受的极限 </p>
+</li>
+<li><p>考虑电路板所能承受的极限</p>
+</li>
+<li><p>2.比特位传输顺序</p>
+</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%AF%94%E7%89%B9%E4%BD%8D%E4%BC%A0%E8%BE%93%E9%A1%BA%E5%BA%8F.png" class="">
+
+<ul>
+<li>3.数据位长度</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE%E4%BD%8D.png" class="">
+
+<ul>
+<li>4.时钟极性</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E7%9A%84%E6%9E%81%E6%80%A7.png" class="">
+
+<ul>
+<li>5.时钟的相位</li>
+</ul>
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E7%9A%84%E9%87%87%E9%9B%86.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E6%97%B6%E9%92%9F%E7%9A%84%E7%9B%B8%E4%BD%8D.png" class="">
+<img src="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/%E5%9B%9B%E7%A7%8D%E6%97%B6%E9%92%9F%E6%A8%A1%E5%BC%8F.png" class="">
+
+    </div>
+
+    
+    
+    
+
+    
+    <footer class="post-footer">
+        
+        
+
+        
+
+        
+
+        
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+  </div>
+</div>
+
+
+        
+          <div class="post-tags">
+              <a href="/MyBlogC/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+        
+
+
+        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2026/08/02/06-FreeRTOS/" rel="prev" title="05-FreeRTOS">
+                  <i class="fa fa-angle-left"></i> 05-FreeRTOS
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="isso-thread"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">true</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+<!-- ✅✅✅ 修复目录跳转延迟 最终版 JS | 仅修改3处卡顿核心 | 其他功能完全保留不变 ✅✅✅ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ====== 核心元素 & 原版配置 (一丝不改) ======
+    const header = document.querySelector('.header');
+    const headerInner = document.querySelector('.header-inner');
+    const body = document.body;
+    const tocLinks = document.querySelectorAll('.sidebar .post-toc a.toc-link');
+    const searchBtn = document.querySelector('.header .search');
+    const searchOverlay = document.querySelector('.search-pop-overlay');
+    const searchCloseBtn = document.querySelector('.search-popup .fa-times');
+    // ✅ 修改1【核心优化】：精准计算导航栏高度，删除冗余数值，解决滚动计算慢+定位偏差
+    const headerFullHeight = header ? (header.offsetHeight + 8) : 0;
+    let timer = null;
+    const CONFIG = { HIDE_DELAY: 3000, WAKE_AREA_HEIGHT: 120, SCROLL_SPEED: 500 };
+
+    // ====== ✅ 物理级开关 - 给body加类，配合CSS锁死显示+防偏移 ======
+    const openSearch = () => {
+        body.classList.add('search-active');
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        body.style.overflow = 'auto';
+    };
+    const closeSearch = () => {
+        body.classList.remove('search-active');
+        clearTimeout(timer);
+        timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        body.style.overflow = '';
+    };
+
+    // ====== ✅ 原版隐藏/显示逻辑 一丝不改 ======
+    const hideNav = () => {
+        if(body.classList.contains('search-active')) return;
+        clearTimeout(timer);
+        header?.classList.add('hide-nav');
+        headerInner?.classList.add('hide-nav');
+    };
+    const showNav = () => {
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        if(!body.classList.contains('search-active')) {
+            timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        }
+    };
+
+    // ====== ✅ 修改2【极致优化】：重构滚动函数，浏览器最高优先级执行，0延迟丝滑无卡顿 ======
+    const smoothScrollTo = (targetId) => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const targetTop = target.offsetTop - headerFullHeight;
+        // 强制浏览器优先执行滚动，跳过所有阻塞，瞬间触发，这是根治延迟的核心！
+        window.requestAnimationFrame(() => {
+            window.scrollTo({ top: targetTop, left: 0, behavior: 'smooth' });
+        });
+    };
+
+    // ====== ✅ 绑定所有搜索事件 - 优先级拉满 ======
+    searchBtn?.addEventListener('click', openSearch, { capture: true });
+    searchCloseBtn?.addEventListener('click', closeSearch, { capture: true });
+    searchOverlay?.addEventListener('click', (e) => {
+        if(e.target === searchOverlay) closeSearch();
+    }, { capture: true });
+
+    // ====== ✅ 所有原版监听事件 一丝不改 除了【目录点击事件】 ======
+    document.addEventListener('mousemove', (e) => { e.clientY < CONFIG.WAKE_AREA_HEIGHT && showNav(); });
+    header?.addEventListener('mouseenter', showNav);
+    headerInner?.addEventListener('mouseenter', showNav);
+    header?.addEventListener('mouseleave', hideNav);
+    headerInner?.addEventListener('mouseleave', hideNav);
+    // ✅ 修改3【重中之重】：删除卡顿元凶 hideNav() + 多余配置，这是延迟99%的原因，0延迟核心！
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // 只保留阻止默认锚点跳转，其他全部精简，无任何阻塞
+            smoothScrollTo(link.getAttribute('href').replace('#',''));
+        });
+    });
+    document.addEventListener('sidebar:show', hideNav);
+    document.addEventListener('sidebar:hide', showNav);
+    window.addEventListener('scroll', () => {
+        body.classList.contains('sidebar-active') && hideNav();
+    }, { passive: true });
+
+    // ====== ✅ 页面初始化 一丝不改 ======
+    showNav();
+});
+</script>
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="isso" type="application/json">{"enable":false}</script>
+<script src="/MyBlogC/js/third-party/comments/isso.js" defer></script>
+
+</body>
+</html>
