@@ -67,8 +67,15 @@
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/%E4%BC%98%E5%85%88%E7%BA%A7%E7%BB%A7%E6%89%BF%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/%E4%BA%8B%E4%BB%B6%E6%A0%87%E5%BF%97%E7%BB%84%E4%BD%8D.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5%E7%AE%80%E4%BB%8B.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8%E5%A4%8D%E4%BD%8D.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/hip1%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/hip2%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/hip2%E7%AE%97%E6%B3%952.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/hip4%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/hip4%E7%AE%97%E6%B3%952.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/06-FreeRTOS/hip5%E7%AE%97%E6%B3%95.png">
 <meta property="article:published_time" content="2026-08-02T02:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-17T07:00:19.605Z">
+<meta property="article:modified_time" content="2026-08-19T08:51:51.978Z">
 <meta property="article:author" content="JianHao Li">
 <meta property="article:tag" content="FreeRTOS">
 <meta property="article:tag" content="学习笔记">
@@ -204,7 +211,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E8%AE%B2-RTOS%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86"><span class="nav-text">第1讲: RTOS入门知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%A3%B8%E6%9C%BA%E4%B8%8ERTOS%E5%88%9D%E8%AF%86-%E6%A6%82%E5%BF%B5%E4%BA%86%E8%A7%A3"><span class="nav-text">1.裸机与RTOS初识 (概念了解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AF%B9%E4%BA%8E%E8%A3%B8%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%80%8C%E8%A8%80%EF%BC%9A"><span class="nav-text">1.1 对于裸机系统而言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AF%B9%E4%BA%8ERTOS%E7%B3%BB%E7%BB%9F%E8%80%8C%E8%A8%80%EF%BC%9A"><span class="nav-text">1.2 对于RTOS系统而言：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%A3%B8%E6%9C%BA-while-1-%E5%BE%AA%E7%8E%AF%E4%B8%8E-RTOS-%E6%B7%B1%E5%85%A5%E5%AF%B9%E6%AF%94"><span class="nav-text">2.裸机 while(1) 循环与 RTOS 深入对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%A3%B8%E6%9C%BA%E5%89%8D%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F"><span class="nav-text">一、裸机前后台系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81RTOS-%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-text">二、RTOS 实时操作系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%89%A9%E5%B1%95%EF%BC%9A%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%AF%A5%E7%94%A8-RTOS%EF%BC%9F"><span class="nav-text">3. 扩展：什么时候该用 RTOS？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E8%AE%B2-FreeRTOS%E7%AE%80%E4%BB%8B-%E4%BA%86%E8%A7%A3"><span class="nav-text">第2讲: FreeRTOS简介(了解)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.基础概念介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E8%AE%B2-FreeRTOS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">第3讲: FreeRTOS基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%AE%80%E4%BB%8B-%E7%86%9F%E6%82%89"><span class="nav-text">1.任务调度简介(熟悉)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81-%E7%86%9F%E6%82%89"><span class="nav-text">2.任务状态(熟悉)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E8%AE%B2-FreeRTOS%E6%BA%90%E7%A0%81%E8%8E%B7%E5%8F%96"><span class="nav-text">第4讲: FreeRTOS源码获取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96FreeRTOS%E6%BA%90%E7%A0%81"><span class="nav-text">1.获取FreeRTOS源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%8B%E7%BB%8DFreeRTOS%E6%BA%90%E7%A0%81%E5%86%85%E5%AE%B9"><span class="nav-text">2.介绍FreeRTOS源码内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E8%AE%B2-FreeRTOS%E7%A7%BB%E6%A4%8D"><span class="nav-text">第5讲: FreeRTOS移植</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%A7%BB%E6%A4%8D%E5%87%86%E5%A4%87%E5%92%8C%E6%AD%A5%E9%AA%A4"><span class="nav-text">1.移植准备和步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="nav-text">2.系统配置文件详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC6%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4API%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第6讲: 任务创建和删除API函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BB%BB%E5%8A%A1%E5%88%A0%E9%99%A4%E7%9A%84API%E5%87%BD%E6%95%B0-%E7%86%9F%E6%82%89"><span class="nav-text">1.任务创建和任务删除的API函数(熟悉)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%BB%E5%8A%A1%E6%8E%A7%E5%88%B6%E5%9D%97%E7%BB%93%E6%9E%84%E6%88%90%E5%91%98%E4%BB%8B%E7%BB%8D"><span class="nav-text">2.任务控制块结构成员介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B"><span class="nav-text">3.实现动态创建任务流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%9D%99%E6%80%81%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1%E5%87%BD%E6%95%B0"><span class="nav-text">4.静态创建任务函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BB%BB%E5%8A%A1%E5%88%A0%E9%99%A4%E6%B5%81%E7%A8%8B"><span class="nav-text">5.任务删除流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC7%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BB%BB%E5%8A%A1%E5%88%A0%E9%99%A4%E5%AE%9E%E6%88%98%E7%BC%96%E7%A8%8B-%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">第7讲: 任务创建和任务删除实战编程(动态方法)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC8%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">第8讲: 任务创建和删除(静态方法)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC9%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E6%8C%82%E8%B5%B7%E4%B8%8E%E6%81%A2%E5%A4%8D%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第9讲: 任务挂起与恢复函数介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC10%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E6%8C%82%E8%B5%B7%E4%B8%8E%E6%81%A2%E5%A4%8D%E5%AE%9E%E9%AA%8C"><span class="nav-text">第10讲: 任务挂起与恢复实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC11%E8%AE%B2-FreeRTOS%E4%B8%AD%E6%96%AD%E7%AE%A1%E7%90%86%E7%AE%80%E4%BB%8B"><span class="nav-text">第11讲: FreeRTOS中断管理简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC12%E8%AE%B2-FreeRTOS%E4%B8%AD%E6%96%AD%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C"><span class="nav-text">第12讲: FreeRTOS中断管理实验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC12%E8%AE%B2-FreeRTOS%E4%B8%B4%E7%95%8C%E6%AE%B5%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4%E5%8F%8A%E8%B0%83%E5%BA%A6%E5%99%A8%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="nav-text">第12讲: FreeRTOS临界段代码保护及调度器挂起和恢复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC13%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E7%9A%84%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="nav-text">第13讲: 任务调度器的挂起和恢复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC14%E8%AE%B2-%E5%88%97%E8%A1%A8%E5%92%8C%E5%88%97%E8%A1%A8%E9%A1%B9"><span class="nav-text">第14讲: 列表和列表项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC15%E8%AE%B2-%E5%88%97%E8%A1%A8%E5%92%8C%E5%88%97%E8%A1%A8%E9%A1%B9API%E5%87%BD%E6%95%B0%E8%AE%B2%E8%A7%A3"><span class="nav-text">第15讲: 列表和列表项API函数讲解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC16%E8%AE%B2-%E5%88%97%E8%A1%A8%E9%A1%B9%E7%9A%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E5%AE%9E%E9%AA%8C"><span class="nav-text">第16讲: 列表项的插入和删除实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC17%E8%AE%B2-%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="nav-text">第17讲: 启动任务调度器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC18%E8%AE%B2-%E5%90%AF%E5%8A%A8%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BB%BB%E5%8A%A1"><span class="nav-text">第18讲: 启动第一个任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC19%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2"><span class="nav-text">第19讲: 任务切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC20%E8%AE%B2-FreeRTOS%E6%97%B6%E9%97%B4%E7%89%87%E8%B0%83%E5%BA%A6"><span class="nav-text">第20讲: FreeRTOS时间片调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC21%E8%AE%B2-FreeRTOS%E4%BB%BB%E5%8A%A1%E7%9B%B8%E5%85%B3%E7%9A%84API%E5%87%BD%E6%95%B0"><span class="nav-text">第21讲: FreeRTOS任务相关的API函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC22%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1API%E5%87%BD%E6%95%B0%E5%AE%9E%E9%AA%8C"><span class="nav-text">第22讲: 任务时间统计API函数实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC23%E8%AE%B2-FreeRTOS%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86"><span class="nav-text">第23讲: FreeRTOS时间管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC24%E8%AE%B2-FreeRTOS%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-text">第24讲: FreeRTOS消息队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC25%E8%AE%B2-%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8CAPI%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第25讲: 队列结构体和API函数介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC26%E8%AE%B2-%E5%88%9B%E5%BB%BA%E9%98%9F%E5%88%97%E7%9B%B8%E5%85%B3API%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">第26讲: 创建队列相关API函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC27%E8%AE%B2-%E5%85%A5%E9%98%9F%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">第27讲: 入队函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC28%E8%AE%B2-%E5%87%BA%E9%98%9F%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">第28讲: 出队函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC29%E8%AE%B2-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第29讲: 信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC30%E8%AE%B2-%E4%BA%8C%E5%80%BC%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第30讲: 二值信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC31%E8%AE%B2-%E8%AE%A1%E6%95%B0%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第31讲: 计数型信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC32%E8%AE%B2-%E4%BC%98%E5%85%88%E7%BA%A7%E7%BF%BB%E8%BD%AC"><span class="nav-text">第32讲: 优先级翻转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC33%E8%AE%B2%EF%BC%9A-%E4%BA%92%E6%96%A5%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第33讲： 互斥信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC34%E8%AE%B2-%E9%98%9F%E5%88%97%E9%9B%86"><span class="nav-text">第34讲: 队列集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC35%E8%AE%B2-%E9%98%9F%E5%88%97%E9%9B%86%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C"><span class="nav-text">第35讲: 队列集操作实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC36%E8%AE%B2%EF%BC%9A-%E4%BA%8B%E4%BB%B6%E6%A0%87%E5%BF%97%E7%BB%84"><span class="nav-text">第36讲： 事件标志组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC37%E8%AE%B2-%E4%BA%8B%E4%BB%B6%E6%A0%87%E5%BF%97%E7%BB%84%E5%AE%9E%E9%AA%8C"><span class="nav-text">第37讲: 事件标志组实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC38%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5"><span class="nav-text">第38讲: 任务通知</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E8%AE%B2-RTOS%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86"><span class="nav-text">第1讲: RTOS入门知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%A3%B8%E6%9C%BA%E4%B8%8ERTOS%E5%88%9D%E8%AF%86-%E6%A6%82%E5%BF%B5%E4%BA%86%E8%A7%A3"><span class="nav-text">1.裸机与RTOS初识 (概念了解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AF%B9%E4%BA%8E%E8%A3%B8%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%80%8C%E8%A8%80%EF%BC%9A"><span class="nav-text">1.1 对于裸机系统而言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%AF%B9%E4%BA%8ERTOS%E7%B3%BB%E7%BB%9F%E8%80%8C%E8%A8%80%EF%BC%9A"><span class="nav-text">1.2 对于RTOS系统而言：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%A3%B8%E6%9C%BA-while-1-%E5%BE%AA%E7%8E%AF%E4%B8%8E-RTOS-%E6%B7%B1%E5%85%A5%E5%AF%B9%E6%AF%94"><span class="nav-text">2.裸机 while(1) 循环与 RTOS 深入对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%A3%B8%E6%9C%BA%E5%89%8D%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F"><span class="nav-text">一、裸机前后台系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81RTOS-%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-text">二、RTOS 实时操作系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%89%A9%E5%B1%95%EF%BC%9A%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%AF%A5%E7%94%A8-RTOS%EF%BC%9F"><span class="nav-text">3. 扩展：什么时候该用 RTOS？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E8%AE%B2-FreeRTOS%E7%AE%80%E4%BB%8B-%E4%BA%86%E8%A7%A3"><span class="nav-text">第2讲: FreeRTOS简介(了解)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.基础概念介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E8%AE%B2-FreeRTOS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">第3讲: FreeRTOS基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%AE%80%E4%BB%8B-%E7%86%9F%E6%82%89"><span class="nav-text">1.任务调度简介(熟悉)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81-%E7%86%9F%E6%82%89"><span class="nav-text">2.任务状态(熟悉)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E8%AE%B2-FreeRTOS%E6%BA%90%E7%A0%81%E8%8E%B7%E5%8F%96"><span class="nav-text">第4讲: FreeRTOS源码获取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96FreeRTOS%E6%BA%90%E7%A0%81"><span class="nav-text">1.获取FreeRTOS源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%8B%E7%BB%8DFreeRTOS%E6%BA%90%E7%A0%81%E5%86%85%E5%AE%B9"><span class="nav-text">2.介绍FreeRTOS源码内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E8%AE%B2-FreeRTOS%E7%A7%BB%E6%A4%8D"><span class="nav-text">第5讲: FreeRTOS移植</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%A7%BB%E6%A4%8D%E5%87%86%E5%A4%87%E5%92%8C%E6%AD%A5%E9%AA%A4"><span class="nav-text">1.移植准备和步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="nav-text">2.系统配置文件详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC6%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4API%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第6讲: 任务创建和删除API函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BB%BB%E5%8A%A1%E5%88%A0%E9%99%A4%E7%9A%84API%E5%87%BD%E6%95%B0-%E7%86%9F%E6%82%89"><span class="nav-text">1.任务创建和任务删除的API函数(熟悉)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%BB%E5%8A%A1%E6%8E%A7%E5%88%B6%E5%9D%97%E7%BB%93%E6%9E%84%E6%88%90%E5%91%98%E4%BB%8B%E7%BB%8D"><span class="nav-text">2.任务控制块结构成员介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B"><span class="nav-text">3.实现动态创建任务流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%9D%99%E6%80%81%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1%E5%87%BD%E6%95%B0"><span class="nav-text">4.静态创建任务函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BB%BB%E5%8A%A1%E5%88%A0%E9%99%A4%E6%B5%81%E7%A8%8B"><span class="nav-text">5.任务删除流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC7%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BB%BB%E5%8A%A1%E5%88%A0%E9%99%A4%E5%AE%9E%E6%88%98%E7%BC%96%E7%A8%8B-%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">第7讲: 任务创建和任务删除实战编程(动态方法)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC8%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">第8讲: 任务创建和删除(静态方法)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC9%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E6%8C%82%E8%B5%B7%E4%B8%8E%E6%81%A2%E5%A4%8D%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第9讲: 任务挂起与恢复函数介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC10%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E6%8C%82%E8%B5%B7%E4%B8%8E%E6%81%A2%E5%A4%8D%E5%AE%9E%E9%AA%8C"><span class="nav-text">第10讲: 任务挂起与恢复实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC11%E8%AE%B2-FreeRTOS%E4%B8%AD%E6%96%AD%E7%AE%A1%E7%90%86%E7%AE%80%E4%BB%8B"><span class="nav-text">第11讲: FreeRTOS中断管理简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC12%E8%AE%B2-FreeRTOS%E4%B8%AD%E6%96%AD%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C"><span class="nav-text">第12讲: FreeRTOS中断管理实验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC12%E8%AE%B2-FreeRTOS%E4%B8%B4%E7%95%8C%E6%AE%B5%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4%E5%8F%8A%E8%B0%83%E5%BA%A6%E5%99%A8%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="nav-text">第12讲: FreeRTOS临界段代码保护及调度器挂起和恢复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC13%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E7%9A%84%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="nav-text">第13讲: 任务调度器的挂起和恢复</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC14%E8%AE%B2-%E5%88%97%E8%A1%A8%E5%92%8C%E5%88%97%E8%A1%A8%E9%A1%B9"><span class="nav-text">第14讲: 列表和列表项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC15%E8%AE%B2-%E5%88%97%E8%A1%A8%E5%92%8C%E5%88%97%E8%A1%A8%E9%A1%B9API%E5%87%BD%E6%95%B0%E8%AE%B2%E8%A7%A3"><span class="nav-text">第15讲: 列表和列表项API函数讲解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC16%E8%AE%B2-%E5%88%97%E8%A1%A8%E9%A1%B9%E7%9A%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E5%AE%9E%E9%AA%8C"><span class="nav-text">第16讲: 列表项的插入和删除实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC17%E8%AE%B2-%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="nav-text">第17讲: 启动任务调度器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC18%E8%AE%B2-%E5%90%AF%E5%8A%A8%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BB%BB%E5%8A%A1"><span class="nav-text">第18讲: 启动第一个任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC19%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2"><span class="nav-text">第19讲: 任务切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC20%E8%AE%B2-FreeRTOS%E6%97%B6%E9%97%B4%E7%89%87%E8%B0%83%E5%BA%A6"><span class="nav-text">第20讲: FreeRTOS时间片调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC21%E8%AE%B2-FreeRTOS%E4%BB%BB%E5%8A%A1%E7%9B%B8%E5%85%B3%E7%9A%84API%E5%87%BD%E6%95%B0"><span class="nav-text">第21讲: FreeRTOS任务相关的API函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC22%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1API%E5%87%BD%E6%95%B0%E5%AE%9E%E9%AA%8C"><span class="nav-text">第22讲: 任务时间统计API函数实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC23%E8%AE%B2-FreeRTOS%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86"><span class="nav-text">第23讲: FreeRTOS时间管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC24%E8%AE%B2-FreeRTOS%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-text">第24讲: FreeRTOS消息队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC25%E8%AE%B2-%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8CAPI%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第25讲: 队列结构体和API函数介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC26%E8%AE%B2-%E5%88%9B%E5%BB%BA%E9%98%9F%E5%88%97%E7%9B%B8%E5%85%B3API%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">第26讲: 创建队列相关API函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC27%E8%AE%B2-%E5%85%A5%E9%98%9F%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">第27讲: 入队函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC28%E8%AE%B2-%E5%87%BA%E9%98%9F%E5%87%BD%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-text">第28讲: 出队函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC29%E8%AE%B2-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第29讲: 信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC30%E8%AE%B2-%E4%BA%8C%E5%80%BC%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第30讲: 二值信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC31%E8%AE%B2-%E8%AE%A1%E6%95%B0%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第31讲: 计数型信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC32%E8%AE%B2-%E4%BC%98%E5%85%88%E7%BA%A7%E7%BF%BB%E8%BD%AC"><span class="nav-text">第32讲: 优先级翻转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC33%E8%AE%B2%EF%BC%9A-%E4%BA%92%E6%96%A5%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">第33讲： 互斥信号量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC34%E8%AE%B2-%E9%98%9F%E5%88%97%E9%9B%86"><span class="nav-text">第34讲: 队列集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC35%E8%AE%B2-%E9%98%9F%E5%88%97%E9%9B%86%E6%93%8D%E4%BD%9C%E5%AE%9E%E9%AA%8C"><span class="nav-text">第35讲: 队列集操作实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC36%E8%AE%B2%EF%BC%9A-%E4%BA%8B%E4%BB%B6%E6%A0%87%E5%BF%97%E7%BB%84"><span class="nav-text">第36讲： 事件标志组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC37%E8%AE%B2-%E4%BA%8B%E4%BB%B6%E6%A0%87%E5%BF%97%E7%BB%84%E5%AE%9E%E9%AA%8C"><span class="nav-text">第37讲: 事件标志组实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC38%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5"><span class="nav-text">第38讲: 任务通知</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC39%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5%E7%9B%B8%E5%85%B3API%E5%87%BD%E6%95%B0"><span class="nav-text">第39讲: 任务通知相关API函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC40%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E9%AA%8C"><span class="nav-text">第40讲: 任务通知模拟信号量实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC41%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5%E6%A8%A1%E6%8B%9F%E6%B6%88%E6%81%AF%E9%82%AE%E7%AE%B1%E5%AE%9E%E9%AA%8C"><span class="nav-text">第41讲: 任务通知模拟消息邮箱实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC42%E8%AE%B2-%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5%E6%A8%A1%E6%8B%9F%E4%BA%8B%E4%BB%B6%E6%A0%87%E5%BF%97%E7%BB%84%E5%AE%9E%E9%AA%8C"><span class="nav-text">第42讲: 任务通知模拟事件标志组实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC43%E8%AE%B2-%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-text">第43讲: 软件定时器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC44%E8%AE%B2-%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8%E7%9B%B8%E5%85%B3API%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">第44讲: 软件定时器相关API函数介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC45%E8%AE%B2-FreeRTOS%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8%E5%AE%9E%E9%AA%8C"><span class="nav-text">第45讲: FreeRTOS软件定时器实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC45%E8%AE%B2-Tickless%E4%BD%8E%E5%8A%9F%E8%80%97%E6%A8%A1%E5%BC%8F"><span class="nav-text">第45讲: Tickless低功耗模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC46%E8%AE%B2-Tickless%E4%BD%8E%E5%8A%9F%E8%80%97%E6%A8%A1%E5%BC%8F%E5%AE%9E%E9%AA%8C"><span class="nav-text">第46讲: Tickless低功耗模式实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC47%E8%AE%B2FreeRTOS%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-text">第47讲FreeRTOS内存管理</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -324,7 +331,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-08-17 15:00:19" itemprop="dateModified" datetime="2026-08-17T15:00:19+08:00">2026-08-17</time>
+      <time title="修改时间：2026-08-19 16:51:51" itemprop="dateModified" datetime="2026-08-19T16:51:51+08:00">2026-08-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2989,7 +2996,8 @@ task2：调用列表和列表项相关API函数，并且通过串口输出相应
 <li><strong>先按KEY0，再按KEY1（顺序无所谓）</strong>，当bit0、bit1都置1，task2解除阻塞，串口打印事件标志的值；</li>
 <li>参数3配置为<code>pdTRUE</code>，条件达成后硬件自动把bit0、bit1清零，需要再次按两个按键才会再次打印。</li>
 </ol>
-<h1 id="第38讲-任务通知"><a href="#第38讲-任务通知" class="headerlink" title="第38讲: 任务通知"></a>第38讲: 任务通知</h1><ul>
+<h1 id="第38讲-任务通知"><a href="#第38讲-任务通知" class="headerlink" title="第38讲: 任务通知"></a>第38讲: 任务通知</h1><p> <a href="./FreeRTOS任务通知（课堂总结）.pdf" target="_blank">下载：FreeRTOS任务通知知识点框架PDF</a></p>
+<ul>
 <li><strong>1.任务通知的简介</strong></li>
 </ul>
 <img src="/MyBlogC/2026/08/02/06-FreeRTOS/%E4%BB%BB%E5%8A%A1%E9%80%9A%E7%9F%A5%E7%AE%80%E4%BB%8B.png" class="">
@@ -3052,14 +3060,816 @@ task2：调用列表和列表项相关API函数，并且通过串口输出相应
 
 <p>笔记：<br>任务通知依靠这三种模式，就可以在部分场景替代信号量、事件标志组、队列。<br>受限于TCB里面只有1个通知值，无法缓存多组数据，不能广播给多个任务。</p>
 <ul>
-<li>2.任务通知状态<br>任务都有一个结构体：任务控制块TCB，它里边有两个结构体成员变量：</li>
+<li>2.任务通知状态<br>其中任务通知状态共有3种取值：</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tskTaskControlBlock</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ... ...</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> ( configUSE_TASK_NOTIFICATIONS == 1 )</span></span><br><span class="line"><span class="keyword">volatile</span> <span class="type">uint32_t</span>  ulNotifiedValue [ configTASK_NOTIFICATION_ARRAY_ENTRIES ];</span><br><span class="line"><span class="keyword">volatile</span> <span class="type">uint8_t</span>   ucNotifyState  [ configTASK_NOTIFICATION_ARRAY_ENTRIES ];</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    ... ...</span><br><span class="line">&#125; tskTCB;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> configTASK_NOTIFICATION_ARRAY_ENTRIES  1   <span class="comment">/* 定义任务通知数组的大小, 默认: 1 */</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span>  taskNOT_WAITING_NOTIFICATION    ((uint8_t )0 )     <span class="comment">/* 任务未等待通知 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  taskWAITING_NOTIFICATION        ((uint8_t )1 )     <span class="comment">/* 任务在等待通知 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  taskNOTIFICATION_RECEIVED       ((uint8_t )2 )     <span class="comment">/* 任务在等待接收 */</span></span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>一个是 uint32_t 类型，用来表示通知值</li>
-<li>一个是 uint8_t 类型，用来表示通知状态</li>
+<li><strong>任务未等待通知</strong>：任务通知默认的初始化状态</li>
+<li><strong>等待通知</strong>：接收方已经准备好了（调用了接收任务通知函数），等待发送方给个通知</li>
+<li><strong>等待接收</strong>：发送方已经发送出去（调用了发送任务通知函数），等待接收方接收</li>
 </ul>
+<h1 id="第39讲-任务通知相关API函数"><a href="#第39讲-任务通知相关API函数" class="headerlink" title="第39讲: 任务通知相关API函数"></a>第39讲: 任务通知相关API函数</h1><ul>
+<li><strong>1.任务通知相关API函数介绍</strong><br>任务通知API函数主要有两类：1.发送通知，2.接收通知。</li>
+</ul>
+<p>注意：发送通知API函数可以用于任务和中断服务函数中；接收通知API函数只能用在任务中。</p>
+<ul>
+<li>1.发送通知相关API函数：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xTaskNotify()</td>
+<td>发送通知，带有通知值</td>
+</tr>
+<tr>
+<td>xTaskNotifyAndQuery()</td>
+<td>发送通知，带有通知值并且保留接收任务的原通知值</td>
+</tr>
+<tr>
+<td>xTaskNotifyGive()</td>
+<td>发送通知，不带通知值</td>
+</tr>
+<tr>
+<td>xTaskNotifyFromISR()</td>
+<td>在中断中发送任务通知</td>
+</tr>
+<tr>
+<td>xTaskNotifyAndQueryFromISR()</td>
+<td>在中断中发送任务通知</td>
+</tr>
+<tr>
+<td>vTaskNotifyGiveFromISR()</td>
+<td>在中断中发送任务通知</td>
+</tr>
+</tbody></table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. xTaskNotifyAndQuery宏定义：发送任务通知，同时读出修改前旧的通知值</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  xTaskNotifyAndQuery( xTaskToNotify , ulValue , eAction , pulPreviousNotifyValue )  \</span></span><br><span class="line"><span class="meta">xTaskGenericNotify( ( xTaskToNotify ),          <span class="comment">// 参数1：目标任务句柄，要给哪个任务发通知</span></span></span><br><span class="line">                    ( tskDEFAULT_INDEX_TO_NOTIFY ), <span class="comment">// 参数2：任务通知索引，默认0，单通知就用这个</span></span><br><span class="line">                    ( ulValue ),                <span class="comment">// 参数3：要写入的新通知值</span></span><br><span class="line">                    ( eAction ),                <span class="comment">// 参数4：通知更新方式(置位/覆盖/加1等)</span></span><br><span class="line">                    ( pulPreviousNotifyValue )) <span class="comment">// 参数5：输出指针，保存修改之前旧的任务通知值(为null则不保存)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. xTaskNotify宏定义：发送任务通知，不读取旧通知值</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  xTaskNotify ( xTaskToNotify , ulValue , eAction )  \</span></span><br><span class="line"><span class="meta">xTaskGenericNotify( ( xTaskToNotify ), ( tskDEFAULT_INDEX_TO_NOTIFY ), ( ulValue ), ( eAction ), NULL )</span></span><br><span class="line"><span class="comment">// 最后传NULL：不需要获取修改前的旧通知值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. xTaskNotifyGive宏定义：简化版发送通知，等价信号量give，通知值做自增</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  xTaskNotifyGive( xTaskToNotify )  \</span></span><br><span class="line"><span class="meta">xTaskGenericNotify( ( xTaskToNotify ), ( tskDEFAULT_INDEX_TO_NOTIFY ), ( 0 ), eIncrement , NULL )</span></span><br><span class="line"><span class="comment">// ulValue填0；eIncrement代表通知值+1；NULL代表不读取旧值</span></span><br></pre></td></tr></table></figure>
+
+<p>补充说明：</p>
+<ol>
+<li><code>xTaskGenericNotify</code> 是底层通用函数，上面3个宏都是对它封装。</li>
+<li><code>xTaskNotifyGive</code>专门用来模拟二值&#x2F;计数信号量，只做数值+1，不需要传入数据。</li>
+<li><code>pulPreviousNotifyValue</code> 如果不需要旧值，直接传<code>NULL</code>。</li>
+</ol>
+<ul>
+<li><p>2.接收通知的相关API函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ulTaskNotifyTake()</td>
+<td>获取任务通知，可以设置在退出此函数的时候将任务通知值清零或者减一。<br>当任务通知用作二值信号量或者计数信号量的时候，使用此函数来获取信号量。</td>
+</tr>
+<tr>
+<td>xTaskNotifyWait()</td>
+<td>获取任务通知，比 ulTaskNotifyTake()更为复杂，可获取通知值和清除通知值的指定位</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>补充笔记</p>
+</li>
+</ul>
+<ol>
+<li><code>ulTaskNotifyTake()</code>：专门模拟信号量take操作，两种模式：清零模式 &#x2F; 自减1模式，配合<code>xTaskNotifyGive()</code>成对使用。</li>
+<li><code>xTaskNotifyWait()</code>：功能更强，可以按位清除通知值，适合当做事件标志组来使用。</li>
+<li>两个接收函数<strong>只能在任务内调用，不能在中断里面调用</strong>。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> ulTaskNotifyTake( xClearCountOnExit , xTicksToWait )  \</span></span><br><span class="line"><span class="meta">ulTaskGenericNotifyTake( ( tskDEFAULT_INDEX_TO_NOTIFY ),  \</span></span><br><span class="line"><span class="meta">                         ( xClearCountOnExit ),           \</span></span><br><span class="line"><span class="meta">                         ( xTicksToWait ) )</span></span><br></pre></td></tr></table></figure>
+<p>此函数用于接收任务通知值，可以设置在退出此函数的时候将任务通知值清零或者减一</p>
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uxIndexToWaitOn</td>
+<td>任务的指定通知（任务通知相关数组成员）</td>
+</tr>
+<tr>
+<td>xClearCountOnExit</td>
+<td>指定在成功接收通知后，将通知值清零或减1，<br>pdTRUE：把通知值清零；pdFALSE：把通知值减一</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>阻塞等待任务通知值的最大时间</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>接收失败</td>
+</tr>
+<tr>
+<td>非0</td>
+<td>接收成功，返回任务通知的通知值</td>
+</tr>
+</tbody></table>
+<hr>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> xTaskNotifyWait( ulBitsToClearOnEntry,      \</span></span><br><span class="line"><span class="meta">                         ulBitsToClearOnExit,       \</span></span><br><span class="line"><span class="meta">                         pulNotificationValue,      \</span></span><br><span class="line"><span class="meta">                         xTicksToWait)              \</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line">xTaskGenericNotifyWait( tskDEFAULT_INDEX_TO_NOTIFY, \</span><br><span class="line">                        ( ulBitsToClearOnEntry ),   \</span><br><span class="line">                        ( ulBitsToClearOnExit ),    \</span><br><span class="line">                        ( pulNotificationValue ),   \</span><br><span class="line">                        ( xTicksToWait ) )</span><br></pre></td></tr></table></figure>
+
+<p>此函数用于获取通知值和清除通知值的指定位值，适用于模拟队列和事件标志组，使用该函数来获取任务通知。</p>
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ulBitsToClearOnEntry</td>
+<td>进入函数时，要清除通知值中的哪些位</td>
+</tr>
+<tr>
+<td>ulBitsToClearOnExit</td>
+<td>退出函数前，要清除通知值中的哪些位</td>
+</tr>
+<tr>
+<td>pulNotificationValue</td>
+<td>输出指针，保存拿到的任务通知值</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>阻塞等待的最大滴答数</td>
+</tr>
+</tbody></table>
+<p>返回值：<code>pdTRUE</code>等待到通知；<code>pdFALSE</code>超时。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t <span class="title function_">xTaskGenericNotifyWait</span><span class="params">( UBaseType_t    uxIndexToWaitOn,</span></span><br><span class="line"><span class="params">                                   <span class="type">uint32_t</span>       ulBitsToClearOnEntry,</span></span><br><span class="line"><span class="params">                                   <span class="type">uint32_t</span>       ulBitsToClearOnExit,</span></span><br><span class="line"><span class="params">                                   <span class="type">uint32_t</span> *     pulNotificationValue,</span></span><br><span class="line"><span class="params">                                   TickType_t     xTicksToWait )</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uxIndexToWaitOn</td>
+<td>任务的指定通知（任务通知相关数组成员）</td>
+</tr>
+<tr>
+<td>ulBitsToClearOnEntry</td>
+<td>等待前清零指定任务通知值的比特位（旧值对应bit清0）</td>
+</tr>
+<tr>
+<td>ulBitsToClearOnExit</td>
+<td>成功等待后清零指定的任务通知值比特位（新值对应bit清0）</td>
+</tr>
+<tr>
+<td>pulNotificationValue</td>
+<td>用来取出通知值（如果不需要取出，可设为NULL）</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>阻塞等待任务通知值的最大时间</td>
+</tr>
+</tbody></table>
+<p>返回值：</p>
+<ul>
+<li>pdTRUE：成功接收到任务通知</li>
+<li>pdFALSE：等待超时，没有收到通知</li>
+</ul>
+<h1 id="第40讲-任务通知模拟信号量实验"><a href="#第40讲-任务通知模拟信号量实验" class="headerlink" title="第40讲: 任务通知模拟信号量实验"></a>第40讲: 任务通知模拟信号量实验</h1><p>1、实验目的：学习使用 FreeRTOS 中的任务通知功能模拟二值信号量和计数型信号量<br>2、实验设计：将设计三个任务：start_task、task1、task2</p>
+<p>三个任务的功能如下：</p>
+<ul>
+<li>start_task：用来创建task1和task2任务</li>
+<li>task1：用于按键扫描，当检测到按键KEY0被按下时，将发送任务通知</li>
+<li>task2：用于接收任务通知，并打印相关提示信息</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> * @file        freertos.c</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS任务通知模拟二值/计数信号量实验</span></span><br><span class="line"><span class="comment"> * 实验功能：</span></span><br><span class="line"><span class="comment"> * start_task：用来创建task1和task2任务</span></span><br><span class="line"><span class="comment"> * task1：按键扫描，KEY0按下向task2发送任务通知</span></span><br><span class="line"><span class="comment"> * task2：阻塞等待接收任务通知，收到后串口打印提示</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;freertos_demo.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/usart/usart.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LED/led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LCD/lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/KEY/key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/delay/delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./MALLOC/malloc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* FreeRTOS头文件 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;FreeRTOS.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;task.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== start_task任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_PRIO         1        <span class="comment">/* start_task任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_STACK_SIZE   128      <span class="comment">/* start_task任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    start_task_handler;    <span class="comment">/* start_task任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== task1任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_PRIO         2             <span class="comment">/* task1任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_STACK_SIZE   128           <span class="comment">/* task1任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    task1_handler;         <span class="comment">/* task1任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== task2任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_PRIO         3             <span class="comment">/* task2任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_STACK_SIZE   128           <span class="comment">/* task2任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    task2_handler;         <span class="comment">/* task2任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS实验入口函数</span></span><br><span class="line"><span class="comment"> *              程序调用此函数开启FreeRTOS，创建第一个任务，启动调度器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freertos_demo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 创建start_task任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   start_task,        <span class="comment">/* 参数1：任务函数入口地址 */</span></span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;start_task&quot;</span>,      <span class="comment">/* 参数2：任务名字，调试看任务列表用 */</span></span><br><span class="line">                (configSTACK_DEPTH_TYPE )   START_TASK_STACK_SIZE,<span class="comment">/* 参数3：任务栈大小，单位4字节word */</span></span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,              <span class="comment">/* 参数4：传入任务函数的参数，无则填NULL */</span></span><br><span class="line">                (UBaseType_t            )   START_TASK_PRIO,   <span class="comment">/* 参数5：任务优先级，数字越大优先级越高 */</span></span><br><span class="line">                (TaskHandle_t *         )   &amp;start_task_handler);<span class="comment">/* 参数6：任务句柄存储地址，后续操作任务需要句柄 */</span></span><br><span class="line"></span><br><span class="line">    vTaskStartScheduler();  <span class="comment">/* 启动FreeRTOS任务调度器，一旦调用，不会返回 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       start_task任务函数</span></span><br><span class="line"><span class="comment"> *              作用：只用来创建另外两个业务任务，创建完成后删除自身</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        taskENTER_CRITICAL：进入临界区</span></span><br><span class="line"><span class="comment">        关闭中断，保证下面任务创建过程不会被其他任务打断，防止创建出错</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    taskENTER_CRITICAL();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 创建task1：按键扫描任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task1,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task1&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK1_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK1_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task1_handler );</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 创建task2：接收任务通知任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task2,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task2&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK2_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK2_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task2_handler );</span><br><span class="line"></span><br><span class="line">    vTaskDelete(<span class="literal">NULL</span>);      <span class="comment">/* 删除当前任务自己，NULL代表删除本任务，start_task使命完成 */</span></span><br><span class="line">    taskEXIT_CRITICAL();    <span class="comment">/* 退出临界区，重新开启中断 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       task1任务函数：按键扫描任务</span></span><br><span class="line"><span class="comment"> *              循环检测KEY0按键，按键按下，向task2发送任务通知</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> key = <span class="number">0</span>;   <span class="comment">/* 保存按键返回值 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key = key_scan(<span class="number">0</span>);   <span class="comment">/* key_scan(0):按键扫描函数，参数0代表不支持连续长按 */</span></span><br><span class="line">        <span class="keyword">if</span>(key == KEY0_PRES) <span class="comment">/* 判断KEY0按键是否按下 */</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;按键按下，发送任务通知\r\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">                1. xTaskNotifyGive：发送任务通知，任务通知值 = 任务通知值 + 1</span></span><br><span class="line"><span class="comment">                2. 参数：TaskHandle_t xTaskToNotify，要给哪个任务发通知，传入目标任务句柄</span></span><br><span class="line"><span class="comment">                3. 注意：该函数只能在任务中调用，中断里面要使用 vTaskNotifyGiveFromISR</span></span><br><span class="line"><span class="comment">                4. 专门配合 ulTaskNotifyTake 一起使用，模拟信号量</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            xTaskNotifyGive(task2_handler);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            vTaskDelay：相对延时，阻塞让出CPU</span></span><br><span class="line"><span class="comment">            参数：xTicksToDelay，延时的系统时钟节拍，10代表延时10个tick</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        vTaskDelay(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       task2任务函数：接收任务通知</span></span><br><span class="line"><span class="comment"> *              使用ulTaskNotifyTake获取任务通知，模拟信号量获取操作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint32_t</span> rev = <span class="number">0</span>;   <span class="comment">/* 保存ulTaskNotifyTake返回值 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            函数原型：uint32_t ulTaskNotifyTake( BaseType_t xClearCountOnExit, TickType_t xTicksToWait );</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            参数1 xClearCountOnExit：</span></span><br><span class="line"><span class="comment">                pdTRUE：成功获取通知后，任务通知值直接清零，用来模拟【二值信号量】</span></span><br><span class="line"><span class="comment">                pdFALSE：成功获取通知后，任务通知值 = 任务通知值 -1，用来模拟【计数型信号量】</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            参数2 xTicksToWait：阻塞等待的最大时间，单位tick</span></span><br><span class="line"><span class="comment">                portMAX_DELAY：永久阻塞，直到收到通知才解除阻塞</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            返回值：</span></span><br><span class="line"><span class="comment">                返回0：等待超时，没有获取到任务通知</span></span><br><span class="line"><span class="comment">                返回非0：成功获取任务通知，返回获取前的任务通知计数值</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        rev = ulTaskNotifyTake(pdTRUE , portMAX_DELAY);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(rev != <span class="number">0</span>)   <span class="comment">/* 判断是否成功拿到任务通知 */</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;收到任务通知，成功获取信号量\r\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行串口输出示例</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">按键按下，发送任务通知</span><br><span class="line">收到任务通知，成功获取信号量</span><br><span class="line">按键按下，发送任务通知</span><br><span class="line">收到任务通知，成功获取信号量</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重点笔记</li>
+</ul>
+<ol>
+<li>task2优先级(3)高于task1(2)，收到通知后task2会抢占CPU立刻执行打印。</li>
+<li>如果把<code>pdTRUE</code>改为<code>pdFALSE</code>，就变成计数信号量模式，连续按多次按键通知值会累加。</li>
+<li><code>xTaskNotifyGive</code>只能任务内调用；中断场景用<code>vTaskNotifyGiveFromISR</code>。</li>
+</ol>
+<h1 id="第41讲-任务通知模拟消息邮箱实验"><a href="#第41讲-任务通知模拟消息邮箱实验" class="headerlink" title="第41讲: 任务通知模拟消息邮箱实验"></a>第41讲: 任务通知模拟消息邮箱实验</h1><p>1、实验目的：学习使用 FreeRTOS 中的任务通知功能模拟消息邮箱<br>2、实验设计：将设计三个任务：start_task、task1、task2</p>
+<p>三个任务的功能如下：</p>
+<ul>
+<li>start_task：用来创建task1和task2任务</li>
+<li>task1：用于按键扫描，将按下的按键键值通过任务通知发送给指定任务</li>
+<li>task2：用于接收任务通知，并根据接收到的数据做相应动作</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> * @file        freertos.c</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS任务通知模拟消息邮箱实验</span></span><br><span class="line"><span class="comment"> * 实验功能：</span></span><br><span class="line"><span class="comment"> * start_task：用来创建task1和task2任务</span></span><br><span class="line"><span class="comment"> * task1：按键扫描，将按键键值通过任务通知发送给task2</span></span><br><span class="line"><span class="comment"> * task2：接收任务通知，根据收到的键值执行对应动作，翻转LED</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;freertos_demo.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/usart/usart.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LED/led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LCD/lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/KEY/key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/delay/delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./MALLOC/malloc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* FreeRTOS头文件 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;FreeRTOS.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;task.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== start_task任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_PRIO         1        <span class="comment">/* start_task任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_STACK_SIZE   128      <span class="comment">/* start_task任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    start_task_handler;    <span class="comment">/* start_task任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== task1任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_PRIO         2             <span class="comment">/* task1任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_STACK_SIZE   128           <span class="comment">/* task1任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    task1_handler;         <span class="comment">/* task1任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== task2任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_PRIO         3             <span class="comment">/* task2任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_STACK_SIZE   128           <span class="comment">/* task2任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    task2_handler;         <span class="comment">/* task2任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS实验入口函数</span></span><br><span class="line"><span class="comment"> *              创建第一个任务，启动FreeRTOS调度器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freertos_demo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 创建start_task任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   start_task,        <span class="comment">/* 参数1：任务函数入口地址 */</span></span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;start_task&quot;</span>,      <span class="comment">/* 参数2：任务名字，调试识别任务 */</span></span><br><span class="line">                (configSTACK_DEPTH_TYPE )   START_TASK_STACK_SIZE,<span class="comment">/* 参数3：任务栈大小，单位4字节word */</span></span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,              <span class="comment">/* 参数4：传给任务函数的形参，无参数填NULL */</span></span><br><span class="line">                (UBaseType_t            )   START_TASK_PRIO,   <span class="comment">/* 参数5：任务优先级，数值越大优先级越高 */</span></span><br><span class="line">                (TaskHandle_t *         )   &amp;start_task_handler);<span class="comment">/* 参数6：保存任务句柄的地址 */</span></span><br><span class="line"></span><br><span class="line">    vTaskStartScheduler();  <span class="comment">/* 启动FreeRTOS调度器，函数不会返回 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       start_task任务函数</span></span><br><span class="line"><span class="comment"> *              只负责创建task1、task2两个业务任务，创建完成删除自身</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        taskENTER_CRITICAL：进入临界区</span></span><br><span class="line"><span class="comment">        关闭中断，保证任务创建过程不被打断，避免出错</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    taskENTER_CRITICAL();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 创建task1：按键扫描任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task1,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task1&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK1_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK1_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task1_handler );</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 创建task2：接收任务通知，处理键值任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task2,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task2&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK2_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK2_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task2_handler );</span><br><span class="line"></span><br><span class="line">    vTaskDelete(<span class="literal">NULL</span>);      <span class="comment">/* 删除当前任务，NULL代表删除本任务，start_task工作完成 */</span></span><br><span class="line">    taskEXIT_CRITICAL();    <span class="comment">/* 退出临界区，重新开启中断 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       task1任务函数：按键扫描任务</span></span><br><span class="line"><span class="comment"> *              检测按键，有按键按下，使用xTaskNotify把键值发送给task2，模拟消息邮箱</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> key = <span class="number">0</span>;   <span class="comment">/* 保存按键扫描返回的键值 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key = key_scan(<span class="number">0</span>);   <span class="comment">/* key_scan(0)：按键扫描，参数0表示不支持连续长按 */</span></span><br><span class="line">        <span class="comment">/* key!=0说明有按键按下；判断句柄非空，防止句柄无效报错 */</span></span><br><span class="line">        <span class="keyword">if</span>((key != <span class="number">0</span>) &amp;&amp; (task2_handler != <span class="literal">NULL</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;任务通知模拟消息邮箱，发送键值为：%d\r\n&quot;</span>,key);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">                函数原型：BaseType_t xTaskNotify( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction );</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">                参数1 xTaskToNotify：接收通知的任务句柄，这里是task2</span></span><br><span class="line"><span class="comment">                参数2 ulValue：要发送的数据，此处直接传入按键键值</span></span><br><span class="line"><span class="comment">                参数3 eAction：通知执行方式</span></span><br><span class="line"><span class="comment">                    eSetValueWithOverwrite：覆盖写模式，直接覆盖目标任务原来的通知值，模拟消息邮箱</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">                返回值：BaseType_t，此模式永远返回pdPASS</span></span><br><span class="line"><span class="comment">                注意：只能在任务内调用，中断请使用xTaskNotifyFromISR</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            xTaskNotify( task2_handler, key, eSetValueWithOverwrite );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vTaskDelay(<span class="number">10</span>);   <span class="comment">/* 相对延时10个tick，让出CPU，降低CPU占用 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       task2任务函数：接收任务通知</span></span><br><span class="line"><span class="comment"> *              使用xTaskNotifyWait等待通知，拿到键值，根据键值翻转LED</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint32_t</span> notify_val = <span class="number">0</span>;   <span class="comment">/* 保存接收到的任务通知数值，也就是按键键值 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            函数原型：BaseType_t xTaskNotifyWait( uint32_t ulBitsToClearOnEntry,</span></span><br><span class="line"><span class="comment">                                                  uint32_t ulBitsToClearOnExit,</span></span><br><span class="line"><span class="comment">                                                  uint32_t *pulNotificationValue,</span></span><br><span class="line"><span class="comment">                                                  TickType_t xTicksToWait );</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            参数1 ulBitsToClearOnEntry：进入函数时清除哪些位，0代表不清除任何位</span></span><br><span class="line"><span class="comment">            参数2 ulBitsToClearOnExit：成功拿到通知退出前清除哪些位，0xFFFFFFFF全部位清零</span></span><br><span class="line"><span class="comment">            参数3 pulNotificationValue：输出指针，把收到的通知值存到这个变量</span></span><br><span class="line"><span class="comment">            参数4 xTicksToWait：阻塞等待时间，portMAX_DELAY永久阻塞</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            返回值：pdTRUE收到通知；pdFALSE等待超时</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        xTaskNotifyWait( <span class="number">0</span>, <span class="number">0xFFFFFFFF</span>, &amp;notify_val, portMAX_DELAY );</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 根据收到的键值做不同动作 */</span></span><br><span class="line">        <span class="keyword">switch</span>(notify_val)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> KEY0_PRES:</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;收到消息邮箱键值：%d\r\n&quot;</span>,notify_val);</span><br><span class="line">                LED0_TOGGLE();   <span class="comment">/* KEY0按下，翻转LED0 */</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> KEY1_PRES:</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;收到消息邮箱键值：%d\r\n&quot;</span>,notify_val);</span><br><span class="line">                LED1_TOGGLE();   <span class="comment">/* KEY1按下，翻转LED1 */</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">default</span> : <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>串口运行示例<br>任务通知模拟消息邮箱，发送键值为：1<br>收到消息邮箱键值：1<br>任务通知模拟消息邮箱，发送键值为：2<br>收到消息邮箱键值：2</p>
+</li>
+<li><p>重点笔记</p>
+</li>
+</ul>
+<ol>
+<li><code>xTaskNotify( , , eSetValueWithOverwrite)</code>：覆盖写入，旧数据直接被新键值覆盖，模拟消息邮箱。</li>
+<li><code>xTaskNotifyWait(0,0xFFFFFFFF,&amp;notify_val,portMAX_DELAY)</code>：收到通知之后把通知值全部清零。</li>
+<li>task2优先级高于task1，收到通知会立刻抢占执行LED翻转。</li>
+<li>任务通知模拟消息邮箱只能传递<strong>32位整数</strong>，不能传递大数据；传大数据只能传指针。</li>
+</ol>
+<p>需要我帮你区分<code>xTaskNotify</code>和<code>xTaskNotifyGive</code>的对比笔记吗。</p>
+<h1 id="第42讲-任务通知模拟事件标志组实验"><a href="#第42讲-任务通知模拟事件标志组实验" class="headerlink" title="第42讲: 任务通知模拟事件标志组实验"></a>第42讲: 任务通知模拟事件标志组实验</h1><p>1、实验目的：学习使用 FreeRTOS 中的任务通知功能模拟事件标志组<br>2、实验设计：将设计三个任务：start_task、task1、task2</p>
+<p>三个任务的功能如下：<br>    - start_task：用来创建task1和task2任务<br>    - task1：用于按键扫描，当检测到按键按下时，发送任务通知设置不同标志位<br>    - task2：用于接收任务通知，并打印相关提示信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> * @file        freertos.c</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS任务通知模拟事件标志组实验</span></span><br><span class="line"><span class="comment"> * 实验功能：</span></span><br><span class="line"><span class="comment"> * start_task：用来创建task1和task2任务</span></span><br><span class="line"><span class="comment"> * task1：按键扫描，按键按下，使用任务通知设置不同标志位</span></span><br><span class="line"><span class="comment"> * task2：接收任务通知，等待bit0与bit1全部置1，打印提示信息</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;freertos_demo.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/usart/usart.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LED/led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LCD/lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/KEY/key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/delay/delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./MALLOC/malloc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* FreeRTOS头文件 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;FreeRTOS.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;task.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== 事件位宏定义 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EVENTBIT_0  (1 &lt;&lt; 0)      <span class="comment">/* 事件标志bit0位 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EVENTBIT_1  (1 &lt;&lt; 1)      <span class="comment">/* 事件标志bit1位 */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== start_task任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_PRIO         1        <span class="comment">/* start_task任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_STACK_SIZE   128      <span class="comment">/* start_task任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    start_task_handler;    <span class="comment">/* start_task任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== task1任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_PRIO         2             <span class="comment">/* task1任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_STACK_SIZE   128           <span class="comment">/* task1任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    task1_handler;         <span class="comment">/* task1任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*==================== task2任务配置 ====================*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_PRIO         3             <span class="comment">/* task2任务优先级 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_STACK_SIZE   128           <span class="comment">/* task2任务栈大小，单位word */</span></span></span><br><span class="line">TaskHandle_t    task2_handler;         <span class="comment">/* task2任务句柄 */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS实验入口函数</span></span><br><span class="line"><span class="comment"> *              创建第一个任务，启动FreeRTOS调度器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freertos_demo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 创建start_task任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   start_task,        <span class="comment">/* 参数1：任务函数入口地址 */</span></span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;start_task&quot;</span>,      <span class="comment">/* 参数2：任务名字，调试识别任务 */</span></span><br><span class="line">                (configSTACK_DEPTH_TYPE )   START_TASK_STACK_SIZE,<span class="comment">/* 参数3：任务栈大小，单位4字节word */</span></span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,              <span class="comment">/* 参数4：传给任务函数的形参，无参数填NULL */</span></span><br><span class="line">                (UBaseType_t            )   START_TASK_PRIO,   <span class="comment">/* 参数5：任务优先级，数值越大优先级越高 */</span></span><br><span class="line">                (TaskHandle_t *         )   &amp;start_task_handler);<span class="comment">/* 参数6：保存任务句柄的地址 */</span></span><br><span class="line"></span><br><span class="line">    vTaskStartScheduler();  <span class="comment">/* 启动FreeRTOS调度器，函数不会返回 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       start_task任务函数</span></span><br><span class="line"><span class="comment"> *              只负责创建task1、task2两个业务任务，创建完成删除自身</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        taskENTER_CRITICAL：进入临界区</span></span><br><span class="line"><span class="comment">        关闭中断，保证任务创建过程不被打断，避免出错</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    taskENTER_CRITICAL();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 创建task1：按键扫描任务 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task1,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task1&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK1_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK1_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task1_handler );</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 创建task2：接收任务通知，模拟事件标志组 */</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task2,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task2&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK2_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK2_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task2_handler );</span><br><span class="line"></span><br><span class="line">    vTaskDelete(<span class="literal">NULL</span>);      <span class="comment">/* 删除当前任务，NULL代表删除本任务，start_task工作完成 */</span></span><br><span class="line">    taskEXIT_CRITICAL();    <span class="comment">/* 退出临界区，重新开启中断 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       task1任务函数：按键扫描任务</span></span><br><span class="line"><span class="comment"> *              KEY0按下置bit0，KEY1按下置bit1，xTaskNotify配合eSetBits，按位或置位</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> key = <span class="number">0</span>;   <span class="comment">/* 保存按键扫描返回的键值 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key = key_scan(<span class="number">0</span>);   <span class="comment">/* key_scan(0)：按键扫描，参数0表示不支持连续长按 */</span></span><br><span class="line">        <span class="keyword">if</span>(key == KEY0_PRES)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;将bit0置1\r\n&quot;</span>);</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">                函数原型：BaseType_t xTaskNotify( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction );</span></span><br><span class="line"><span class="comment">                参数1：目标任务句柄，给task2发送通知</span></span><br><span class="line"><span class="comment">                参数2：要设置的bit位，EVENTBIT_0(1&lt;&lt;0)</span></span><br><span class="line"><span class="comment">                参数3：eSetBits，按位或操作，不会覆盖原有位，模拟事件标志组置位</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            xTaskNotify( task2_handler, EVENTBIT_0, eSetBits );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(key == KEY1_PRES)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;将bit1置1\r\n&quot;</span>);</span><br><span class="line">            <span class="comment">/* eSetBits：把bit1置1，其他位保持不变 */</span></span><br><span class="line">            xTaskNotify( task2_handler, EVENTBIT_1, eSetBits );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vTaskDelay(<span class="number">10</span>);   <span class="comment">/* 相对延时10个tick，让出CPU，降低CPU占用 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief       task2任务函数：接收任务通知，模拟事件标志组</span></span><br><span class="line"><span class="comment"> *              等待bit0、bit1两个标志位全部被置1，满足条件打印信息，然后清除记录</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint32_t</span> notify_val = <span class="number">0</span>;    <span class="comment">/* xTaskNotifyWait读到的通知值 */</span></span><br><span class="line">    <span class="type">uint32_t</span> event_bit = <span class="number">0</span>;     <span class="comment">/* 软件保存事件标志，相当于事件标志组 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            函数原型：BaseType_t xTaskNotifyWait( uint32_t ulBitsToClearOnEntry,</span></span><br><span class="line"><span class="comment">                                                  uint32_t ulBitsToClearOnExit,</span></span><br><span class="line"><span class="comment">                                                  uint32_t *pulNotificationValue,</span></span><br><span class="line"><span class="comment">                                                  TickType_t xTicksToWait );</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            参数1：进入函数不清除任何位，填0</span></span><br><span class="line"><span class="comment">            参数2：退出时全部位清零 0xFFFFFFFF；任务通知寄存器会被清空，所以需要软件变量event_bit保存事件</span></span><br><span class="line"><span class="comment">            参数3：输出，存放读到的通知值</span></span><br><span class="line"><span class="comment">            参数4：portMAX_DELAY永久阻塞等待通知</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        xTaskNotifyWait( <span class="number">0</span>, <span class="number">0xFFFFFFFF</span>, &amp;notify_val, portMAX_DELAY );</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 判断本次通知中bit0是否为1，为1就保存到软件事件变量 */</span></span><br><span class="line">        <span class="keyword">if</span>(notify_val &amp; EVENTBIT_0)</span><br><span class="line">        &#123;</span><br><span class="line">            event_bit |= EVENTBIT_0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* 判断本次通知中bit1是否为1，为1就保存到软件事件变量 */</span></span><br><span class="line">        <span class="keyword">if</span>(notify_val &amp; EVENTBIT_1)</span><br><span class="line">        &#123;</span><br><span class="line">            event_bit |= EVENTBIT_1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 判断bit0、bit1两个事件位全部置1，两个按键都触发过 */</span></span><br><span class="line">        <span class="keyword">if</span>(event_bit == (EVENTBIT_0 | EVENTBIT_1))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;任务通知模拟事件标志组，全部事件都收到！\r\n&quot;</span>);</span><br><span class="line">            event_bit = <span class="number">0</span>;  <span class="comment">/* 软件清除标志位，重新等待下一轮两个按键 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>串口运行示例</li>
+</ul>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">将<span class="keyword">bit0置1</span></span><br><span class="line"><span class="keyword"></span>将<span class="keyword">bit1置1</span></span><br><span class="line"><span class="keyword"></span>任务通知模拟事件标志组，全部事件都收到！</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重点笔记</li>
+</ul>
+<ol>
+<li><code>xTaskNotify( , , eSetBits)</code>：<strong>按位或置位</strong>，不会覆盖其他bit，用来模拟事件标志组置位。</li>
+<li><code>xTaskNotifyWait</code>退出时把任务通知寄存器全部清零，<strong>任务通知本身不能保存历史事件</strong>，必须自己用软件变量<code>event_bit</code>保存已经发生的事件。</li>
+<li>需要<strong>先后按下KEY0、KEY1</strong>，两个标志位全部集齐才会打印输出。</li>
+<li>和真实<code>EventGroup</code>区别：任务通知模拟不支持“任意一位触发”，需要自己软件判断；只能给<strong>单一目标任务</strong>。</li>
+</ol>
+<p>要不要我整理一份对比：<code>eSetBits / eSetValueWithOverwrite / xTaskNotifyGive</code>三者区别的简短笔记。</p>
+<h1 id="第43讲-软件定时器"><a href="#第43讲-软件定时器" class="headerlink" title="第43讲: 软件定时器"></a>第43讲: 软件定时器</h1><p> <a href="./FreeRTOS软件定时器（课堂总结）.pdf" target="_blank">下载：FreeRTOS软件定时器知识点框架PDF</a></p>
+<ul>
+<li><strong>1.定时器简介</strong><br>1，软件定时器的简介（了解）</li>
+</ul>
+<ul>
+<li><p><strong>定时器</strong>：<br>从指定的时刻开始，经过一个指定时间，然后触发一个超时事件，用户可自定义定时器的周期</p>
+</li>
+<li><p><strong>硬件定时器</strong>：<br>芯片本身自带的定时器模块，硬件定时器的精度一般很高，每次在定时时间到达之后就会自动触发一个中断，用户在中断服务函数中处理信息。</p>
+</li>
+<li><p><strong>软件定时器</strong>：<br>是指具有定时功能的软件，可设置定时周期，当指定时间到达后要调用回调函数（也称超时函数），用户在回调函数中处理信息</p>
+</li>
+</ul>
+<ul>
+<li><strong>2.软件定时器优缺点</strong><br>优点：</li>
+</ul>
+<ul>
+<li>硬件定时器数量有限，而软件定时器理论上只需有足够内存，就可以创建多个；</li>
+<li>使用简单、成本低</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>软件定时器相对硬件定时器来说，精度没有那么高（因为它以系统时钟为基准，系统时钟中断优先级又是最低，容易被打断）。对于需要高精度要求的场合，不建议使用软件定时器。</li>
+</ul>
+<ul>
+<li><strong>3.FreeRTOS软件定时器特点</strong></li>
+</ul>
+<ul>
+<li><p><strong>可裁剪</strong><br>软件定时器是可裁剪可配置的功能，如果要使能软件定时器，需将configUSE_TIMERS配置项配置成1</p>
+</li>
+<li><p><strong>单次和周期</strong><br>软件定时器支持设置成：单次定时器或周期定时器</p>
+</li>
+<li><p>注意：软件定时器的超时回调函数是由<strong>软件定时器服务任务</strong>调用的，软件定时器的超时回调函数本身不是任务，因此不能在该回调函数中使用可能会导致任务阻塞的API函数。</p>
+</li>
+<li><p><strong>软件定时器服务任务</strong>：在调用函数vTaskStartScheduler()开启任务调度器的时候，会创建一个用于管理软件定时器的任务，这个任务就叫做<strong>软件定时器服务任务</strong>。</p>
+</li>
+</ul>
+<p><strong>软件定时器服务任务作用</strong><br>1、负责软件定时器超时的逻辑判断<br>2、调用超时软件定时器的超时回调函数<br>3、处理软件定时器命令队列</p>
+<ul>
+<li><strong>4.软件定时器命令队列</strong></li>
+</ul>
+
+<p>FreeRTOS 提供了许多软件定时器相关的 API 函数，这些 API 函数大多都是往定时器的队列中写入消息（发送命令），这个队列叫做软件定时器命令队列，是提供给 FreeRTOS 中的软件定时器使用的，用户是不能直接访问的。</p>
+<ul>
+<li><strong>5.软件定时器相关配置</strong></li>
+</ul>
+<ul>
+<li>当FreeRTOS 的配置项 <strong>configUSE_TIMERS</strong> 设置为1，在启动任务调度器时，会自动创建软件定时器的服务&#x2F;守护任务prvTimerTask();</li>
+<li>软件定时器服务任务的优先级为 <strong>configTIMER_TASK_PRIORITY &#x3D; 31</strong>;</li>
+<li>定时器的命令队列长度为 <strong>configTIMER_QUEUE_LENGTH &#x3D; 5</strong>;</li>
+</ul>
+<p>注意：软件定时器的超时回调函数是在软件定时器服务任务中被调用的，服务任务不是专为某个定时器服务的，它还要处理其他定时器。</p>
+<p>所以，定时器的回调函数不要影响其他“人”：<br>1、回调函数要尽快实行，不能进入阻塞状态，即不能调用那些会阻塞任务的 API 函数，如：vTaskDelay()<br>2、访问队列或者信号量的非零阻塞时间的 API 函数也不能调用。</p>
+<ul>
+<li><strong>6.软件定时器的状态</strong><br>软件定时器共有两种状态：</li>
+</ul>
+<p><strong>休眠态</strong>：软件定时器可以通过其句柄被引用，但因为没有运行，所以其定时超时回调函数不会被执行</p>
+<p><strong>运行态</strong>：运行态的定时器，当指定时间到达之后，它的超时回调函数会被调用</p>
+<p>注意：新创建的软件定时器处于休眠状态，也就是未运行的！</p>
+<p>问题：如何让软件定时器从休眠态转变为运行态？<br>发送命令队列</p>
+<ul>
+<li><strong>7.单次定时器和周期定时器</strong><br>FreeRTOS 提供了两种软件定时器：</li>
+</ul>
+<p><strong>单次定时器</strong><br>单次定时器一旦定时超时，只会执行一次其软件定时器超时回调函数，不会自动重新开启定时，不过可以被手动重新开启。</p>
+<p><strong>周期定时器</strong><br>周期定时器一旦启动以后就会在执行完回调函数以后自动的重新启动，从而周期地执行其软件定时器回调函数。</p>
+
+
+<ul>
+<li><strong>8.软件定时器的状态转移图</strong></li>
+</ul>
+
+
+<h1 id="第44讲-软件定时器相关API函数介绍"><a href="#第44讲-软件定时器相关API函数介绍" class="headerlink" title="第44讲: 软件定时器相关API函数介绍"></a>第44讲: 软件定时器相关API函数介绍</h1><ul>
+<li><strong>1.软件定时器结构体成员介绍</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *        pcTimerName            <span class="comment">/* 软件定时器名字 */</span></span><br><span class="line">    ListItem_t          xTimerListItem         <span class="comment">/* 软件定时器列表项 */</span></span><br><span class="line">    TickType_t          xTimerPeriodInTicks;   <span class="comment">/* 软件定时器的周期 */</span></span><br><span class="line">    <span class="type">void</span> *              pvTimerID              <span class="comment">/* 软件定时器的ID */</span></span><br><span class="line">    TimerCallbackFunction_t  pxCallbackFunction; <span class="comment">/* 软件定时器的回调函数 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> ( configUSE_TRACE_FACILITY == 1 )</span></span><br><span class="line">    UBaseType_t         uxTimerNumber          <span class="comment">/* 软件定时器的编号，调试用 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="type">uint8_t</span>             ucStatus;              <span class="comment">/* 软件定时器的状态 */</span></span><br><span class="line">&#125; xTIMER;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>2.软件定时器相关API函数</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xTimerCreate()</td>
+<td>动态方式创建软件定时器</td>
+</tr>
+<tr>
+<td>xTimerCreateStatic()</td>
+<td>静态方式创建软件定时器</td>
+</tr>
+<tr>
+<td>xTimerStart()</td>
+<td>开启软件定时器定时</td>
+</tr>
+<tr>
+<td>xTimerStartFromISR()</td>
+<td>在中断中开启软件定时器定时</td>
+</tr>
+<tr>
+<td>xTimerStop()</td>
+<td>停止软件定时器定时</td>
+</tr>
+<tr>
+<td>xTimerStopFromISR()</td>
+<td>在中断中停止软件定时器定时</td>
+</tr>
+<tr>
+<td>xTimerReset()</td>
+<td>复位软件定时器定时</td>
+</tr>
+<tr>
+<td>xTimerResetFromISR()</td>
+<td>在中断中复位软件定时器定时</td>
+</tr>
+<tr>
+<td>xTimerChangePeriod()</td>
+<td>更改软件定时器的定时超时时间</td>
+</tr>
+<tr>
+<td>xTimerChangePeriodFromISR()</td>
+<td>在中断中更改定时超时时间</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>3.创建软件定时器API函数</strong></p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TimerHandle_t <span class="title function_">xTimerCreate</span><span class="params">( <span class="type">const</span> <span class="type">char</span> *<span class="type">const</span>        pcTimerName,</span></span><br><span class="line"><span class="params">                            <span class="type">const</span> TickType_t         xTimerPeriodInTicks,</span></span><br><span class="line"><span class="params">                            <span class="type">const</span> UBaseType_t        uxAutoReload,</span></span><br><span class="line"><span class="params">                            <span class="type">void</span> * <span class="type">const</span>             pvTimerID,</span></span><br><span class="line"><span class="params">                            TimerCallbackFunction_t  pxCallbackFunction )</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pcTimerName</td>
+<td>软件定时器名</td>
+</tr>
+<tr>
+<td>xTimerPeriodInTicks</td>
+<td>定时超时时间，单位：系统时钟节拍</td>
+</tr>
+<tr>
+<td>uxAutoReload</td>
+<td>定时器模式，pdTRUE：周期定时器，pdFALSE：单次定时器</td>
+</tr>
+<tr>
+<td>pvTimerID</td>
+<td>软件定时器ID，用于多个软件定时器公用一个超时回调函数</td>
+</tr>
+<tr>
+<td>pxCallbackFunction</td>
+<td>软件定时器超时回调函数</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NULL</td>
+<td>软件定时器创建失败</td>
+</tr>
+<tr>
+<td>其他值</td>
+<td>软件定时器创建成功，返回其句柄</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>4.开启软件定时器API函数</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t <span class="title function_">xTimerStart</span><span class="params">( TimerHandle_t    xTimer,</span></span><br><span class="line"><span class="params">                        <span class="type">const</span> TickType_t xTicksToWait )</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xTimer</td>
+<td>待开启的软件定时器的句柄</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>发送命令到软件定时器命令队列的最大等待时间</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pdPASS</td>
+<td>软件定时器开启成功</td>
+</tr>
+<tr>
+<td>pdFAIL</td>
+<td>软件定时器开启失败</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>5.停止软件定时器API函数</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t <span class="title function_">xTimerStop</span><span class="params">( TimerHandle_t    xTimer,</span></span><br><span class="line"><span class="params">                       <span class="type">const</span> TickType_t xTicksToWait)</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xTimer</td>
+<td>待停止的软件定时器的句柄</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>发送命令到软件定时器命令队列的最大等待时间</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pdPASS</td>
+<td>软件定时器停止成功</td>
+</tr>
+<tr>
+<td>pdFAIL</td>
+<td>软件定时器停止失败</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>6.复位软件定时器API函数</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t <span class="title function_">xTimerReset</span><span class="params">( TimerHandle_t    xTimer,</span></span><br><span class="line"><span class="params">                        <span class="type">const</span> TickType_t xTicksToWait)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>该功能将使软件定时器的重新开启定时，复位后的软件定时器以复位时的时刻作为开启时刻重新定时</p>
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xTimer</td>
+<td>待复位的软件定时器的句柄</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>发送命令到软件定时器命令队列的最大等待时间</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pdPASS</td>
+<td>软件定时器复位成功</td>
+</tr>
+<tr>
+<td>pdFAIL</td>
+<td>软件定时器复位失败</td>
+</tr>
+</tbody></table>
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8%E5%A4%8D%E4%BD%8D.png" class="">
+
+<ul>
+<li><strong>7.更改软件定时器超时时间API函数</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t <span class="title function_">xTimerChangePeriod</span><span class="params">( TimerHandle_t    xTimer,</span></span><br><span class="line"><span class="params">                               <span class="type">const</span> TickType_t xNewPeriod,</span></span><br><span class="line"><span class="params">                               <span class="type">const</span> TickType_t xTicksToWait)</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>形参</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xTimer</td>
+<td>待更新的软件定时器的句柄</td>
+</tr>
+<tr>
+<td>xNewPeriod</td>
+<td>新的定时超时时间，单位：系统时钟节拍</td>
+</tr>
+<tr>
+<td>xTicksToWait</td>
+<td>发送命令到软件定时器命令队列的最大等待时间</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pdPASS</td>
+<td>软件定时器定时超时时间更改成功</td>
+</tr>
+<tr>
+<td>pdFAIL</td>
+<td>软件定时器定时超时时间更改失败</td>
+</tr>
+</tbody></table>
+<h1 id="第45讲-FreeRTOS软件定时器实验"><a href="#第45讲-FreeRTOS软件定时器实验" class="headerlink" title="第45讲: FreeRTOS软件定时器实验"></a>第45讲: FreeRTOS软件定时器实验</h1><p>1、实验目的：学习FreeRTOS的软件定时器相关API函数的使用。<br>2、实验设计：将设计两个任务：start_task、task1</p>
+<p>两个任务的功能如下：<br>  <strong>start_task</strong>：用来创建task1任务，并创建两个定时器（单次和周期）<br>  <strong>task1</strong>：用于按键扫描，并对软件定时器进行开启、停止操作</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> * @file        freertos.c</span></span><br><span class="line"><span class="comment"> * @brief       FreeRTOS软件定时器实验</span></span><br><span class="line"><span class="comment"> ****************************************************************************************************</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;freertos_demo.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/usart/usart.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LED/led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LCD/lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/KEY/key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/delay/delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./MALLOC/malloc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;FreeRTOS.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;task.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;timers.h&quot;</span>         <span class="comment">// 软件定时器头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/************************任务配置************************/</span></span><br><span class="line"><span class="comment">// start_task任务：用来创建task1任务，并创建两个定时器（单次和周期）</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_PRIO         1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_STACK_SIZE   128</span></span><br><span class="line">TaskHandle_t    start_task_handler;</span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// task1任务：按键扫描，对软件定时器执行开启、停止操作</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_PRIO         2</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_STACK_SIZE   128</span></span><br><span class="line">TaskHandle_t    task1_handler;</span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时器回调函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer1_callback</span><span class="params">( TimerHandle_t pxTimer )</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">timer2_callback</span><span class="params">( TimerHandle_t pxTimer )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时器句柄</span></span><br><span class="line">TimerHandle_t timer1_handle = <span class="number">0</span>;    <span class="comment">// 单次定时器句柄</span></span><br><span class="line">TimerHandle_t timer2_handle = <span class="number">0</span>;    <span class="comment">// 周期定时器句柄</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   FreeRTOS入口函数，创建起始任务，启动调度器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freertos_demo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 创建start_task任务</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   start_task,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;start_task&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   START_TASK_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   START_TASK_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;start_task_handler );</span><br><span class="line"></span><br><span class="line">    vTaskStartScheduler();      <span class="comment">// 开启FreeRTOS任务调度器</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   start_task任务函数</span></span><br><span class="line"><span class="comment"> *          1.创建单次软件定时器timer1</span></span><br><span class="line"><span class="comment"> *          2.创建周期软件定时器timer2</span></span><br><span class="line"><span class="comment"> *          3.创建task1任务</span></span><br><span class="line"><span class="comment"> *          4.删除自身任务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    taskENTER_CRITICAL();               <span class="comment">// 进入临界区，防止任务被打断</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. xTimerCreate创建单次定时器timer1</span></span><br><span class="line">    <span class="comment">// 参数1：定时器名字；参数2：定时时间(节拍数)；参数3：pdFALSE代表单次定时器</span></span><br><span class="line">    <span class="comment">// 参数4：传给回调函数的参数；参数5：定时器超时回调函数</span></span><br><span class="line">    timer1_handle = xTimerCreate( <span class="string">&quot;timer1&quot;</span>,</span><br><span class="line">                                    <span class="number">500</span>,</span><br><span class="line">                                    pdFALSE,</span><br><span class="line">                                    (<span class="type">void</span> *)<span class="number">1</span>,</span><br><span class="line">                                    timer1_callback );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. xTimerCreate创建周期定时器timer2</span></span><br><span class="line">    <span class="comment">// pdTRUE：周期定时器，超时之后自动重新开启</span></span><br><span class="line">    timer2_handle = xTimerCreate( <span class="string">&quot;timer2&quot;</span>,</span><br><span class="line">                                    <span class="number">2000</span>,</span><br><span class="line">                                    pdTRUE,</span><br><span class="line">                                    (<span class="type">void</span> *)<span class="number">2</span>,</span><br><span class="line">                                    timer2_callback );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建task1任务</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task1,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task1&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK1_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK1_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task1_handler );</span><br><span class="line"></span><br><span class="line">    vTaskDelete(<span class="literal">NULL</span>);                  <span class="comment">// 删除start_task自身</span></span><br><span class="line">    taskEXIT_CRITICAL();                <span class="comment">// 退出临界区</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   task1任务函数：按键扫描，控制定时器开启与停止</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> key = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key = key_scan(<span class="number">0</span>);      <span class="comment">// 获取按键值</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(key == KEY0_PRES)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 1. xTimerStart开启软件定时器</span></span><br><span class="line">            <span class="comment">// 参数1：定时器句柄；参数2：命令队列阻塞等待时间，portMAX_DELAY无限等待</span></span><br><span class="line">            xTimerStart(timer1_handle,portMAX_DELAY);</span><br><span class="line">            xTimerStart(timer2_handle,portMAX_DELAY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(key == KEY1_PRES)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 2. xTimerStop停止软件定时器</span></span><br><span class="line">            xTimerStop(timer1_handle,portMAX_DELAY);</span><br><span class="line">            xTimerStop(timer2_handle,portMAX_DELAY);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vTaskDelay(<span class="number">10</span>);         <span class="comment">// 任务延时，让出CPU</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   timer1单次定时器的回调函数</span></span><br><span class="line"><span class="comment"> * @note    软件定时器回调函数不要调用会阻塞的API，执行时间尽量短</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer1_callback</span><span class="params">( TimerHandle_t pxTimer )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">uint32_t</span> timer = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;timer1单次定时器执行：%d\r\n&quot;</span>,++timer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   timer2周期定时器的回调函数</span></span><br><span class="line"><span class="comment"> * @note    周期定时器，每2000个节拍自动执行本回调</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer2_callback</span><span class="params">( TimerHandle_t pxTimer )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">uint32_t</span> timer = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;timer2周期定时器执行：%d\r\n&quot;</span>,++timer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实验现象说明</li>
+</ul>
+<ol>
+<li>KEY0按下：启动timer1(500节拍单次，只触发一次)、启动timer2(2000节拍周期，反复触发)</li>
+<li>KEY1按下：停止两个软件定时器，不再打印输出</li>
+<li>注意：软件定时器回调函数运行在<strong>定时器服务任务</strong>，禁止使用会阻塞的函数。</li>
+</ol>
+<ul>
+<li>工程配置提醒<br><code>FreeRTOSConfig.h</code>中必须开启：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> configUSE_TIMERS 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="第45讲-Tickless低功耗模式"><a href="#第45讲-Tickless低功耗模式" class="headerlink" title="第45讲: Tickless低功耗模式"></a>第45讲: Tickless低功耗模式</h1><p> <a href="./FreeRTOS低功耗Tickless模式（课堂总结） .pdf" target="_blank">下载：FreeRTOS低功耗知识点框架PDF</a></p>
+<ul>
+<li><strong>1.低功耗模式</strong><br>很多应用场合对于功耗的要求很严格，比如可穿戴低功耗产品、物联网低功耗产品等<br>一般MCU都有相应的低功耗模式，裸机开发时可以使用MCU的低功耗模式。<br>FreeRTOS也提供了一个叫Tickless的低功耗模式，方便带FreeRTOS操作系统的应用开发</li>
+</ul>
+<ul>
+<li>STM32低功耗模式</li>
+<li>睡眠模式</li>
+<li>停止模式</li>
+<li>待机模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模式名称</th>
+<th>进入</th>
+<th>唤醒</th>
+<th>对1.2V域时钟的影响</th>
+<th>对VDD域时钟的影响</th>
+<th>调压器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>睡眠(立即休眠或退出是休眠)</td>
+<td>WFI</td>
+<td>任意中断</td>
+<td>CPU CLK关闭对其它时钟或模拟时钟源无影响</td>
+<td>无</td>
+<td>开启</td>
+</tr>
+<tr>
+<td></td>
+<td>WFE</td>
+<td>唤醒事件</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>停止</td>
+<td>PDDS和LPDS位+SLEEPDEEP位+WFI或WFE</td>
+<td>任意EXTI线(在EXTI寄存器中配置，内部线和外部线)</td>
+<td>所有1.2V域时钟都关闭</td>
+<td>HSI和HSE振荡器关闭</td>
+<td>开启或处于低功耗模式</td>
+</tr>
+<tr>
+<td>待机</td>
+<td>PDDS位+SLEEPDEEP位+WFI或WFE</td>
+<td>WKUP引脚上升沿、RTC闹钟(闹钟A或闹钟B)RTC唤醒事件、RTC入侵事件、RTC时间戳事件、NRST引脚外部复位、IWDG复位</td>
+<td>所有1.2V域时钟都关闭</td>
+<td>HSI和HSE振荡器关闭</td>
+<td>关闭</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>2.Tickless模式详解</strong></li>
+</ul>
+<ul>
+<li><p>如何降低功耗？<br>Tickless低功耗模式的本质是通过调用指令 WFI 实现睡眠模式！</p>
+</li>
+<li><p>Tickless模式的设计思想？</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>任务名</th>
+<th>运行时间</th>
+<th>运行所占百分比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RunTimeStats_task</td>
+<td>349</td>
+<td>1%</td>
+</tr>
+<tr>
+<td>IDLE</td>
+<td>23293</td>
+<td>94%</td>
+</tr>
+<tr>
+<td>task1_task</td>
+<td>546</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>task2_task</td>
+<td>546</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>Tmr Svc</td>
+<td>1</td>
+<td>&lt;1%</td>
+</tr>
+</tbody></table>
+<p>任务运行时间统计实验中，可以看出，在整个系统的运行过程中，其实大部分时间是在执行空闲任务的<br>空闲任务：是在系统中的所有其它任务都阻塞或被挂起时才运行的</p>
+<hr>
+<p>为了可以降低功耗，又不影响系统运行，该如何做？<br>可以在本该空闲任务执行的期间，让MCU进入相应的低功耗模式；当其他任务准备运行的时候，唤醒MCU退出低功耗模式</p>
+<p>难点：<br>1、进入低功耗之后，多久唤醒？也就是下一个要运行的任务如何被准确唤醒<br>2、任何中断均可唤醒MCU，若滴答定时器频繁中断则会影响低功耗的效果？</p>
+<p>将滴答定时器的中断周期修改为低功耗运行时间<br>退出低功耗后，需补上系统时钟节拍数</p>
+<p>值得庆幸的是：FreeRTOS的低功耗Tickless模式机制已经处理好了这些难点。</p>
+<ul>
+<li><strong>3.Tickless模式相关配置</strong></li>
+</ul>
+<ul>
+<li><p>configUSE_TICKLESS_IDLE<br>此宏用于使能低功耗 Tickless 模式</p>
+</li>
+<li><p>configEXPECTED_IDLE_TIME_BEFORE_SLEEP<br>此宏用于定义系统进入相应低功耗模式的最短时长</p>
+</li>
+<li><p>configPRE_SLEEP_PROCESSING(x)<br>此宏用于定义需要在系统进入低功耗模式前执行的事务，如：进入低功耗前关闭外设时钟，以达到降低功耗的目的</p>
+</li>
+<li><p>configPOSR_SLEEP_PROCESSING(x)<br>此宏用于定义需要在系统退出低功耗模式后执行的事务，如：退出低功耗后开启之前关闭的外设时钟，以使系统能够正常运行</p>
+</li>
+</ul>
+<h1 id="第46讲-Tickless低功耗模式实验"><a href="#第46讲-Tickless低功耗模式实验" class="headerlink" title="第46讲: Tickless低功耗模式实验"></a>第46讲: Tickless低功耗模式实验</h1><p>1、实验目的：学习使用FreeRTOS中的低功耗Tickless模式，并观察该模式是否对功耗有明显降低<br>2、实验设计：将在原先二值信号量的课堂源码中，加入低功耗模式，最后对比这个两个实验的功耗结果，观察Tickless模式对于降低功耗是否有用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;freertos_demo.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/usart/usart.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LED/led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/LCD/lcd.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./BSP/KEY/key.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./SYSTEM/delay/delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./MALLOC/malloc.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* FreeRTOS头文件 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;FreeRTOS.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;task.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;semphr.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/************************任务配置************************/</span></span><br><span class="line"><span class="comment">// 开始任务</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_PRIO         1        <span class="comment">// 开始任务优先级</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> START_TASK_STACK_SIZE   128      <span class="comment">// 开始任务栈大小</span></span></span><br><span class="line">TaskHandle_t    start_task_handler;</span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// task1：按键任务，释放二值信号量</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_PRIO         2</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK1_STACK_SIZE   128</span></span><br><span class="line">TaskHandle_t    task1_handler;</span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// task2：获取二值信号量任务</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_PRIO         3</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TASK2_STACK_SIZE   128</span></span><br><span class="line">TaskHandle_t    task2_handler;</span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/************************全局变量************************/</span></span><br><span class="line">SemaphoreHandle_t semphore_handle;   <span class="comment">// 二值信号量句柄</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 函数：PRE_SLEEP_PROCESSING</span></span><br><span class="line"><span class="comment"> * 功能：Tickless进入低功耗前执行，关闭多余GPIO外设时钟，降低功耗</span></span><br><span class="line"><span class="comment"> * 注意：FreeRTOSConfig.h中configPRE_SLEEP_PROCESSING宏要映射到该函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PRE_SLEEP_PROCESSING</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    __HAL_RCC_GPIOA_CLK_DISABLE();   <span class="comment">// 关闭GPIOA时钟</span></span><br><span class="line">    __HAL_RCC_GPIOB_CLK_DISABLE();   <span class="comment">// 关闭GPIOB时钟</span></span><br><span class="line">    __HAL_RCC_GPIOC_CLK_DISABLE();   <span class="comment">// 关闭GPIOC时钟</span></span><br><span class="line">    __HAL_RCC_GPIOD_CLK_DISABLE();   <span class="comment">// 关闭GPIOD时钟</span></span><br><span class="line">    __HAL_RCC_GPIOE_CLK_DISABLE();   <span class="comment">// 关闭GPIOE时钟</span></span><br><span class="line">    __HAL_RCC_GPIOF_CLK_DISABLE();   <span class="comment">// 关闭GPIOF时钟</span></span><br><span class="line">    __HAL_RCC_GPIOG_CLK_DISABLE();   <span class="comment">// 关闭GPIOG时钟</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 函数：POST_SLEEP_PROCESSING</span></span><br><span class="line"><span class="comment"> * 功能：退出Tickless低功耗之后执行，把之前关闭的GPIO时钟重新打开</span></span><br><span class="line"><span class="comment"> * 注意：FreeRTOSConfig.h中configPOST_SLEEP_PROCESSING宏要映射到该函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">POST_SLEEP_PROCESSING</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    __HAL_RCC_GPIOA_CLK_ENABLE();    <span class="comment">// 开启GPIOA时钟</span></span><br><span class="line">    __HAL_RCC_GPIOB_CLK_ENABLE();    <span class="comment">// 开启GPIOB时钟</span></span><br><span class="line">    __HAL_RCC_GPIOC_CLK_ENABLE();    <span class="comment">// 开启GPIOC时钟</span></span><br><span class="line">    __HAL_RCC_GPIOD_CLK_ENABLE();    <span class="comment">// 开启GPIOD时钟</span></span><br><span class="line">    __HAL_RCC_GPIOE_CLK_ENABLE();    <span class="comment">// 开启GPIOE时钟</span></span><br><span class="line">    __HAL_RCC_GPIOF_CLK_ENABLE();    <span class="comment">// 开启GPIOF时钟</span></span><br><span class="line">    __HAL_RCC_GPIOG_CLK_ENABLE();    <span class="comment">// 开启GPIOG时钟</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 函数：freertos_demo</span></span><br><span class="line"><span class="comment"> * 功能：FreeRTOS实验入口函数，创建二值信号量，创建开始任务，启动调度器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freertos_demo</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 1. 创建二值信号量</span></span><br><span class="line">    semphore_handle = xSemaphoreCreateBinary();</span><br><span class="line">    <span class="keyword">if</span>(semphore_handle != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;二值信号量创建成功\r\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 创建开始任务</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   start_task,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;start_task&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   START_TASK_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   START_TASK_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;start_task_handler );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 启动FreeRTOS调度器，开启Tickless低功耗模式</span></span><br><span class="line">    vTaskStartScheduler();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 函数：start_task</span></span><br><span class="line"><span class="comment"> * 功能：开始任务，用来创建其余业务任务，任务创建完成后删除自身</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">start_task</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    taskENTER_CRITICAL();               <span class="comment">// 进入临界区，防止任务被打断</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建task1按键任务</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task1,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task1&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK1_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK1_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task1_handler );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建task2获取信号量任务</span></span><br><span class="line">    xTaskCreate((TaskFunction_t         )   task2,</span><br><span class="line">                (<span class="type">char</span> *                 )   <span class="string">&quot;task2&quot;</span>,</span><br><span class="line">                (configSTACK_DEPTH_TYPE )   TASK2_STACK_SIZE,</span><br><span class="line">                (<span class="type">void</span> *                 )   <span class="literal">NULL</span>,</span><br><span class="line">                (UBaseType_t            )   TASK2_PRIO,</span><br><span class="line">                (TaskHandle_t *         )   &amp;task2_handler );</span><br><span class="line"></span><br><span class="line">    vTaskDelete(<span class="literal">NULL</span>);                  <span class="comment">// 删除开始任务自身</span></span><br><span class="line">    taskEXIT_CRITICAL();                <span class="comment">// 退出临界区</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 函数：task1</span></span><br><span class="line"><span class="comment"> * 功能：按键扫描任务，按下KEY0释放二值信号量</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task1</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> key = <span class="number">0</span>;</span><br><span class="line">    BaseType_t err;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key = key_scan(<span class="number">0</span>);             <span class="comment">// 按键扫描</span></span><br><span class="line">        <span class="keyword">if</span>(key == KEY0_PRES)           <span class="comment">// KEY0按键按下</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(semphore_handle != <span class="literal">NULL</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 1.释放二值信号量</span></span><br><span class="line">                err = xSemaphoreGive(semphore_handle);</span><br><span class="line">                <span class="keyword">if</span>(err == pdPASS)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;释放信号量成功\r\n&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;释放信号量失败\r\n&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vTaskDelay(pdMS_TO_TICKS(<span class="number">10</span>)); <span class="comment">// 相对延时10ms，让出CPU，空闲任务运行，触发Tickless</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 函数：task2</span></span><br><span class="line"><span class="comment"> * 功能：阻塞等待获取二值信号量，没有信号量就阻塞，系统进入空闲，触发Tickless低功耗</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">task2</span><span class="params">( <span class="type">void</span> * pvParameters )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint32_t</span> i = <span class="number">0</span>;</span><br><span class="line">    BaseType_t err;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// portMAX_DELAY：无限阻塞等待信号量，任务阻塞，CPU跑到空闲任务，进入Tickless睡眠</span></span><br><span class="line">        err = xSemaphoreTake(semphore_handle,portMAX_DELAY);</span><br><span class="line">        <span class="keyword">if</span>(err == pdTRUE)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;获取信号量成功\r\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;等待超时 %d\r\n&quot;</span>,++i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li>FreeRTOSConfig.h 需要修改配置（笔记）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> configUSE_TICKLESS_IDLE         1   <span class="comment">// 使能Tickless低功耗模式</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 进入睡眠最短节拍，空闲时间大于该值才会进入低功耗</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> configEXPECTED_IDLE_TIME_BEFORE_SLEEP  5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 进入低功耗前调用我们写的函数</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> configPRE_SLEEP_PROCESSING(x)    PRE_SLEEP_PROCESSING()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 退出低功耗后调用我们写的函数</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> configPOST_SLEEP_PROCESSING(x)   POST_SLEEP_PROCESSING()</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实验现象</li>
+</ul>
+<ol>
+<li>task2无限阻塞等待信号量，系统大量时间运行空闲任务，MCU进入WFI睡眠，功耗降低。</li>
+<li>按下KEY0，task1释放信号量，唤醒task2，同时中断唤醒MCU退出低功耗。</li>
+<li>可以对比关闭&#x2F;打开<code>configUSE_TICKLESS_IDLE</code>，测量板子电流差异。</li>
+</ol>
+<h1 id="第47讲FreeRTOS内存管理"><a href="#第47讲FreeRTOS内存管理" class="headerlink" title="第47讲FreeRTOS内存管理"></a>第47讲FreeRTOS内存管理</h1><ul>
+<li><strong>1.FreeRTOS内存管理简介</strong><br>在使用 FreeRTOS 创建任务、队列、信号量等对象的时，一般都提供了两种方法：</li>
+</ul>
+<p>① 动态方法创建<br>自动地从 FreeRTOS 管理的内存堆中申请创建对象所需的内存，并且在对象删除后，可将这块内存释放回FreeRTOS管理的内存堆</p>
+<p>② 静态方法创建<br>需用户提供各种内存空间，并且使用静态方式占用的内存空间一般固定下来了，即使任务、队列等被删除后，这些被占用的内存空间一般没有其他用途</p>
+<p>总结：<strong>动态方式管理内存</strong>相比与静态方式，更加灵活。</p>
+<ul>
+<li>除了 FreeRTOS 提供的动态内存管理方法，标准的 C 库也提供了函数 malloc()和函数 free()来实现动态地申请和释放内存。</li>
+</ul>
+<p>疑问：为啥不用标准的 C 库自带的内存管理算法？</p>
+<p>因为标准 C 库的动态内存管理方法有如下几个缺点：</p>
+<ul>
+<li>占用大量的代码空间 不适合用在资源紧缺的嵌入式系统中</li>
+<li>没有线程安全的相关机制</li>
+<li>运行有不确定性，每次调用这些函数时花费的时间可能都不相同</li>
+<li>内存碎片化</li>
+<li>……</li>
+</ul>
+<p>因此，FreeRTOS 提供了多种动态内存管理的算法，可针对不同的嵌入式系统！</p>
+<ul>
+<li><strong>2.FreeRTOS内存管理算法</strong><br>FreeRTOS提供了5种动态内存管理算法，分别为：heap_1、heap_2、heap_3、heap_4、heap_5。如下所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>heap_1</td>
+<td>分配简单，时间确定</td>
+<td>只允许申请内存，不允许释放内存</td>
+</tr>
+<tr>
+<td>heap_2</td>
+<td>允许申请和释放内存</td>
+<td>不能合并相邻的空闲内存块会产生碎片、时间不定</td>
+</tr>
+<tr>
+<td>heap_3</td>
+<td>直接调用C库函数malloc()和free()，简单</td>
+<td>速度慢、时间不定</td>
+</tr>
+<tr>
+<td>heap_4</td>
+<td>相邻空闲内存可合并，减少内存碎片的产生</td>
+<td>时间不定</td>
+</tr>
+<tr>
+<td>heap_5</td>
+<td>能够管理多个非连续内存区域的heap_4</td>
+<td>时间不定</td>
+</tr>
+</tbody></table>
+<p>在我们FreeRTOS例程中，使用的均为heap_4内存管理算法</p>
+<ul>
+<li>1.hip1算法</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/hip1%E7%AE%97%E6%B3%95.png" class="">
+
+<ul>
+<li>2.hip2算法</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/hip2%E7%AE%97%E6%B3%95.png" class="">
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/hip2%E7%AE%97%E6%B3%952.png" class="">
+
+<ul>
+<li>3.hip4算法</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/hip4%E7%AE%97%E6%B3%95.png" class="">
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/hip4%E7%AE%97%E6%B3%952.png" class="">
+
+<ul>
+<li>4.hip5算法</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/06-FreeRTOS/hip5%E7%AE%97%E6%B3%95.png" class="">
 
     </div>
 
