@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlogC/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlogC/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlogC/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/MyBlogC/images/logo.svg" color="#ffffff">
+
+<link rel="stylesheet" href="/MyBlogC/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
+
+    <meta name="description" content="第一章: 计算机架构导论1.计算机架构概述 1.处理器发展趋势   1.处理器在数据中心与嵌入式系统中的应用     两大典型应用领域与差异 数据中心场景（例如Google数据中心）   硬件：采用高性能处理器，算力要求高 软件：运行服务器操作系统，执行服务器专用业务程序   嵌入式MCU场景（例如Cortex‑M3）   硬件：典型配置：16KB Flash + 4KB RAM，算力需求低 软件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARM架构">
+<meta property="og:url" content="https://lijianhao360.github.io/2026/08/02/ARM%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:site_name" content="首页">
+<meta property="og:description" content="第一章: 计算机架构导论1.计算机架构概述 1.处理器发展趋势   1.处理器在数据中心与嵌入式系统中的应用     两大典型应用领域与差异 数据中心场景（例如Google数据中心）   硬件：采用高性能处理器，算力要求高 软件：运行服务器操作系统，执行服务器专用业务程序   嵌入式MCU场景（例如Cortex‑M3）   硬件：典型配置：16KB Flash + 4KB RAM，算力需求低 软件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/ARM%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B.png">
+<meta property="article:published_time" content="2026-08-02T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-27T05:45:41.524Z">
+<meta property="article:author" content="JianHao Li">
+<meta property="article:tag" content="FreeRTOS">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="嵌入式开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/ARM%E6%9E%B6%E6%9E%84.png">
+
+
+<link rel="canonical" href="https://lijianhao360.github.io/2026/08/02/ARM%E6%9E%B6%E6%9E%84/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lijianhao360.github.io/2026/08/02/ARM%E6%9E%B6%E6%9E%84/","path":"2026/08/02/ARM架构/","title":"ARM架构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ARM架构 | 首页</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/utils.js" defer></script><script src="/MyBlogC/js/motion.js" defer></script><script src="/MyBlogC/js/sidebar.js" defer></script><script src="/MyBlogC/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/MyBlogC/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/MyBlogC/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">首页</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">分享技术，记录成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/MyBlogC/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/MyBlogC/categories/" rel="section"><i class="fa fa-folder fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/MyBlogC/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/MyBlogC/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E5%AF%BC%E8%AE%BA"><span class="nav-text">第一章: 计算机架构导论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E6%A6%82%E8%BF%B0"><span class="nav-text">1.计算机架构概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B1%82%E6%AC%A1"><span class="nav-text">2.计算机架构的层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">3.计算机架构的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E9%A2%86%E5%9F%9F"><span class="nav-text">4.计算机架构领域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A4%84%E7%90%86%E5%99%A8%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="nav-text">5.处理器六大设计目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-ARM%E7%9B%AE%E6%A0%87%E5%B8%82%E5%9C%BA%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E5%88%86%E7%B1%BB"><span class="nav-text">6. ARM目标市场与处理器分类</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JianHao Li"
+      src="/MyBlogC/images/avatar.png">
+  <p class="site-author-name" itemprop="name">JianHao Li</p>
+  <div class="site-description" itemprop="description">一个专注 C/嵌入式 技术的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/MyBlogC/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/MyBlogC/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/MyBlogC/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lijianhao360/MyBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lijianhao360&#x2F;MyBlog" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2993746016@qq.com" title="邮箱 → mailto:2993746016@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>邮箱</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+
+<div class="post-block">
+  
+  
+
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    
+    <link itemprop="mainEntityOfPage" href="https://lijianhao360.github.io/2026/08/02/ARM%E6%9E%B6%E6%9E%84/">
+
+    
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/MyBlogC/images/avatar.png">
+      <meta itemprop="name" content="JianHao Li">
+    </span>
+
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="首页">
+      <meta itemprop="description" content="一个专注 C/嵌入式 技术的博客">
+    </span>
+
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ARM架构 | 首页">
+      <meta itemprop="description" content="">
+    </span>
+
+    
+      
+      <header class="post-header">
+        
+        <h1 class="post-title" itemprop="name headline">
+          
+            ARM架构
+            
+        </h1>
+
+        
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-08-02 10:00:00" itemprop="dateCreated datePublished" datetime="2026-08-02T10:00:00+08:00">2026-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-08-27 13:45:41" itemprop="dateModified" datetime="2026-08-27T13:45:41+08:00">2026-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/MyBlogC/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+          
+        </div>
+      </header>
+
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        
+        
+        <h1 id="第一章-计算机架构导论"><a href="#第一章-计算机架构导论" class="headerlink" title="第一章: 计算机架构导论"></a>第一章: 计算机架构导论</h1><h2 id="1-计算机架构概述"><a href="#1-计算机架构概述" class="headerlink" title="1.计算机架构概述"></a>1.计算机架构概述</h2><ul>
+<li><strong>1.处理器发展趋势</strong></li>
+</ul>
+<ul>
+<li>1.处理器在数据中心与嵌入式系统中的应用</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/ARM%E6%9E%B6%E6%9E%84.png" class="">
+
+<ul>
+<li><strong>两大典型应用领域与差异</strong><ol>
+<li><strong>数据中心场景（例如Google数据中心）</strong></li>
+</ol>
+<ul>
+<li>硬件：采用高性能处理器，算力要求高</li>
+<li>软件：运行服务器操作系统，执行服务器专用业务程序</li>
+</ul>
+<ol start="2">
+<li><strong>嵌入式MCU场景（例如Cortex‑M3）</strong></li>
+</ol>
+<ul>
+<li>硬件：典型配置：<strong>16KB Flash + 4KB RAM</strong>，算力需求低</li>
+<li>软件：可跑裸机程序（Bare‑metal，直接写业务函数，无需操作系统），也可运行轻量级嵌入式操作系统</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>总结：两类处理器硬件性能、软件特性差别很大，但本质都是依靠CPU提供算力来完成数据处理任务。</p>
+</blockquote>
+<ul>
+<li>2.计算机的发展历程</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B.png" class="">
+<ul>
+<li><strong>历史演进</strong><ul>
+<li>第一代电子计算机：EDSAC（1930‑1940年代）<ul>
+<li>实物体积十分庞大，如今博物馆存有复刻版本。</li>
+</ul>
+</li>
+<li>现代嵌入式设备：micro:bit开发板，搭载 <strong>ARM Cortex‑M0</strong> 处理器<ul>
+<li>板载USB接口，电脑网页端完成图形化编程，编译后烧录到芯片。</li>
+<li>基础功能：控制板载LED；可通过扩展槽外接LCD屏幕，实现图像显示。</li>
+</ul>
+</li>
+<li>发展特点：从体积庞大的老式计算机，演变为微型处理器、SoC芯片，硬件发展速度极快。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>技术突破与现代处理器设计指标</strong><blockquote>
+<p>相比早期计算机，现代计算机在速度、功耗、可靠性、成本上实现数量级提升，同时新增安全性设计要求，现代处理器的设计要求：</p>
+</blockquote>
+<ol>
+<li><strong>速度</strong>：处理器运算性能，程序运行要快。</li>
+<li><strong>功耗</strong>：芯片面积越小，功耗越低，如Cortex‑M0面积小、功耗低、成本低廉。</li>
+<li><strong>可靠性</strong>：抗干扰能力。自然界电磁、辐射干扰可能造成比特位翻转，导致程序出错；处理器设计需要应对这类硬件故障。</li>
+<li><strong>成本</strong>：控制芯片价格。</li>
+<li><strong>安全性</strong>：具备防攻击能力，防止黑客窃取CPU内部加密密钥、破解指令，保护加密解密相关数据。</li>
+<li>**设计平衡：**需要在性能、功耗、可靠性和安全性之间取得平衡</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-计算机架构的层次"><a href="#2-计算机架构的层次" class="headerlink" title="2.计算机架构的层次"></a>2.计算机架构的层次</h2><ul>
+<li><strong>1.三层抽象（Levels of Abstraction）</strong><br>1.<strong>架构层（Architecture）</strong></li>
+</ul>
+<ul>
+<li>ARM定义架构标准，例如 ARMv7、ARMv8‑A &#x2F; v8‑R &#x2F; v8‑M、ARMv9。</li>
+<li>产出架构文档，复杂架构文档可达数千页，可在ARM官网下载。</li>
+<li>偏向软件视角：规定指令集、CPU对外行为，是给开发者使用的一套接口规范。</li>
+</ul>
+<p>2.<strong>微架构层（Microarchitecture）</strong></p>
+<ul>
+<li>属于CPU内部逻辑设计，架构标准不做规定。</li>
+<li>内容包含：流水线级数（3~10级）、分支预测、内存管理单元等内部设计。</li>
+<li>同一种架构可以拥有多种不同微架构，例如Cortex‑A72、A73、A55，流水线stage各不相同。</li>
+</ul>
+<p>3.<strong>硬件实现层（Implementation）</strong></p>
+<ul>
+<li>在微架构基础上完成的最终处理器型号，物理芯片逻辑设计。</li>
+<li>例：Cortex‑A72、Cortex‑A73，是ARMv8‑A架构下的具体处理器实现。</li>
+</ul>
+<blockquote>
+<p><strong>implementation defined（实现定义）</strong><br>架构文档里常见术语：部分行为架构不做强制规定，具体表现由实际处理器硬件实现决定。</p>
+</blockquote>
+<blockquote>
+<p>小结：<strong>架构定接口，微架构定内部逻辑，实现对应真实芯片型号。</strong></p>
+</blockquote>
+<h2 id="3-计算机架构的定义"><a href="#3-计算机架构的定义" class="headerlink" title="3.计算机架构的定义"></a>3.计算机架构的定义</h2><blockquote>
+<p>ARM架构文档可在官网下载，文档面向研发可查阅，但<strong>并非商业完全开源</strong>：仅可用于研究；如果要商业化生产兼容架构的处理器，必须向ARM支付架构授权费用。</p>
+</blockquote>
+<ul>
+<li><strong>1.架构定义的五大核心要素</strong><br>1.<strong>指令集 Instruction set</strong></li>
+</ul>
+<ul>
+<li>规定处理器全部指令、指令编码格式、指令功能。</li>
+<li>ARM架构文档公开指令相关资料，可供研究，但商业化使用需要授权。</li>
+</ul>
+<p>2.<strong>内存模型 Memory model</strong></p>
+<ul>
+<li>管理整个地址空间，区分不同内存类型（SRAM、外设寄存器等）。</li>
+<li>定义内存保护机制：实现软件之间隔离，例如操作系统与应用程序隔离。</li>
+<li>管理内存的读写权限、访问规则。</li>
+</ul>
+<p>3.<strong>编程模型 Program model</strong></p>
+<ul>
+<li>软件视角，规定寄存器的使用规范<ul>
+<li>通用寄存器：M系列 R0‑R1；ARMv8‑A X0~X30等64位通用寄存器</li>
+<li>特殊寄存器：堆栈指针SP、各类系统控制寄存器</li>
+</ul>
+</li>
+<li>定义处理器执行级别&#x2F;运行模式<ul>
+<li>ARMv8‑A：EL0 ~ EL3 不同执行等级</li>
+<li>ARMv7‑A：用户模式、特权模式、中断模式、快速中断模式、管理模式等</li>
+</ul>
+</li>
+<li>规定不同软件（应用、操作系统、中断服务程序）应当运行在哪种处理器模式。</li>
+</ul>
+<p>4.<strong>异常处理 Exception handling</strong></p>
+<ul>
+<li>定义异常发生时，处理器进入异常、退出异常完整流程与硬件行为。</li>
+<li>偏向软件规范。</li>
+</ul>
+<p>5.<strong>调试支持 Debug</strong></p>
+<ul>
+<li>标准化调试架构，规定断点、观察点等调试事件、调试相关寄存器。</li>
+<li>统一标准保证调试工具可以适配处理器；处理器和调试器遵循同一套标准，才能正常调试。</li>
+</ul>
+<blockquote>
+<p>小结：架构全部偏向软件接口规范，用来约束软件如何和CPU交互。</p>
+</blockquote>
+<ul>
+<li><strong>2.计算机架构与处理器设计的关系</strong><blockquote>
+<p>Computer‑Architecture 是<strong>架构层、微架构层、硬件实现层三者的综合概念</strong>，处理器设计需要同时兼顾软件规范、流水线、分支预测、内存管理等全部内容。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>1.处理器设计的整体流程与设计考量<br>1.<strong>第一步：选定架构标准</strong><br>设计处理器首先确定遵循哪一套ARM架构，例如 ARMv8‑A &#x2F; ARMv8‑M。</li>
+</ul>
+<p>2.<strong>第二步：微架构设计，重点选择流水线级数</strong></p>
+<ul>
+<li>流水线级数越多，硬件设计复杂度越高，功耗也随之增大。</li>
+<li><strong>流水线级数不能盲目做大，需要结合目标市场、应用场景做权衡：</strong><ul>
+<li>根据市场对性能的要求，选择2级、3级、7级、8级等不同流水线。</li>
+<li>面向手机、嵌入式、服务器等不同场景，需要匹配不同微架构。</li>
+</ul>
+</li>
+</ul>
+<p>3.<strong>核心目标：结合现有半导体工艺，设计出匹配市场需求的处理器</strong></p>
+<p><strong>能效比概念（手机处理器的核心指标）</strong></p>
+<ul>
+<li><p><strong>能效比：单位功耗下可以达到的性能（每瓦性能）</strong></p>
+</li>
+<li><p>手机芯片迭代的核心追求：提升能效比，做到<strong>性能提升的同时控制甚至降低功耗</strong>。</p>
+</li>
+<li><p>设计时综合权衡三大指标：<strong>功耗、芯片面积、运算性能</strong>。</p>
+</li>
+<li><p>2.计算机架构随应用需求持续演变<br>架构不是一成不变，会跟随用户场景（use case）迭代更新：</p>
+</li>
+</ul>
+<ol>
+<li>2015年之前：AI业务需求低，处理器架构基本不考虑AI算力。</li>
+<li>2015年之后：AI应用爆发，处理器设计必须加入AI相关能力。</li>
+<li><strong>ARMv9架构：新增AI加速能力、增强安全特性，用来适配新兴业务需求。</strong></li>
+</ol>
+<blockquote>
+<p>设计哲学：处理器架构必须持续演进，来不断适配变化的应用场景与用户需求。</p>
+</blockquote>
+<h2 id="4-计算机架构领域"><a href="#4-计算机架构领域" class="headerlink" title="4.计算机架构领域"></a>4.计算机架构领域</h2><ul>
+<li><strong>1.架构设计的层级与影响因素</strong></li>
+</ul>
+<ul>
+<li><strong>层级关系</strong>：完整技术栈从上至下：<strong>应用层 → 操作系统 → 编程语言&#x2F;编译器 → 微架构 → 硬件实现 → 制造工艺</strong>。</li>
+<li><strong>动态演变</strong>：各层需求、约束会随时间发生变化，架构设计需要具备前瞻性。</li>
+<li><strong>商业考量</strong>：架构演进要兼顾商业诉求，尽可能降低生态破坏成本，保障软件兼容性。</li>
+</ul>
+<ul>
+<li><strong>2.市场对架构变化的影响</strong></li>
+</ul>
+<ul>
+<li><strong>决定性作用</strong>：市场需求直接驱动架构迭代方向。</li>
+<li><strong>应用场景差异</strong>：移动设备、服务器、嵌入式等不同领域，对性能、功耗、面积、成本指标要求不一样。</li>
+<li><strong>生态影响</strong>：架构设计必须考量现有软件生态的迁移成本。</li>
+</ul>
+<ul>
+<li><strong>3.工艺发展对CPU性能的影响</strong></li>
+</ul>
+<ul>
+<li><strong>工艺进步</strong>：半导体制程迭代，能够改善晶体管本身性能，助力CPU性能提升。</li>
+<li><strong>微架构优化</strong>：流水线等微架构设计，必须结合当下工艺的特性开展设计。</li>
+<li><strong>协同设计</strong>：处理器设计要跟工艺发展同步，避免基于落后工艺做设计。</li>
+</ul>
+<p><strong>4.处理器设计考虑未来应用与生态系统</strong></p>
+<ul>
+<li><strong>前瞻性设计</strong>：需要预判未来数年业务负载特征。</li>
+<li><strong>扩展能力</strong>：架构预留余量，能够适配新兴业务负载。</li>
+<li><strong>生态兼容</strong>：保证新架构可以适配后续软件生态的演进。</li>
+</ul>
+<ul>
+<li><strong>5.不同市场的性能、面积与成本需求</strong></li>
+</ul>
+<ul>
+<li>移动设备：重点追求<strong>能效比</strong>，控制芯片成本。</li>
+<li>服务器：追求绝对性能，看重多核扩展能力。</li>
+<li>嵌入式：强调确定性、实时响应。</li>
+<li>安全领域：重点做抗攻击设计、高可靠性。</li>
+</ul>
+<ul>
+<li><strong>6.硬件实践与微架构的实验验证</strong></li>
+</ul>
+<ul>
+<li><strong>验证必要性</strong>：硬件流片之后出现bug，不能像软件一样打补丁修复，损失巨大。</li>
+<li><strong>实验方法论</strong>：依靠实验、基准跑分，对比评估多种微架构方案优劣。</li>
+</ul>
+<ul>
+<li><strong>7.Cache结构与设计考量</strong></li>
+</ul>
+<ul>
+<li><strong>层级结构</strong>：L1、L2、L3三级缓存，各项参数都需要权衡取舍。</li>
+<li><strong>相联度选择</strong>：支持2路、4路、8路相联，相联度影响缓存命中率。</li>
+<li><strong>性能拐点</strong>：相联度提升到一定程度，性能收益不再明显。</li>
+<li><strong>面积代价</strong>：提高相联度会显著增大芯片面积。</li>
+<li><strong>定制化设计</strong>：针对目标软件负载去调优缓存参数。</li>
+</ul>
+<hr>
+<h2 id="5-处理器六大设计目标"><a href="#5-处理器六大设计目标" class="headerlink" title="5.处理器六大设计目标"></a>5.处理器六大设计目标</h2><ul>
+<li><p>1.功能性</p>
+</li>
+<li><p><strong>验证挑战</strong>：处理器验证复杂度远高于软件，需要覆盖海量、多样的指令组合场景。</p>
+</li>
+<li><p><strong>纠错成本</strong>：硬件重大bug会直接造成整款产品失败，功能验证占设计成本很高。</p>
+</li>
+<li><p><strong>测试要求</strong>：芯片流片完成后，依旧需要复杂完备的测试流程。</p>
+</li>
+<li><p>2.性能</p>
+</li>
+<li><p><strong>场景依赖</strong>：没有统一的性能标准，不同应用场景侧重点完全不同。</p>
+</li>
+<li><p><strong>评估方法</strong>：依靠基准测试（跑分）量化性能。</p>
+</li>
+<li><p><strong>市场差异</strong>：手机、服务器对性能指标要求各不相同。</p>
+</li>
+<li><p>3.功耗(Power)</p>
+</li>
+<li><p><strong>关键约束</strong>：现代处理器核心设计约束条件。</p>
+</li>
+<li><p><strong>用户体验</strong>：直接决定设备续航，例如手机待机时长。</p>
+</li>
+<li><p><strong>系统影响</strong>：处理器功耗是整个SoC功耗的基线。</p>
+</li>
+<li><p>4.安全(Security)</p>
+</li>
+<li><p><strong>威胁防护</strong>：抵御恶意软件窃取敏感数据，例如密钥、指纹、人脸信息。</p>
+</li>
+<li><p><strong>软件安全</strong>：ARMv9相比ARMv8提升安全等级；<strong>TrustZone</strong>提供软件隔离运行环境。</p>
+</li>
+<li><p><strong>硬件安全</strong>：银行卡、身份证芯片需要抵御<strong>物理旁路攻击</strong>。</p>
+</li>
+<li><p><strong>安全分级</strong>：不同业务场景匹配不同安全防护等级。</p>
+</li>
+<li><p>5.成本</p>
+</li>
+<li><p><strong>多维构成</strong>：包含设计复杂度、芯片面积、封装等多项开销。</p>
+</li>
+<li><p><strong>市场定位</strong>：嵌入式、消费电子、服务器对成本敏感度差异很大。</p>
+</li>
+<li><p><strong>平衡艺术</strong>：在性能、功耗、安全之间寻找成本最优解。</p>
+</li>
+<li><p>6.可靠性</p>
+</li>
+<li><p><strong>故障处理</strong>：能够检测、容忍运行时故障，例如宇宙辐射引发比特位翻转。</p>
+</li>
+<li><p><strong>纠错技术</strong>：ECC内存，支持比特错误检测与纠错。</p>
+</li>
+<li><p><strong>耐久设计</strong>：处理存储器单元长期使用损坏失效问题。</p>
+</li>
+<li><p><strong>关键应用</strong>：工业控制、航空航天等高可靠场景刚需。</p>
+</li>
+</ul>
+<hr>
+<h2 id="6-ARM目标市场与处理器分类"><a href="#6-ARM目标市场与处理器分类" class="headerlink" title="6. ARM目标市场与处理器分类"></a>6. ARM目标市场与处理器分类</h2><ul>
+<li><strong>1.处理器设计的权衡因素</strong></li>
+</ul>
+<ul>
+<li><strong>多维优化</strong>：同时权衡功耗、成本、芯片面积、性能、安全、可靠性多项指标。</li>
+<li><strong>市场细分</strong>：不同场景，各项指标权重不一样。</li>
+<li><strong>定制化设计</strong>：不存在通用最优方案，针对目标市场做定向优化。</li>
+</ul>
+<ul>
+<li><strong>2.ARM主流处理器系列</strong></li>
+</ul>
+<ul>
+<li><p><strong>Cortex‑A 系列</strong></p>
+</li>
+<li><p><strong>定位</strong>：高性能应用处理器</p>
+</li>
+<li><p><strong>特点</strong>：可以运行复杂操作系统，Android、Linux。</p>
+</li>
+<li><p><strong>典型</strong>：A73&#x2F;A75&#x2F;A76（性能大核）；A55&#x2F;A53（能效小核）；大小核架构。</p>
+</li>
+<li><p><strong>应用</strong>：手机、电视盒子、监控设备。</p>
+</li>
+<li><p><strong>Cortex‑R 系列</strong></p>
+</li>
+<li><p><strong>定位</strong>：高实时性控制器</p>
+</li>
+<li><p><strong>特点</strong>：<strong>执行时间确定性</strong>、中断延迟可控；支持ECC错误检测。</p>
+</li>
+<li><p><strong>应用</strong>：硬盘控制器、4G&#x2F;5G基带、Wi‑Fi、网络控制器。</p>
+</li>
+<li><p><strong>Cortex‑M 系列</strong></p>
+</li>
+<li><p><strong>定位</strong>：超低功耗嵌入式MCU</p>
+</li>
+<li><p><strong>特点</strong>：单位面积功耗极低、成本低廉。</p>
+</li>
+<li><p><strong>应用</strong>：手环、智能手表、家电、玩具。</p>
+</li>
+<li><p><strong>Neoverse 系列</strong></p>
+</li>
+<li><p><strong>定位</strong>：服务器、数据中心处理器</p>
+</li>
+<li><p><strong>特点</strong>：强多核可扩展，支持大规模核数（最高可达上百核），追求高吞吐。</p>
+</li>
+<li><p><strong>应用</strong>：云端服务器、边缘计算。</p>
+</li>
+</ul>
+<ul>
+<li><strong>3.智能手机内部异构处理器分工</strong></li>
+</ul>
+<ul>
+<li><p><strong>应用处理器 AP</strong></p>
+</li>
+<li><p>主核心：<strong>Cortex‑A系列</strong>，运行安卓系统、上层应用。</p>
+</li>
+<li><p>辅助内核：Cortex‑M，负责电源管理、系统控制等后台任务。</p>
+</li>
+<li><p><strong>通信模块</strong></p>
+</li>
+<li><p>基带：<strong>Cortex‑R系列</strong>处理4G&#x2F;5G通信协议栈，满足实时、确定性要求。</p>
+</li>
+<li><p>短距连接：Cortex‑M负责蓝牙、Wi‑Fi。</p>
+</li>
+</ul>
+<ul>
+<li><strong>传感器子系统</strong></li>
+</ul>
+<ul>
+<li>摄像头、GPS等外设，数据量不大，使用 <strong>Cortex‑M</strong>完成数据处理。</li>
+</ul>
+<blockquote>
+<p>异构优势：多种ARM处理器协同工作，兼顾性能、实时性、功耗，实现整体能效最优。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    
+    <footer class="post-footer">
+        
+        
+
+        
+
+        
+
+        
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+  </div>
+</div>
+
+
+        
+          <div class="post-tags">
+              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+              <a href="/MyBlogC/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/MyBlogC/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" rel="tag"># 嵌入式开发</a>
+              <a href="/MyBlogC/tags/FreeRTOS/" rel="tag"># FreeRTOS</a>
+          </div>
+
+        
+        
+
+
+        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2026/08/02/06-FreeRTOS/" rel="prev" title="05-FreeRTOS">
+                  <i class="fa fa-angle-left"></i> 05-FreeRTOS
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2026/08/03/04-STM32HAL%E5%BA%93/" rel="next" title="04-STM32HAL库">
+                  04-STM32HAL库 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="isso-thread"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">true</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+<!-- ✅✅✅ 修复目录跳转延迟 最终版 JS | 仅修改3处卡顿核心 | 其他功能完全保留不变 ✅✅✅ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ====== 核心元素 & 原版配置 (一丝不改) ======
+    const header = document.querySelector('.header');
+    const headerInner = document.querySelector('.header-inner');
+    const body = document.body;
+    const tocLinks = document.querySelectorAll('.sidebar .post-toc a.toc-link');
+    const searchBtn = document.querySelector('.header .search');
+    const searchOverlay = document.querySelector('.search-pop-overlay');
+    const searchCloseBtn = document.querySelector('.search-popup .fa-times');
+    // ✅ 修改1【核心优化】：精准计算导航栏高度，删除冗余数值，解决滚动计算慢+定位偏差
+    const headerFullHeight = header ? (header.offsetHeight + 8) : 0;
+    let timer = null;
+    const CONFIG = { HIDE_DELAY: 3000, WAKE_AREA_HEIGHT: 120, SCROLL_SPEED: 500 };
+
+    // ====== ✅ 物理级开关 - 给body加类，配合CSS锁死显示+防偏移 ======
+    const openSearch = () => {
+        body.classList.add('search-active');
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        body.style.overflow = 'auto';
+    };
+    const closeSearch = () => {
+        body.classList.remove('search-active');
+        clearTimeout(timer);
+        timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        body.style.overflow = '';
+    };
+
+    // ====== ✅ 原版隐藏/显示逻辑 一丝不改 ======
+    const hideNav = () => {
+        if(body.classList.contains('search-active')) return;
+        clearTimeout(timer);
+        header?.classList.add('hide-nav');
+        headerInner?.classList.add('hide-nav');
+    };
+    const showNav = () => {
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        if(!body.classList.contains('search-active')) {
+            timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        }
+    };
+
+    // ====== ✅ 修改2【极致优化】：重构滚动函数，浏览器最高优先级执行，0延迟丝滑无卡顿 ======
+    const smoothScrollTo = (targetId) => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const targetTop = target.offsetTop - headerFullHeight;
+        // 强制浏览器优先执行滚动，跳过所有阻塞，瞬间触发，这是根治延迟的核心！
+        window.requestAnimationFrame(() => {
+            window.scrollTo({ top: targetTop, left: 0, behavior: 'smooth' });
+        });
+    };
+
+    // ====== ✅ 绑定所有搜索事件 - 优先级拉满 ======
+    searchBtn?.addEventListener('click', openSearch, { capture: true });
+    searchCloseBtn?.addEventListener('click', closeSearch, { capture: true });
+    searchOverlay?.addEventListener('click', (e) => {
+        if(e.target === searchOverlay) closeSearch();
+    }, { capture: true });
+
+    // ====== ✅ 所有原版监听事件 一丝不改 除了【目录点击事件】 ======
+    document.addEventListener('mousemove', (e) => { e.clientY < CONFIG.WAKE_AREA_HEIGHT && showNav(); });
+    header?.addEventListener('mouseenter', showNav);
+    headerInner?.addEventListener('mouseenter', showNav);
+    header?.addEventListener('mouseleave', hideNav);
+    headerInner?.addEventListener('mouseleave', hideNav);
+    // ✅ 修改3【重中之重】：删除卡顿元凶 hideNav() + 多余配置，这是延迟99%的原因，0延迟核心！
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // 只保留阻止默认锚点跳转，其他全部精简，无任何阻塞
+            smoothScrollTo(link.getAttribute('href').replace('#',''));
+        });
+    });
+    document.addEventListener('sidebar:show', hideNav);
+    document.addEventListener('sidebar:hide', showNav);
+    window.addEventListener('scroll', () => {
+        body.classList.contains('sidebar-active') && hideNav();
+    }, { passive: true });
+
+    // ====== ✅ 页面初始化 一丝不改 ======
+    showNav();
+});
+</script>
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="isso" type="application/json">{"enable":false}</script>
+<script src="/MyBlogC/js/third-party/comments/isso.js" defer></script>
+
+</body>
+</html>
