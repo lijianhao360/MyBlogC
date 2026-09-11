@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/MyBlogC/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/MyBlogC/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/MyBlogC/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/MyBlogC/images/logo.svg" color="#ffffff">
+
+<link rel="stylesheet" href="/MyBlogC/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
+
+    <meta name="description" content="第一章: 常见元器件一、电阻电阻是电子电路中最基础的无源元件，核心作用是限制电流大小、分配电压高低，同时还能起到分压、分流、限流、负载等作用，遵循欧姆定律（U&#x3D;IR）。  一、核心参数   标称阻值：电阻的标准电阻值，常用色环法（四环 &#x2F; 五环）或数字直标法标注，单位为欧姆（Ω），大阻值用千欧（kΩ）、兆欧（MΩ）表示（1MΩ&#x3D;1000kΩ&#x3D;10⁶Ω）。 额">
+<meta property="og:type" content="article">
+<meta property="og:title" content="硬件PCB设计">
+<meta property="og:url" content="https://lijianhao360.github.io/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="首页">
+<meta property="og:description" content="第一章: 常见元器件一、电阻电阻是电子电路中最基础的无源元件，核心作用是限制电流大小、分配电压高低，同时还能起到分压、分流、限流、负载等作用，遵循欧姆定律（U&#x3D;IR）。  一、核心参数   标称阻值：电阻的标准电阻值，常用色环法（四环 &#x2F; 五环）或数字直标法标注，单位为欧姆（Ω），大阻值用千欧（kΩ）、兆欧（MΩ）表示（1MΩ&#x3D;1000kΩ&#x3D;10⁶Ω）。 额">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E7%94%B5%E9%98%BB%E6%A0%B7%E5%BC%8F.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AF%BB%E5%8F%96%E7%94%B5%E9%98%BB.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AF%BB%E5%8F%96%E7%94%B5%E9%98%BB2.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%90%84%E7%A7%8D%E7%94%B5%E5%AE%B9.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E7%94%B5%E6%84%9F%E5%88%86%E7%B1%BB.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A8%A1%E5%9D%97.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86USB%E6%8E%A5%E5%8F%A3.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86LED.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86PCB.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%BB%98%E5%88%B6.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/PCB%E5%B8%83%E5%B1%80%E5%B8%83%E7%BA%BF.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E5%8E%9F%E7%90%86%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E5%AE%9E%E4%BD%93%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97PCB%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%972.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E6%8E%A5%E7%BA%BF%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E5%8E%9F%E7%90%862.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%972PCB%E8%AE%BE%E8%AE%A1%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%9723D%E5%9B%BE.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%86%E8%A7%A3%E4%BA%8C%E6%9E%81%E7%AE%A1.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%8C%E6%9E%81%E7%AE%A1%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%8C%E6%9E%81%E7%AE%A1%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD2.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%86%E8%A7%A3%E4%B8%89%E7%BA%A7%E7%AE%A1.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E7%9A%84%E5%88%86%E7%B1%BB.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E7%BA%A7%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%862.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%863.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86MOS%E7%AE%A1.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/MOS%E7%AE%A1%E7%AD%89%E6%95%88.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%BD%AC%E7%A7%BB%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/LDO%E9%99%8D%E5%8E%8B%E7%94%B5%E8%B7%AF.png">
+<meta property="article:published_time" content="2026-08-02T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-11T02:30:14.906Z">
+<meta property="article:author" content="JianHao Li">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="嵌入式开发">
+<meta property="article:tag" content="硬件PCB设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E7%94%B5%E9%98%BB%E6%A0%B7%E5%BC%8F.png">
+
+
+<link rel="canonical" href="https://lijianhao360.github.io/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lijianhao360.github.io/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/","path":"2026/08/02/硬件PCB设计/","title":"硬件PCB设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>硬件PCB设计 | 首页</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/utils.js" defer></script><script src="/MyBlogC/js/motion.js" defer></script><script src="/MyBlogC/js/sidebar.js" defer></script><script src="/MyBlogC/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/MyBlogC/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/MyBlogC/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/MyBlogC/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">首页</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">分享技术，记录成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/MyBlogC/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/MyBlogC/categories/" rel="section"><i class="fa fa-folder fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/MyBlogC/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/MyBlogC/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%B8%B8%E8%A7%81%E5%85%83%E5%99%A8%E4%BB%B6"><span class="nav-text">第一章: 常见元器件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%94%B5%E9%98%BB"><span class="nav-text">一、电阻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E5%AE%B9"><span class="nav-text">二、电容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%B5%E6%84%9F"><span class="nav-text">三、电感</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-PCB%E7%94%BB%E6%A8%A1%E5%9D%97"><span class="nav-text">第二章: PCB画模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A8%A1%E5%9D%97"><span class="nav-text">一、制作一个小模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%8D%E5%88%BB%E4%B8%80%E6%AC%BE%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97"><span class="nav-text">二、复刻一款降压模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%A4%8D%E5%88%BB%E4%B8%80%E6%AC%BE%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%972"><span class="nav-text">三、复刻一款降压模块2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%A8%A1%E7%94%B5%E7%9F%A5%E8%AF%86"><span class="nav-text">第三章: 模电知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-text">一、二极管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%89%E6%9E%81%E7%AE%A1"><span class="nav-text">二、三极管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81MOS%E7%AE%A1"><span class="nav-text">三、MOS管</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%94%B5%E8%B7%AF"><span class="nav-text">第四章: 电路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-LDO%E9%99%8D%E5%8E%8B%E7%94%B5%E8%B7%AF"><span class="nav-text">1.LDO降压电路</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JianHao Li"
+      src="/MyBlogC/images/avatar.png">
+  <p class="site-author-name" itemprop="name">JianHao Li</p>
+  <div class="site-description" itemprop="description">一个专注 C/嵌入式 技术的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/MyBlogC/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/MyBlogC/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/MyBlogC/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lijianhao360/MyBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lijianhao360&#x2F;MyBlog" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2993746016@qq.com" title="邮箱 → mailto:2993746016@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>邮箱</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+
+<div class="post-block">
+  
+  
+
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    
+    <link itemprop="mainEntityOfPage" href="https://lijianhao360.github.io/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/">
+
+    
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/MyBlogC/images/avatar.png">
+      <meta itemprop="name" content="JianHao Li">
+    </span>
+
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="首页">
+      <meta itemprop="description" content="一个专注 C/嵌入式 技术的博客">
+    </span>
+
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="硬件PCB设计 | 首页">
+      <meta itemprop="description" content="">
+    </span>
+
+    
+      
+      <header class="post-header">
+        
+        <h1 class="post-title" itemprop="name headline">
+          
+            硬件PCB设计
+            
+        </h1>
+
+        
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-08-02 10:00:00" itemprop="dateCreated datePublished" datetime="2026-08-02T10:00:00+08:00">2026-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-09-11 10:30:14" itemprop="dateModified" datetime="2026-09-11T10:30:14+08:00">2026-09-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/MyBlogC/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+
+          
+        </div>
+      </header>
+
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        
+        
+        <h1 id="第一章-常见元器件"><a href="#第一章-常见元器件" class="headerlink" title="第一章: 常见元器件"></a>第一章: 常见元器件</h1><h2 id="一、电阻"><a href="#一、电阻" class="headerlink" title="一、电阻"></a>一、电阻</h2><p>电阻是电子电路中最基础的无源元件，核心作用是限制电流大小、分配电压高低，同时还能起到分压、分流、限流、负载等作用，遵循欧姆定律（U&#x3D;IR）。</p>
+<ul>
+<li><strong>一、核心参数</strong></li>
+</ul>
+<ol>
+<li><strong>标称阻值</strong>：电阻的标准电阻值，常用色环法（四环 &#x2F; 五环）或数字直标法标注，单位为欧姆（Ω），大阻值用千欧（kΩ）、兆欧（MΩ）表示（1MΩ&#x3D;1000kΩ&#x3D;10⁶Ω）。</li>
+<li><strong>额定功率</strong>：电阻长期工作允许消耗的最大功率，超过会发热烧毁，常见小功率电阻为 1&#x2F;8W、1&#x2F;4W、1&#x2F;2W。</li>
+<li><strong>精度</strong>：实际阻值与标称阻值的误差范围，普通电阻精度 ±5%、±10%，精密电阻可达 ±1% 甚至更高。</li>
+</ol>
+<ul>
+<li><strong>二、常见类型（适合初学者）</strong></li>
+</ul>
+<ul>
+<li>碳膜电阻：成本低、精度一般，适合普通电路。</li>
+<li>金属膜电阻：精度高、稳定性好，常用于要求较高的电路（如嵌入式开发板）。</li>
+<li>贴片电阻：体积小，表面贴装，是 PCB 板上最常见的类型。</li>
+<li>可变电阻（电位器）：阻值可手动调节，比如收音机的音量旋钮</li>
+</ul>
+<ul>
+<li><strong>三、电阻的读取</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E7%94%B5%E9%98%BB%E6%A0%B7%E5%BC%8F.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AF%BB%E5%8F%96%E7%94%B5%E9%98%BB.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AF%BB%E5%8F%96%E7%94%B5%E9%98%BB2.png" class="">
+
+<h2 id="二、电容"><a href="#二、电容" class="headerlink" title="二、电容"></a>二、电容</h2><ul>
+<li><p><strong>认识电容</strong><br>电容是电子电路中三大基础无源元件之一，核心作用是储存和释放电荷，就像电路里的“小电池”，还能实现滤波、耦合、旁路、谐振等功能。</p>
+</li>
+<li><p><strong>一、核心原理</strong><br>电容由两个相互绝缘的导体（极板）和中间的绝缘介质构成。当两端加上电压时，极板会积累等量异种电荷；断开电源后，电荷会在极板上保存一段时间（理想状态），形成电场。</p>
+</li>
+<li><p><strong>二、核心参数</strong></p>
+</li>
+</ul>
+<ol>
+<li><strong>标称容量</strong>：电容储存电荷的能力，单位是法拉（F），常用单位为微法（μF）、纳法（nF）、皮法（pF），换算关系：<br>1F &#x3D; 1000000 μF &#x3D; 1000000000 nF &#x3D; 1000000000000 pF</li>
+<li><strong>额定电压</strong>：电容长期稳定工作允许的最大电压，超过这个值会击穿介质，导致电容损坏。</li>
+<li><strong>介质类型</strong>：决定电容的性能和适用场景，常见的有陶瓷、电解、钽电容等。</li>
+<li><strong>精度</strong>：实际容量与标称容量的误差范围，普通电容精度 ±20%，精密电容可达 ±1%。</li>
+</ol>
+<ul>
+<li><p><strong>三、电容特性</strong><br><strong>电容两端电压不能突变</strong><br>$I&#x3D;C\cdot \mathrm{dU&#x2F;dt},\quad u&#x3D;\frac1C \int i\mathrm{d}t$</p>
+</li>
+<li><p><strong>四、各种电容</strong></p>
+</li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%90%84%E7%A7%8D%E7%94%B5%E5%AE%B9.png" class="">
+
+<h2 id="三、电感"><a href="#三、电感" class="headerlink" title="三、电感"></a>三、电感</h2><ul>
+<li><p><strong>认识电感</strong><br>电感是电子电路三大基础无源元件之一，核心作用是储存磁场能量，能阻碍电流的变化（通直流、阻交流，通低频、阻高频），常用来实现滤波、扼流、谐振、储能等功能。</p>
+</li>
+<li><p><strong>一、核心原理</strong><br>电感的本质是绕在铁芯或磁芯上的线圈。当电流通过线圈时，会产生磁场；电流变化时，磁场也会随之变化，进而在线圈自身感应出反向电动势，阻碍电流的增减——这个特性叫做电磁感应。<br>简单类比：电感就像电路里的“惯性元件”，电流想突然变大或变小，它都会“拖后腿”。</p>
+</li>
+<li><p><strong>二、核心参数</strong><br><strong>电感量</strong>：衡量电感储存磁场能力的参数，单位是亨利（H），常用单位为毫亨（mH）、微亨（μH）<br>换算关系：1H &#x3D; 1000 mH &#x3D; 1000000 μH</p>
+</li>
+</ul>
+<p><strong>额定电流</strong>：电感长期工作允许通过的最大电流，超过会因发热烧毁线圈，或导致电感量下降。</p>
+<ul>
+<li><strong>三、电感分类</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E7%94%B5%E6%84%9F%E5%88%86%E7%B1%BB.png" class="">
+
+<h1 id="第二章-PCB画模块"><a href="#第二章-PCB画模块" class="headerlink" title="第二章: PCB画模块"></a>第二章: PCB画模块</h1><h2 id="一、制作一个小模块"><a href="#一、制作一个小模块" class="headerlink" title="一、制作一个小模块"></a>一、制作一个小模块</h2><img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A8%A1%E5%9D%97.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86USB%E6%8E%A5%E5%8F%A3.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86LED.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86PCB.png" class="">
+<ul>
+<li><strong>1.PCB设计流程</strong><br>元件符号绘制 → 原理图绘制 → 元件封装绘制 → PCB布局 → PCB布线</li>
+<li><strong>原理图绘制</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%BB%98%E5%88%B6.png" class="">
+<ul>
+<li><strong>原件封装绘制和PCB布局&#x2F;布线</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/PCB%E5%B8%83%E5%B1%80%E5%B8%83%E7%BA%BF.png" class="">
+
+<h2 id="二、复刻一款降压模块"><a href="#二、复刻一款降压模块" class="headerlink" title="二、复刻一款降压模块"></a>二、复刻一款降压模块</h2><img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E5%8E%9F%E7%90%86%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E5%AE%9E%E4%BD%93%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97PCB%E5%9B%BE.png" class="">
+
+<h2 id="三、复刻一款降压模块2"><a href="#三、复刻一款降压模块2" class="headerlink" title="三、复刻一款降压模块2"></a>三、复刻一款降压模块2</h2><img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E5%A4%8D%E5%88%BB%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%972.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E6%8E%A5%E7%BA%BF%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%97%E5%8E%9F%E7%90%862.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%972PCB%E8%AE%BE%E8%AE%A1%E5%9B%BE.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E9%99%8D%E5%8E%8B%E6%A8%A1%E5%9D%9723D%E5%9B%BE.png" class="">
+
+
+<h1 id="第三章-模电知识"><a href="#第三章-模电知识" class="headerlink" title="第三章: 模电知识"></a>第三章: 模电知识</h1><h2 id="一、二极管"><a href="#一、二极管" class="headerlink" title="一、二极管"></a>一、二极管</h2><ul>
+<li><strong>1.了解二级管</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%86%E8%A7%A3%E4%BA%8C%E6%9E%81%E7%AE%A1.png" class="">
+
+<ul>
+<li><strong>2.二极管常用功能</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%8C%E6%9E%81%E7%AE%A1%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%8C%E6%9E%81%E7%AE%A1%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD2.png" class="">
+
+<h2 id="二、三极管"><a href="#二、三极管" class="headerlink" title="二、三极管"></a>二、三极管</h2><ul>
+<li><strong>1.了解三极管</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BA%86%E8%A7%A3%E4%B8%89%E7%BA%A7%E7%AE%A1.png" class="">
+
+<ul>
+<li><strong>2.三极管的分类</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E7%9A%84%E5%88%86%E7%B1%BB.png" class="">
+
+<ul>
+<li><strong>3.三极管工作原理</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E7%BA%A7%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%862.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%B8%89%E6%9E%81%E7%AE%A1%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%863.png" class="">
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF.png" class="">
+
+<h2 id="三、MOS管"><a href="#三、MOS管" class="headerlink" title="三、MOS管"></a>三、MOS管</h2><ul>
+<li><strong>1.认识MOS管</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%AE%A4%E8%AF%86MOS%E7%AE%A1.png" class="">
+
+<ul>
+<li><strong>2.MOS管等效</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/MOS%E7%AE%A1%E7%AD%89%E6%95%88.png" class="">
+<ul>
+<li><p>1.PMOS（P型MOS管）<br>标题：Pmos等效模型<br>引脚：G栅极、S源极、D漏极<br>等效：S-D之间等效可变电阻R，Rds为漏源电阻</p>
+</li>
+<li><p>阈值电压 <strong>Vgsth &lt; 0（负值）</strong></p>
+</li>
+<li><p>横轴Vgs（栅源电压）</p>
+<ul>
+<li>$V_{GS} &gt; V_{gsth}$：Rds无穷大，管子<strong>关断</strong></li>
+<li>$V_{GS} &lt; V_{gsth}$：Rds变小，管子<strong>导通</strong><blockquote>
+<p>简单记：PMOS，栅极电压比源极低到一定程度才导通。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>2.NMOS（N型MOS管）<br>标题：Nmos等效模型<br>引脚：G栅极、D漏极、S源极<br>等效：D-S之间等效可变电阻R，Rds漏源电阻</p>
+</li>
+<li><p>阈值电压 <strong>Vgsth &gt; 0（正值）</strong></p>
+</li>
+<li><p>横轴Vgs（栅源电压）</p>
+<ul>
+<li>$V_{GS} &lt; V_{gsth}$：Rds无穷大，管子<strong>关断</strong></li>
+<li>$V_{GS} &gt; V_{gsth}$：Rds变小，管子<strong>导通</strong><blockquote>
+<p>简单记：NMOS，栅极电压比源极高超过阈值才导通。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>对比小结</p>
+<table>
+<thead>
+<tr>
+<th>器件</th>
+<th>阈值Vgsth</th>
+<th>导通条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NMOS</td>
+<td>正数</td>
+<td>$V_{GS}&gt;V_{gsth}$，G比S电位高</td>
+</tr>
+<tr>
+<td>PMOS</td>
+<td>负数</td>
+<td>$V_{GS}&lt;V_{gsth}$，G比S电位低</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>原理：MOS管可以看成<strong>电压控制的可变电阻</strong>。Vgs改变，漏源之间电阻Rds在极小（导通）和无穷大（断开）之间切换，常用来做电子开关。</p>
+<ul>
+<li><strong>3.转移特性曲线</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/%E8%BD%AC%E7%A7%BB%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF.png" class="">
+<ul>
+<li><p>1.输出特性曲线（左图）<br>横轴：漏源电压 Uds (V)<br>纵轴：漏极电流 Id (mA)<br>每条曲线对应不同栅源电压 Ugs</p>
+</li>
+<li><p>四个工作区域：</p>
+</li>
+<li><p><strong>截止区</strong>：Id≈0，管子关断</p>
+</li>
+<li><p><strong>可变电阻区</strong>：Uds较小时，Id随Uds线性增加，管子等效为可变电阻</p>
+</li>
+<li><p><strong>恒流区</strong>：Uds足够大后，Id基本不变，只受Ugs控制（放大区）</p>
+</li>
+<li><p><strong>击穿区</strong>：Uds过大导致Id急剧增大，管子损坏</p>
+</li>
+<li><p>关键概念：</p>
+</li>
+<li><p><strong>预夹断轨迹</strong>：各条曲线开始进入恒流区的连线</p>
+</li>
+<li><p><strong>Ugs&#x3D;10V, 8V, 7V, 6V, 5V, 4V</strong>：不同栅源电压下的曲线</p>
+</li>
+<li><p>2.转移特性曲线（右图）<br>横轴：栅源电压 Ugs<br>纵轴：漏极电流 Id</p>
+</li>
+<li><p>特性：</p>
+</li>
+<li><p><strong>Ugs(th)</strong>：开启电压（阈值电压）</p>
+</li>
+<li><p>Ugs &lt; Ugs(th)：Id≈0，管子截止</p>
+</li>
+<li><p>Ugs &gt; Ugs(th)：Id随Ugs增大迅速增加</p>
+</li>
+<li><p>体现了栅极电压对漏极电流的控制能力</p>
+</li>
+</ul>
+<h1 id="第四章-电路"><a href="#第四章-电路" class="headerlink" title="第四章: 电路"></a>第四章: 电路</h1><h2 id="1-LDO降压电路"><a href="#1-LDO降压电路" class="headerlink" title="1.LDO降压电路"></a>1.LDO降压电路</h2><ul>
+<li><strong>也就是之前的降压模块</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/LDO%E9%99%8D%E5%8E%8B%E7%94%B5%E8%B7%AF.png" class="">
+
+
+    </div>
+
+    
+    
+    
+
+    
+    <footer class="post-footer">
+        
+        
+
+        
+
+        
+
+        
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+  </div>
+</div>
+
+
+        
+          <div class="post-tags">
+              <a href="/MyBlogC/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+              <a href="/MyBlogC/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" rel="tag"># 嵌入式开发</a>
+              <a href="/MyBlogC/tags/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/" rel="tag"># 硬件PCB设计</a>
+          </div>
+
+        
+        
+
+
+        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2026/08/02/06-FreeRTOS/" rel="prev" title="05-FreeRTOS">
+                  <i class="fa fa-angle-left"></i> 05-FreeRTOS
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/" rel="next" title="ARM架构">
+                  ARM架构 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="isso-thread"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">true</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+<!-- ✅✅✅ 修复目录跳转延迟 最终版 JS | 仅修改3处卡顿核心 | 其他功能完全保留不变 ✅✅✅ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ====== 核心元素 & 原版配置 (一丝不改) ======
+    const header = document.querySelector('.header');
+    const headerInner = document.querySelector('.header-inner');
+    const body = document.body;
+    const tocLinks = document.querySelectorAll('.sidebar .post-toc a.toc-link');
+    const searchBtn = document.querySelector('.header .search');
+    const searchOverlay = document.querySelector('.search-pop-overlay');
+    const searchCloseBtn = document.querySelector('.search-popup .fa-times');
+    // ✅ 修改1【核心优化】：精准计算导航栏高度，删除冗余数值，解决滚动计算慢+定位偏差
+    const headerFullHeight = header ? (header.offsetHeight + 8) : 0;
+    let timer = null;
+    const CONFIG = { HIDE_DELAY: 3000, WAKE_AREA_HEIGHT: 120, SCROLL_SPEED: 500 };
+
+    // ====== ✅ 物理级开关 - 给body加类，配合CSS锁死显示+防偏移 ======
+    const openSearch = () => {
+        body.classList.add('search-active');
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        body.style.overflow = 'auto';
+    };
+    const closeSearch = () => {
+        body.classList.remove('search-active');
+        clearTimeout(timer);
+        timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        body.style.overflow = '';
+    };
+
+    // ====== ✅ 原版隐藏/显示逻辑 一丝不改 ======
+    const hideNav = () => {
+        if(body.classList.contains('search-active')) return;
+        clearTimeout(timer);
+        header?.classList.add('hide-nav');
+        headerInner?.classList.add('hide-nav');
+    };
+    const showNav = () => {
+        clearTimeout(timer);
+        header?.classList.remove('hide-nav');
+        headerInner?.classList.remove('hide-nav');
+        if(!body.classList.contains('search-active')) {
+            timer = setTimeout(hideNav, CONFIG.HIDE_DELAY);
+        }
+    };
+
+    // ====== ✅ 修改2【极致优化】：重构滚动函数，浏览器最高优先级执行，0延迟丝滑无卡顿 ======
+    const smoothScrollTo = (targetId) => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const targetTop = target.offsetTop - headerFullHeight;
+        // 强制浏览器优先执行滚动，跳过所有阻塞，瞬间触发，这是根治延迟的核心！
+        window.requestAnimationFrame(() => {
+            window.scrollTo({ top: targetTop, left: 0, behavior: 'smooth' });
+        });
+    };
+
+    // ====== ✅ 绑定所有搜索事件 - 优先级拉满 ======
+    searchBtn?.addEventListener('click', openSearch, { capture: true });
+    searchCloseBtn?.addEventListener('click', closeSearch, { capture: true });
+    searchOverlay?.addEventListener('click', (e) => {
+        if(e.target === searchOverlay) closeSearch();
+    }, { capture: true });
+
+    // ====== ✅ 所有原版监听事件 一丝不改 除了【目录点击事件】 ======
+    document.addEventListener('mousemove', (e) => { e.clientY < CONFIG.WAKE_AREA_HEIGHT && showNav(); });
+    header?.addEventListener('mouseenter', showNav);
+    headerInner?.addEventListener('mouseenter', showNav);
+    header?.addEventListener('mouseleave', hideNav);
+    headerInner?.addEventListener('mouseleave', hideNav);
+    // ✅ 修改3【重中之重】：删除卡顿元凶 hideNav() + 多余配置，这是延迟99%的原因，0延迟核心！
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // 只保留阻止默认锚点跳转，其他全部精简，无任何阻塞
+            smoothScrollTo(link.getAttribute('href').replace('#',''));
+        });
+    });
+    document.addEventListener('sidebar:show', hideNav);
+    document.addEventListener('sidebar:hide', showNav);
+    window.addEventListener('scroll', () => {
+        body.classList.contains('sidebar-active') && hideNav();
+    }, { passive: true });
+
+    // ====== ✅ 页面初始化 一丝不改 ======
+    showNav();
+});
+</script>
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="isso" type="application/json">{"enable":false}</script>
+<script src="/MyBlogC/js/third-party/comments/isso.js" defer></script>
+
+</body>
+</html>

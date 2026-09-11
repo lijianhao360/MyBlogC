@@ -20,17 +20,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lijianhao360.github.io","root":"/MyBlogC/","images":"/MyBlogC/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":480,"width_dual_column":240,"padding":0,"offset":0,"toggle":{"enable":true,"size":"0px","top":"0px"},"display":"always","onmobile":false,"fixed":true,"sidebar_display_list":{"post":["site-overview","post-toc"],"home":["site-overview","categories","tags"],"archive":["site-overview","categories","tags"]}},"hljswrap":true,"codeblock":{"theme":{"light":"atom-one-light","dark":"atom-one-light"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true},"fold":{"enable":false},"language":false},"bookmark":{"enable":false},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"","storage":true,"lazyload":false,"nav":{}},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/MyBlogC/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/MyBlogC/js/config.js" defer></script>
 
-    <meta name="description" content="第一章: 计算机架构导论1.计算机架构概述 1.处理器发展趋势   1.处理器在数据中心与嵌入式系统中的应用     两大典型应用领域与差异 数据中心场景（例如Google数据中心）   硬件：采用高性能处理器，算力要求高 软件：运行服务器操作系统，执行服务器专用业务程序   嵌入式MCU场景（例如Cortex‑M3）   硬件：典型配置：16KB Flash + 4KB RAM，算力需求低 软件">
+    <meta name="description" content="第一章: 计算机架构导论1.架构趋势1.1 计算机架构概述 1.处理器发展趋势   1.处理器在数据中心与嵌入式系统中的应用     两大典型应用领域与差异 数据中心场景（例如Google数据中心）   硬件：采用高性能处理器，算力要求高 软件：运行服务器操作系统，执行服务器专用业务程序   嵌入式MCU场景（例如Cortex‑M3）   硬件：典型配置：16KB Flash + 4KB RAM，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARM架构">
 <meta property="og:url" content="https://lijianhao360.github.io/2026/08/02/ARM%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="首页">
-<meta property="og:description" content="第一章: 计算机架构导论1.计算机架构概述 1.处理器发展趋势   1.处理器在数据中心与嵌入式系统中的应用     两大典型应用领域与差异 数据中心场景（例如Google数据中心）   硬件：采用高性能处理器，算力要求高 软件：运行服务器操作系统，执行服务器专用业务程序   嵌入式MCU场景（例如Cortex‑M3）   硬件：典型配置：16KB Flash + 4KB RAM，算力需求低 软件">
+<meta property="og:description" content="第一章: 计算机架构导论1.架构趋势1.1 计算机架构概述 1.处理器发展趋势   1.处理器在数据中心与嵌入式系统中的应用     两大典型应用领域与差异 数据中心场景（例如Google数据中心）   硬件：采用高性能处理器，算力要求高 软件：运行服务器操作系统，执行服务器专用业务程序   嵌入式MCU场景（例如Cortex‑M3）   硬件：典型配置：16KB Flash + 4KB RAM，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/ARM%E6%9E%B6%E6%9E%84.png">
 <meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B.png">
+<meta property="og:image" content="https://lijianhao360.github.io/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/%E6%B5%81%E6%B0%B4%E7%BA%BF.png">
 <meta property="article:published_time" content="2026-08-02T02:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-27T05:45:41.524Z">
+<meta property="article:modified_time" content="2026-09-02T04:06:52.092Z">
 <meta property="article:author" content="JianHao Li">
 <meta property="article:tag" content="FreeRTOS">
 <meta property="article:tag" content="基础">
@@ -166,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E5%AF%BC%E8%AE%BA"><span class="nav-text">第一章: 计算机架构导论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E6%A6%82%E8%BF%B0"><span class="nav-text">1.计算机架构概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B1%82%E6%AC%A1"><span class="nav-text">2.计算机架构的层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">3.计算机架构的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E9%A2%86%E5%9F%9F"><span class="nav-text">4.计算机架构领域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A4%84%E7%90%86%E5%99%A8%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="nav-text">5.处理器六大设计目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-ARM%E7%9B%AE%E6%A0%87%E5%B8%82%E5%9C%BA%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E5%88%86%E7%B1%BB"><span class="nav-text">6. ARM目标市场与处理器分类</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E5%AF%BC%E8%AE%BA"><span class="nav-text">第一章: 计算机架构导论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9E%B6%E6%9E%84%E8%B6%8B%E5%8A%BF"><span class="nav-text">1.架构趋势</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E6%A6%82%E8%BF%B0"><span class="nav-text">1.1 计算机架构概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B1%82%E6%AC%A1"><span class="nav-text">1.2 计算机架构的层次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">1.3 计算机架构的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9E%B6%E6%9E%84%E9%A2%86%E5%9F%9F"><span class="nav-text">1.4 计算机架构领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E5%A4%84%E7%90%86%E5%99%A8%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="nav-text">1.5 处理器六大设计目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-ARM%E7%9B%AE%E6%A0%87%E5%B8%82%E5%9C%BA%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E5%88%86%E7%B1%BB"><span class="nav-text">1.6 ARM目标市场与处理器分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%80%A7%E8%83%BD%E8%BF%9B%E5%8C%96"><span class="nav-text">2.性能进化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%BF%87%E5%8E%BB%E6%80%A7%E8%83%BD%E5%8F%91%E5%B1%95"><span class="nav-text">1.过去性能发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%97%B6%E9%92%9F%E9%A2%91%E7%8E%87"><span class="nav-text">2.时钟频率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-IPC%E5%92%8C%E6%8C%87%E4%BB%A4%E6%95%B0"><span class="nav-text">3.IPC和指令数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%A4%84%E7%90%86%E5%99%A8%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="nav-text">4.处理器发展趋势</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -181,7 +182,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/MyBlogC/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,7 +193,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/MyBlogC/tags/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -286,7 +287,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-08-27 13:45:41" itemprop="dateModified" datetime="2026-08-27T13:45:41+08:00">2026-08-27</time>
+      <time title="修改时间：2026-09-02 12:06:52" itemprop="dateModified" datetime="2026-09-02T12:06:52+08:00">2026-09-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -320,7 +321,7 @@
     <div class="post-body" itemprop="articleBody">
         
         
-        <h1 id="第一章-计算机架构导论"><a href="#第一章-计算机架构导论" class="headerlink" title="第一章: 计算机架构导论"></a>第一章: 计算机架构导论</h1><h2 id="1-计算机架构概述"><a href="#1-计算机架构概述" class="headerlink" title="1.计算机架构概述"></a>1.计算机架构概述</h2><ul>
+        <h1 id="第一章-计算机架构导论"><a href="#第一章-计算机架构导论" class="headerlink" title="第一章: 计算机架构导论"></a>第一章: 计算机架构导论</h1><h2 id="1-架构趋势"><a href="#1-架构趋势" class="headerlink" title="1.架构趋势"></a>1.架构趋势</h2><h3 id="1-1-计算机架构概述"><a href="#1-1-计算机架构概述" class="headerlink" title="1.1 计算机架构概述"></a>1.1 计算机架构概述</h3><ul>
 <li><strong>1.处理器发展趋势</strong></li>
 </ul>
 <ul>
@@ -381,7 +382,7 @@
 </ol>
 </li>
 </ul>
-<h2 id="2-计算机架构的层次"><a href="#2-计算机架构的层次" class="headerlink" title="2.计算机架构的层次"></a>2.计算机架构的层次</h2><ul>
+<h3 id="1-2-计算机架构的层次"><a href="#1-2-计算机架构的层次" class="headerlink" title="1.2 计算机架构的层次"></a>1.2 计算机架构的层次</h3><ul>
 <li><strong>1.三层抽象（Levels of Abstraction）</strong><br>1.<strong>架构层（Architecture）</strong></li>
 </ul>
 <ul>
@@ -406,7 +407,7 @@
 <blockquote>
 <p>小结：<strong>架构定接口，微架构定内部逻辑，实现对应真实芯片型号。</strong></p>
 </blockquote>
-<h2 id="3-计算机架构的定义"><a href="#3-计算机架构的定义" class="headerlink" title="3.计算机架构的定义"></a>3.计算机架构的定义</h2><blockquote>
+<h3 id="1-3-计算机架构的定义"><a href="#1-3-计算机架构的定义" class="headerlink" title="1.3 计算机架构的定义"></a>1.3 计算机架构的定义</h3><blockquote>
 <p>ARM架构文档可在官网下载，文档面向研发可查阅，但<strong>并非商业完全开源</strong>：仅可用于研究；如果要商业化生产兼容架构的处理器，必须向ARM支付架构授权费用。</p>
 </blockquote>
 <ul>
@@ -487,7 +488,7 @@
 <blockquote>
 <p>设计哲学：处理器架构必须持续演进，来不断适配变化的应用场景与用户需求。</p>
 </blockquote>
-<h2 id="4-计算机架构领域"><a href="#4-计算机架构领域" class="headerlink" title="4.计算机架构领域"></a>4.计算机架构领域</h2><ul>
+<h3 id="1-4-计算机架构领域"><a href="#1-4-计算机架构领域" class="headerlink" title="1.4 计算机架构领域"></a>1.4 计算机架构领域</h3><ul>
 <li><strong>1.架构设计的层级与影响因素</strong></li>
 </ul>
 <ul>
@@ -544,7 +545,7 @@
 <li><strong>定制化设计</strong>：针对目标软件负载去调优缓存参数。</li>
 </ul>
 <hr>
-<h2 id="5-处理器六大设计目标"><a href="#5-处理器六大设计目标" class="headerlink" title="5.处理器六大设计目标"></a>5.处理器六大设计目标</h2><ul>
+<h3 id="1-5-处理器六大设计目标"><a href="#1-5-处理器六大设计目标" class="headerlink" title="1.5 处理器六大设计目标"></a>1.5 处理器六大设计目标</h3><ul>
 <li><p>1.功能性</p>
 </li>
 <li><p><strong>验证挑战</strong>：处理器验证复杂度远高于软件，需要覆盖海量、多样的指令组合场景。</p>
@@ -599,7 +600,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="6-ARM目标市场与处理器分类"><a href="#6-ARM目标市场与处理器分类" class="headerlink" title="6. ARM目标市场与处理器分类"></a>6. ARM目标市场与处理器分类</h2><ul>
+<h3 id="1-6-ARM目标市场与处理器分类"><a href="#1-6-ARM目标市场与处理器分类" class="headerlink" title="1.6 ARM目标市场与处理器分类"></a>1.6 ARM目标市场与处理器分类</h3><ul>
 <li><strong>1.处理器设计的权衡因素</strong></li>
 </ul>
 <ul>
@@ -672,6 +673,121 @@
 <blockquote>
 <p>异构优势：多种ARM处理器协同工作，兼顾性能、实时性、功耗，实现整体能效最优。</p>
 </blockquote>
+<h2 id="2-性能进化"><a href="#2-性能进化" class="headerlink" title="2.性能进化"></a>2.性能进化</h2><h3 id="1-过去性能发展"><a href="#1-过去性能发展" class="headerlink" title="1.过去性能发展"></a>1.过去性能发展</h3><ul>
+<li>**工艺突破：**1985年首次实现完整微处理器单芯片集成，此后晶体管尺寸持续缩小（从微米级发展到3nm工艺）</li>
+<li>**性能增速：**1985-2005年间SPEC基准测试显示桌面&#x2F;服务器处理器性能年增长达52%</li>
+<li>**集成优势：**工艺进步带来芯片面积缩小、功耗降低，使更多功能模块可集成到单一芯片中</li>
+</ul>
+<h3 id="2-时钟频率"><a href="#2-时钟频率" class="headerlink" title="2.时钟频率"></a>2.时钟频率</h3><p>● 关键贡献：1985-2002年间处理器性能提升800倍，其中时钟频率改善贡献约100倍（占总提升1&#x2F;8）<br>● 提升因素：<br>   ○ 晶体管速度提升带来10倍增益 ○ 流水线和电路级优化带来额外10倍增益<br>● 现状转变：2002年后频率提升放缓，转向多核架构发展</p>
+<ul>
+<li><strong>1）处理器性能衡量</strong></li>
+</ul>
+<ul>
+<li><p>核心公式：Time &#x3D; 指令数 * CPI * 时钟周期<br>（CPI&#x3D;Clocks Per Instruction）</p>
+</li>
+<li><p><strong>IPC概念</strong>：IPC &#x3D; 1&#x2F;CPI，表示每时钟周期执行的指令数</p>
+</li>
+<li><p>执行指令数</p>
+<ul>
+<li><strong>评估标准</strong>：通过SPEC等基准测试程序测量实际软件执行效率</li>
+<li><strong>全面考量</strong>：性能评估需综合指令吞吐量、执行效率等多维度指标</li>
+</ul>
+</li>
+<li><p>时钟周期</p>
+<ul>
+<li><strong>工艺影响</strong>：晶体管速度提升直接缩短时钟周期</li>
+<li><strong>频率瓶颈</strong>：工艺节点接近物理极限后频率提升难度增</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>补充：<br>Time：程序执行总时间<br>CPI：每条指令需要的时钟周期数<br>IPC：每个时钟周期能完成多少条指令</p>
+</blockquote>
+<ul>
+<li><strong>2）时钟每条指令</strong></li>
+</ul>
+<ul>
+<li><strong>早期限制：<strong>晶体管数量不足导致</strong>CPI&gt;&gt;1</strong>（单指令需多周期完成）</li>
+<li><strong>现代目标：<strong>通过架构优化逼近</strong>CPI&#x3D;1</strong>的理想状态</li>
+<li>**设计矛盾：**高频设计（&gt;3GHz）与低CPI存在天然矛盾，需复杂技术平衡</li>
+</ul>
+<ul>
+<li><strong>3）减小CPI</strong></li>
+</ul>
+<ul>
+<li><strong>关键技术</strong>：<ul>
+<li>指令级并行（ILP）：通过超标量架构实现多指令同时执行</li>
+<li>流水线优化：减少流水线停顿（stall）导致的周期浪费</li>
+</ul>
+</li>
+<li><strong>实现代价</strong>：需要额外晶体管资源（面积）和功耗开销</li>
+</ul>
+<ul>
+<li><strong>4）流水线</strong></li>
+</ul>
+<img src="/MyBlogC/2026/08/02/ARM%E6%9E%B6%E6%9E%84/%E6%B5%81%E6%B0%B4%E7%BA%BF.png" class="">
+
+<h3 id="3-IPC和指令数"><a href="#3-IPC和指令数" class="headerlink" title="3.IPC和指令数"></a>3.IPC和指令数</h3><ul>
+<li><strong>1）性能提升概述</strong></li>
+</ul>
+<ul>
+<li>800倍提升分解：1985-2002年间处理器性能提升800倍，其中约100倍来自时钟频率提升，剩余约8倍来自指令数减少、编译器优化和IPC提升</li>
+<li>基准测试：使用Specint2000作为性能评估基准，图表显示性能（每MHz）随时间的变化趋势</li>
+</ul>
+<ul>
+<li><strong>2）指令数减少的影响</strong></li>
+</ul>
+<ul>
+<li>指令集演进：处理器架构发展引入新指令，相同代码编译后指令数减少</li>
+<li>具体表现：现代CPU执行相同代码时所需汇编指令数量比早期处理器更少</li>
+<li>工艺影响：先进工艺节点使标准单元库延迟时间缩短，寄存器间时钟周期减小</li>
+</ul>
+<ul>
+<li><strong>3）编译器优化的作用</strong></li>
+</ul>
+<ul>
+<li><strong>优化能力</strong>：现代编译器能根据CPU特性和功能优化C&#x2F;C++代码</li>
+<li><strong>协同设计</strong>：处理器架构与编译器协同优化，共同提升执行效率</li>
+</ul>
+<ul>
+<li><strong>4）IPC提升的意义与实现</strong></li>
+</ul>
+<ul>
+<li><strong>IPC定义</strong>：每周期执行指令数（Instructions Per Cycle）提升意味着CPI（Cycles Per Instruction）降低</li>
+<li><strong>实现方式</strong>：通过微架构改进增加单周期内并行执行的指令数量</li>
+</ul>
+<ul>
+<li><strong>5）关键路径的减小方法</strong></li>
+</ul>
+<ul>
+<li><strong>流水线技术</strong>：采用多级流水线（从2-3级发展到7-8级甚至几十级），通过寄存器切断长组合逻辑路径</li>
+<li><strong>工艺进步</strong>：更先进工艺节点缩短晶体管延迟时间</li>
+<li><strong>设计优化</strong>：复杂逻辑细化为更小单元，关键路径时间长度显著减小（1985-2002年间）</li>
+</ul>
+<h3 id="4-处理器发展趋势"><a href="#4-处理器发展趋势" class="headerlink" title="4.处理器发展趋势"></a>4.处理器发展趋势</h3><ul>
+<li><strong>1）ARM处理器性能趋势</strong></li>
+<li><strong>性能提升：</strong></li>
+</ul>
+<ul>
+<li>2009年Cortex-A8：单核800MHz</li>
+<li>2016年Cortex-A72：单核2.5GHz（14&#x2F;16nm工艺）</li>
+<li>性能提升倍数：浮点运算12倍，整型运算14倍，内存访问16倍</li>
+</ul>
+<ul>
+<li><strong>功耗优化：</strong></li>
+</ul>
+<ul>
+<li>16nm A72相比28nm A15功耗降低75%</li>
+<li>big.LITTLE架构（A72+A53组合）进一步降低功耗40-60%</li>
+</ul>
+<ul>
+<li><strong>架构创新：</strong></li>
+</ul>
+<ul>
+<li>增加缓存容量和改进缓存管理</li>
+<li>内存速度提升避免CPU流水线阻塞</li>
+<li>工艺进步（28nm→20nm→16nm）同时提升性能和能效</li>
+</ul>
 
     </div>
 
@@ -699,8 +815,8 @@
 
         
           <div class="post-tags">
-              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
               <a href="/MyBlogC/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/MyBlogC/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
               <a href="/MyBlogC/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" rel="tag"># 嵌入式开发</a>
               <a href="/MyBlogC/tags/FreeRTOS/" rel="tag"># FreeRTOS</a>
           </div>
@@ -712,8 +828,8 @@
         
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/MyBlogC/2026/08/02/06-FreeRTOS/" rel="prev" title="05-FreeRTOS">
-                  <i class="fa fa-angle-left"></i> 05-FreeRTOS
+                <a href="/MyBlogC/2026/08/02/%E7%A1%AC%E4%BB%B6PCB%E8%AE%BE%E8%AE%A1/" rel="prev" title="硬件PCB设计">
+                  <i class="fa fa-angle-left"></i> 硬件PCB设计
                 </a>
             </div>
             <div class="post-nav-item">
